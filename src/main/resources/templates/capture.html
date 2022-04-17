@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/capture.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aclonica">
+    <title>Capture Traffic</title>
+</head>
+
+<script>
+    function redirect(id){
+        location.href = '/dashboard/capture?id='+id;
+    }
+</script>
+
+<body>
+    <div class="root">
+        <!-- Navigation Bar -->
+        <div class="nav">
+            <div class="buttons">
+                <div class="nav_button">
+                    Home
+                </div>
+                <div class="nav_button">
+                    Capture
+                </div>
+                <div class="nav_button">
+                    Mock Api's
+                </div>
+                <div class="nav_button">
+                    GitHub
+                </div>
+            </div>
+        </div>
+
+        <!-- Body -->
+        <div class="body">
+            <div class="left_body">
+                <div th:each="request : ${requests}" class="request" th:attr="onclick=${'redirect('+request.id+')'}">
+                    <div class="method" th:text="${request.method}"></div>
+                    <div class="path" th:text="${request.path}"></div>
+                    <div class="time_stamp" th:text="${request.timeStamp}"></div>
+                </div>
+            </div>
+            <div class="right_body">
+                <!-- IF CUSTOMER IS ANONYMOUS -->
+                <div th:if="${hasFullRequest}">
+                    <div class="full_request">
+                        <div>Headers</div>
+                        <div th:each="header : ${fullRequest.headers}">
+                            <div th:text="${header.key}"></div>
+                            <div th:text="${header.value}"></div>
+                        </div>
+                        <div>Body</div>
+                        <div th:text="${fullRequest.body}"></div>
+                    </div>
+                </div>
+                <!-- ELSE -->
+                <div th:unless="${hasFullRequest}">
+                    <div class="full_request">
+                        <div>select a request to show</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

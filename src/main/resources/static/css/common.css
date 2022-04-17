@@ -1,0 +1,30 @@
+.nav{
+    display: flex;
+    flex-direction: row;
+    color: white;
+    font-family: 'Aclonica';
+font-style: normal;
+font-size: 18px;
+width: 100%;
+justify-content: center;
+align-items: center;
+height: 10vh;
+width: 100vw;
+background-color: #0085FF;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    justify-content: space-between;
+}
+
+body{
+    margin: 0;
+}
+
+.nav_button{
+    cursor: pointer;
+}
+
