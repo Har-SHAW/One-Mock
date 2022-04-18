@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/onemock")
@@ -13,15 +12,15 @@ public class GetController {
     @Autowired
     private RequestService requestService;
 
-//    @GetMapping("/")
-//    private String postOnePath(@RequestBody String body, @RequestHeader Map<String, String> headers) {
-//        requestService.saveRequest("GET", body, "/", headers);
-//        return body;
-//    }
+    @GetMapping("/")
+    private String postOnePath(@RequestBody String body, @RequestHeader Map<String, String> headers) {
+        requestService.saveRequest("GET", body, "/", headers);
+        return body;
+    }
 
     @GetMapping("/{pathOne}")
     private String postOnePath(@RequestBody(required = false) String body, @PathVariable String pathOne, @RequestHeader Map<String, String> headers) {
-        requestService.saveRequest("GET",body, "/" + pathOne, headers);
+        requestService.saveRequest("GET", body, "/" + pathOne, headers);
         return body;
     }
 

@@ -15,7 +15,8 @@ public class PartialRequestDto {
     private String path;
     private String method;
     private String timeStamp;
-    public PartialRequestDto(Request request){
+
+    public PartialRequestDto(Request request) {
         this.id = request.getRequestId();
         this.body = request.getBody();
         this.path = request.getPath();

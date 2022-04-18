@@ -4,32 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <title>One Mock</title>
-    <link rel="stylesheet" href="../static/css/home-page.css">
+    <link rel="stylesheet" href="/css/home-page.css">
+    <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aclonica">
+    <script src="/javascript/common.js"></script>
 </head>
 
 <body>
     <div class="root">
-        <div class="one-mock">
-            One Mock
-        </div>
+
         <div class="gradient">
             <div class="nav">
                 <div class="buttons">
-                    <div class="nav_button">
+                    <div class="nav_button" onclick="gotoHome();">
                         Home
                     </div>
-                    <div class="nav_button">
+                    <div class="nav_button" onclick="gotoCapture();">
                         Capture
                     </div>
-                    <div class="nav_button">
+                    <div class="nav_button" onclick="gotoMock();">
                         Mock Api's
                     </div>
-                    <div class="nav_button">
+                    <div class="nav_button" onclick="gotoGithub();">
                         GitHub
                     </div>
                 </div>
 
+            </div>
+            <div class="one-mock">
+                One Mock
             </div>
         </div>
     </div>

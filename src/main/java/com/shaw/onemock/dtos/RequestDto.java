@@ -13,19 +13,21 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RequestDto {
+    private Long id;
     private String body;
     private String path;
     private String method;
     private String timeStamp;
     private List<HeaderDto> headers;
 
-    public RequestDto(Request request){
+    public RequestDto(Request request) {
+        this.id = request.getRequestId();
         this.body = request.getBody();
         this.path = request.getPath();
         this.method = request.getMethod();
         this.timeStamp = request.getTimeStamp();
         this.headers = new ArrayList<>();
-        for(Header header : request.getHeaders()){
+        for (Header header : request.getHeaders()) {
             this.headers.add(new HeaderDto(header));
         }
     }

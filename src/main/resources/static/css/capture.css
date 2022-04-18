@@ -1,19 +1,19 @@
-.nav{
+.nav {
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
-.body{
+.body {
     height: 85vh;
     width: 90vw;
     margin-left: 5vw;
     margin-right: 5vw;
     margin-top: 5vh;
-    display:flex;
+    display: flex;
     flex-direction: row;
     overflow: hidden;
 }
 
-.left_body{
+.left_body {
     height: 85vh;
     width: 100%;
     display: flex;
@@ -21,12 +21,12 @@
     overflow: auto;
 }
 
-.right_body{
+.right_body {
     height: 100%;
     width: 100%;
 }
 
-.request{
+.request {
     width: 90%;
     height: 10vh;
     margin: 2% 5% 2% 5%;
@@ -40,7 +40,11 @@
     cursor: pointer;
 }
 
-.method{
+#selected_request {
+    background-color: lightgrey;
+}
+
+.method {
     border-radius: 15px 0px 0px 15px;
     height: 100%;
     color: white;
@@ -53,16 +57,44 @@
     justify-content: center;
 }
 
-.path{
+.path {
     width: 60%;
+    height: 10vh;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.time_stamp{
+.time_stamp {
     width: 20%;
 }
 
-.full_request{
-width: 90%;
+.full_request {
+    width: 90%;
     margin: 2% 5% 2% 5%;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+}
+
+.header_title {
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    background-color: #0085FF;
+    color: white;
+    font-weight: bold;
+}
+
+.header_key, .header_value {
+    margin: 5px;
+    padding: 5px;
+}
+
+.request_body {
+    margin: 5px;
+    padding: 5px;
 }

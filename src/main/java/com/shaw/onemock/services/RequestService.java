@@ -40,13 +40,13 @@ public class RequestService {
     public List<PartialRequestDto> getAll() {
         List<PartialRequestDto> requestDtos = new ArrayList<>();
         List<Request> requests = repository.findAll();
-        for(Request request : requests){
+        for (Request request : requests) {
             requestDtos.add(new PartialRequestDto(request));
         }
         return requestDtos;
     }
 
-    public RequestDto getOne(Long id){
+    public RequestDto getOne(Long id) {
         return new RequestDto(repository.getById(id));
     }
 }

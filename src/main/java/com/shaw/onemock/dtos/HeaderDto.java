@@ -12,7 +12,7 @@ public class HeaderDto {
     private String key;
     private String value;
 
-    public HeaderDto(Header header){
+    public HeaderDto(Header header) {
         this.key = header.getKey();
         this.value = header.getValue();
     }
