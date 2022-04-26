@@ -9,12 +9,14 @@ import com.shaw.onemock.repositories.RequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class RequestService {
@@ -24,16 +26,36 @@ public class RequestService {
     @Autowired
     private HeaderRepository headerRepository;
 
-    public void saveRequest(String method, String body, String path, Map<String, String> headers) {
+    public String getBody(HttpServletRequest request) {
+        try {
+            return request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+        } catch (Exception ignore) {
+        }
+        return "";
+    }
+
+    public List<Header> getHeaders(HttpServletRequest request, Request requestEntity) {
+        List<Header> headers = new ArrayList<>();
+        Enumeration<String> headerNames = request.getHeaderNames();
+
+        if (headerNames != null) {
+            while (headerNames.hasMoreElements()) {
+                String header = headerNames.nextElement();
+                Header headerEntity = new Header(header, request.getHeader(header));
+                headerEntity.setRequest(requestEntity);
+                headers.add(headerEntity);
+            }
+        }
+
+        return headers;
+    }
+
+    public void saveRequest(HttpServletRequest request, String path) {
         DateFormat outputFormat = new SimpleDateFormat("HH:mm:ss");
-        Request request = new Request(body, path, method, outputFormat.format(new Date()));
-        Request finalRequest = repository.save(request);
-        List<Header> headersList = new ArrayList<>();
-        headers.forEach((key, value) -> {
-            Header header = new Header(key, value);
-            header.setRequest(finalRequest);
-            headersList.add(header);
-        });
+        String body = getBody(request);
+        Request requestEntity = new Request(body, path, request.getMethod(), outputFormat.format(new Date()));
+        Request finalRequest = repository.save(requestEntity);
+        List<Header> headersList = getHeaders(request, finalRequest);
         headerRepository.saveAll(headersList);
     }
 
