@@ -1,6 +1,6 @@
 package com.shaw.onemock.repositories;
 
-import com.shaw.onemock.models.Request;
+import com.shaw.onemock.models.requests.Request;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

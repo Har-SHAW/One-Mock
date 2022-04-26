@@ -1,9 +1,9 @@
-package com.shaw.onemock.models;
+package com.shaw.onemock.models.requests;
 
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -27,6 +27,11 @@ public class Request {
     @NonNull
     private String timeStamp;
 
-    @OneToMany(mappedBy = "request")
-    private List<Header> headers;
+    @ManyToMany
+    @JoinTable(
+            name = "request_header",
+            joinColumns = @JoinColumn(name = "request_id"),
+            inverseJoinColumns = @JoinColumn(name = "header_id")
+    )
+    private Set<Header> headers;
 }

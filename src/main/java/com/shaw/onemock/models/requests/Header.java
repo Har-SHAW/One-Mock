@@ -1,8 +1,11 @@
-package com.shaw.onemock.models;
+package com.shaw.onemock.models.requests;
 
 import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Data
 @NoArgsConstructor
@@ -19,8 +22,4 @@ public class Header {
 
     @NonNull
     private String value;
-
-    @ManyToOne
-    @JoinColumn(name = "request_id")
-    private Request request;
 }

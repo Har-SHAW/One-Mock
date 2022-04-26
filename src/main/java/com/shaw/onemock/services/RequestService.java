@@ -2,8 +2,8 @@ package com.shaw.onemock.services;
 
 import com.shaw.onemock.dtos.PartialRequestDto;
 import com.shaw.onemock.dtos.RequestDto;
-import com.shaw.onemock.models.Header;
-import com.shaw.onemock.models.Request;
+import com.shaw.onemock.models.requests.Header;
+import com.shaw.onemock.models.requests.Request;
 import com.shaw.onemock.repositories.HeaderRepository;
 import com.shaw.onemock.repositories.RequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +12,7 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Enumeration;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,19 +27,21 @@ public class RequestService {
         try {
             return request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
         } catch (Exception ignore) {
+            return "";
         }
-        return "";
     }
 
-    public List<Header> getHeaders(HttpServletRequest request, Request requestEntity) {
-        List<Header> headers = new ArrayList<>();
+    public Set<Header> getHeaders(HttpServletRequest request) {
+        Set<Header> headers = new HashSet<>();
         Enumeration<String> headerNames = request.getHeaderNames();
 
         if (headerNames != null) {
             while (headerNames.hasMoreElements()) {
-                String header = headerNames.nextElement();
-                Header headerEntity = new Header(header, request.getHeader(header));
-                headerEntity.setRequest(requestEntity);
+                String headerKey = headerNames.nextElement();
+                String headerValue = request.getHeader(headerKey);
+                Header headerEntity = headerRepository
+                        .findByKeyAndValue(headerKey, headerValue)
+                        .orElseGet(() -> new Header(headerKey, headerValue));
                 headers.add(headerEntity);
             }
         }
@@ -54,9 +53,11 @@ public class RequestService {
         DateFormat outputFormat = new SimpleDateFormat("HH:mm:ss");
         String body = getBody(request);
         Request requestEntity = new Request(body, path, request.getMethod(), outputFormat.format(new Date()));
-        Request finalRequest = repository.save(requestEntity);
-        List<Header> headersList = getHeaders(request, finalRequest);
+        Set<Header> headersList = getHeaders(request);
         headerRepository.saveAll(headersList);
+        requestEntity.setHeaders(headersList);
+        Request finalRequest = repository.save(requestEntity);
+
     }
 
     public List<PartialRequestDto> getAll() {

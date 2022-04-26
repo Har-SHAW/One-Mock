@@ -34,8 +34,118 @@ public class RequestController {
     }
 
     @RequestMapping("/{p1}/{p2}/{p3}")
-    private String request(HttpServletRequest request, @PathVariable String p1, @PathVariable String p2, @PathVariable String p3) {
+    private String request(
+            HttpServletRequest request,
+            @PathVariable String p1,
+            @PathVariable String p2,
+            @PathVariable String p3
+    ) {
         requestService.saveRequest(request, "/" + p1 + "/" + p2 + "/" + p3);
+        return "success";
+    }
+
+    @RequestMapping("/{p1}/{p2}/{p3}/{p4}")
+    private String request(
+            HttpServletRequest request,
+            @PathVariable String p1,
+            @PathVariable String p2,
+            @PathVariable String p3,
+            @PathVariable String p4
+    ) {
+        requestService.saveRequest(request, "/" + p1 + "/" + p2 + "/" + p3 + "/" + p4);
+        return "success";
+    }
+
+    @RequestMapping("/{p1}/{p2}/{p3}/{p4}/{p5}")
+    private String request(
+            HttpServletRequest request,
+            @PathVariable String p1,
+            @PathVariable String p2,
+            @PathVariable String p3,
+            @PathVariable String p4,
+            @PathVariable String p5
+    ) {
+        requestService.saveRequest(request, "/" + p1 + "/" + p2 + "/" + p3 + "/" + p4 + "/" + p5);
+        return "success";
+    }
+
+    @RequestMapping("/{p1}/{p2}/{p3}/{p4}/{p5}/{p6}")
+    private String request(
+            HttpServletRequest request,
+            @PathVariable String p1,
+            @PathVariable String p2,
+            @PathVariable String p3,
+            @PathVariable String p4,
+            @PathVariable String p5,
+            @PathVariable String p6
+    ) {
+        requestService.saveRequest(request, "/" + p1 + "/" + p2 + "/" + p3 + "/" + p4 + "/" + p5 + "/" + p6);
+        return "success";
+    }
+
+    @RequestMapping("/{p1}/{p2}/{p3}/{p4}/{p5}/{p6}/{p7}")
+    private String request(
+            HttpServletRequest request,
+            @PathVariable String p1,
+            @PathVariable String p2,
+            @PathVariable String p3,
+            @PathVariable String p4,
+            @PathVariable String p5,
+            @PathVariable String p6,
+            @PathVariable String p7
+    ) {
+        requestService.saveRequest(request, "/" + p1 + "/" + p2 + "/" + p3 + "/" + p4 + "/" + p5 + "/" + p6 + "/" + p7);
+        return "success";
+    }
+
+    @RequestMapping("/{p1}/{p2}/{p3}/{p4}/{p5}/{p6}/{p7}/{p8}")
+    private String request(
+            HttpServletRequest request,
+            @PathVariable String p1,
+            @PathVariable String p2,
+            @PathVariable String p3,
+            @PathVariable String p4,
+            @PathVariable String p5,
+            @PathVariable String p6,
+            @PathVariable String p7,
+            @PathVariable String p8
+    ) {
+        requestService.saveRequest(request, "/" + p1 + "/" + p2 + "/" + p3 + "/" + p4 + "/" + p5 + "/" + p6 + "/" + p7 + "/" + p8);
+        return "success";
+    }
+
+    @RequestMapping("/{p1}/{p2}/{p3}/{p4}/{p5}/{p6}/{p7}/{p8}/{p9}")
+    private String request(
+            HttpServletRequest request,
+            @PathVariable String p1,
+            @PathVariable String p2,
+            @PathVariable String p3,
+            @PathVariable String p4,
+            @PathVariable String p5,
+            @PathVariable String p6,
+            @PathVariable String p7,
+            @PathVariable String p8,
+            @PathVariable String p9
+    ) {
+        requestService.saveRequest(request, "/" + p1 + "/" + p2 + "/" + p3 + "/" + p4 + "/" + p5 + "/" + p6 + "/" + p7 + "/" + p8 + "/" + p9);
+        return "success";
+    }
+
+    @RequestMapping("/{p1}/{p2}/{p3}/{p4}/{p5}/{p6}/{p7}/{p8}/{p9}/{p10}")
+    private String request(
+            HttpServletRequest request,
+            @PathVariable String p1,
+            @PathVariable String p2,
+            @PathVariable String p3,
+            @PathVariable String p4,
+            @PathVariable String p5,
+            @PathVariable String p6,
+            @PathVariable String p7,
+            @PathVariable String p8,
+            @PathVariable String p9,
+            @PathVariable String p10
+    ) {
+        requestService.saveRequest(request, "/" + p1 + "/" + p2 + "/" + p3 + "/" + p4 + "/" + p5 + "/" + p6 + "/" + p7 + "/" + p8 + "/" + p9 + "/" + p10);
         return "success";
     }
 }
