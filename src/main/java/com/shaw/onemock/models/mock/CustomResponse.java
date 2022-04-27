@@ -1,5 +1,6 @@
 package com.shaw.onemock.models.mock;
 
+import com.shaw.onemock.dtos.mocks.CustomResponseDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -17,8 +18,13 @@ public class CustomResponse {
     private String body;
     @NonNull
     private String responseBody;
+
     @ManyToOne
     @JoinColumn(name = "mock_id")
-    @NonNull
     private MockRequest mockRequest;
+
+    public CustomResponse(CustomResponseDto customResponseDto) {
+        this.body = customResponseDto.getBody();
+        this.responseBody = customResponseDto.getResponseBody();
+    }
 }

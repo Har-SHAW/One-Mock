@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="/css/create-mock.css" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Aclonica" rel="stylesheet">
+    <title>Create Mock</title>
+    <script src="/javascript/common.js"></script>
+</head>
+
+<script>
+    window.onload = function () {
+        var checkbox = document.getElementById("customResponse");
+
+        checkbox.addEventListener('change', function() {
+            if (this.checked) {
+                document.getElementById("response_body").className = "disable";
+                document.getElementById("custom_response").className = "enable";
+            } else {
+                document.getElementById("response_body").className = "enable";
+                document.getElementById("custom_response").className = "disable";
+            }
+        });
+    };
+
+    function addCustomResponse(event){
+        event.preventDefault();
+        let t_body = document.getElementById('t_body');
+        let len = t_body.getElementsByTagName('tr').length;
+        let clone = t_body.getElementsByTagName('tr')[0].cloneNode(true);
+        let str = clone.innerHTML;
+        str = str.replaceAll("0",`${len}`);
+        clone.innerHTML = str;
+        console.log(str);
+        console.log(clone.innerHTML);
+        t_body.appendChild(clone);
+    }
+
+
+</script>
+
+<body>
+<div class="root">
+
+    <!-- Navigation Bar -->
+    <div class="nav">
+        <div class="buttons">
+            <div class="nav_button" onclick="gotoHome();">
+                Home
+            </div>
+            <div class="nav_button" onclick="gotoCapture();">
+                Capture
+            </div>
+            <div class="nav_button" onclick="gotoMock();">
+                Mock Api's
+            </div>
+            <div class="nav_button" onclick="gotoGithub();">
+                GitHub
+            </div>
+        </div>
+    </div>
+
+    <!-- Body -->
+    <div class="body">
+        <form action="#" method="post" th:action="@{/dashboard/mocks}" th:object="${mock}">
+            <div class="input_1">
+                <label>Method:</label>
+                <select th:field="*{method}">
+                    <option th:each="p : ${methods}" th:text="${p}" th:value="${p}"/>
+                </select>
+
+                <label>Path:</label>
+                <input th:field="*{path}" type="text"/>
+
+                <label>Duration:</label>
+                <input th:field="*{duration}" type="text"/><br/>
+
+            </div>
+
+            <div class="enable" id="response_body">
+                <textarea cols="66" id="responseBody" placeholder="Enter the Response Body" rows="5"
+                          th:field="*{responseBody}"
+                          type="text"></textarea><br/>
+            </div>
+
+            <label>Need Multiple Response?:</label>
+            <input id="customResponse" th:field="*{hasCustomResponse}" type="checkbox"/><br/>
+
+            <div class="disable" id="custom_response">
+                <label>Multiple Response Body</label>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>If Request Body is</th>
+                        <th>Then Response Body</th>
+                    </tr>
+                    </thead>
+                    <tbody id="t_body">
+                    <tr th:each="customResponseDto, itemStat : *{customResponseDtoSet}">
+                        <td><textarea cols="66" placeholder="Enter the Request Body" rows="5"
+                                      th:field="*{customResponseDtoSet[__${itemStat.index}__].body}"></textarea></td>
+                        <td><textarea cols="66" placeholder="Enter the Response Body"
+                                      rows="5"
+                                      th:field="*{customResponseDtoSet[__${itemStat.index}__].responseBody}"></textarea>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <button onclick="addCustomResponse(event);">Add More</button>
+            </div>
+            <input type="submit" value="submit">
+        </form>
+    </div>
+</div>
+</body>
+
+</html>
