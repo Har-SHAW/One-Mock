@@ -5,7 +5,7 @@ function gotoCapture() {
     location.href = '/dashboard/capture';
 }
 function gotoMock() {
-    location.href = '/dashboard';
+    location.href = '/dashboard/mocks';
 }
 function gotoGithub() {
     location.href = '/dashboard';

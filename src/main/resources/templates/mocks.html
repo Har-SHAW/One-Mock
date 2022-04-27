@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="/css/capture.css" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Aclonica" rel="stylesheet">
+    <title>Mock Api's</title>
+    <script src="/javascript/common.js"></script>
+</head>
+
+<script>
+    window.onload = function () {
+        let doc = document.getElementById('request_scroll');
+        var scrollpos = localStorage.getItem('scrollpos');
+        if (scrollpos) doc.scrollTo(0, scrollpos);
+    };
+
+    function redirect(id) {
+        let doc = document.getElementById('request_scroll');
+        localStorage.setItem('scrollpos', doc.scrollTop);
+        location.href = '/dashboard/capture?id=' + id;
+    }
+
+
+</script>
+
+<body>
+<div class="root">
+
+    <!-- Navigation Bar -->
+    <div class="nav">
+        <div class="buttons">
+            <div class="nav_button" onclick="gotoHome();">
+                Home
+            </div>
+            <div class="nav_button" onclick="gotoCapture();">
+                Capture
+            </div>
+            <div class="nav_button" onclick="gotoMock();">
+                Mock Api's
+            </div>
+            <div class="nav_button" onclick="gotoGithub();">
+                GitHub
+            </div>
+        </div>
+    </div>
+
+    <!-- Body -->
+    <div class="body">
+
+    </div>
+</div>
+</body>
+
+</html>

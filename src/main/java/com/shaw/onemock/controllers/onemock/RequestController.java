@@ -17,20 +17,17 @@ public class RequestController {
 
     @RequestMapping("/")
     private String request(HttpServletRequest request) throws IOException {
-        requestService.saveRequest(request, "/");
-        return "success";
+        return requestService.process(request, "/");
     }
 
     @RequestMapping("/{p1}")
     private String request(HttpServletRequest request, @PathVariable String p1) {
-        requestService.saveRequest(request, "/" + p1);
-        return "success";
+        return requestService.process(request, "/" + p1);
     }
 
     @RequestMapping("/{p1}/{p2}")
     private String request(HttpServletRequest request, @PathVariable String p1, @PathVariable String p2) {
-        requestService.saveRequest(request, "/" + p1 + "/" + p2);
-        return "success";
+        return requestService.process(request, "/" + p1 + "/" + p2);
     }
 
     @RequestMapping("/{p1}/{p2}/{p3}")
@@ -40,8 +37,7 @@ public class RequestController {
             @PathVariable String p2,
             @PathVariable String p3
     ) {
-        requestService.saveRequest(request, "/" + p1 + "/" + p2 + "/" + p3);
-        return "success";
+        return requestService.process(request, "/" + p1 + "/" + p2 + "/" + p3);
     }
 
     @RequestMapping("/{p1}/{p2}/{p3}/{p4}")
@@ -52,8 +48,7 @@ public class RequestController {
             @PathVariable String p3,
             @PathVariable String p4
     ) {
-        requestService.saveRequest(request, "/" + p1 + "/" + p2 + "/" + p3 + "/" + p4);
-        return "success";
+        return requestService.process(request, "/" + p1 + "/" + p2 + "/" + p3 + "/" + p4);
     }
 
     @RequestMapping("/{p1}/{p2}/{p3}/{p4}/{p5}")
@@ -65,8 +60,7 @@ public class RequestController {
             @PathVariable String p4,
             @PathVariable String p5
     ) {
-        requestService.saveRequest(request, "/" + p1 + "/" + p2 + "/" + p3 + "/" + p4 + "/" + p5);
-        return "success";
+        return requestService.process(request, "/" + p1 + "/" + p2 + "/" + p3 + "/" + p4 + "/" + p5);
     }
 
     @RequestMapping("/{p1}/{p2}/{p3}/{p4}/{p5}/{p6}")
@@ -79,8 +73,7 @@ public class RequestController {
             @PathVariable String p5,
             @PathVariable String p6
     ) {
-        requestService.saveRequest(request, "/" + p1 + "/" + p2 + "/" + p3 + "/" + p4 + "/" + p5 + "/" + p6);
-        return "success";
+        return requestService.process(request, "/" + p1 + "/" + p2 + "/" + p3 + "/" + p4 + "/" + p5 + "/" + p6);
     }
 
     @RequestMapping("/{p1}/{p2}/{p3}/{p4}/{p5}/{p6}/{p7}")
@@ -94,8 +87,7 @@ public class RequestController {
             @PathVariable String p6,
             @PathVariable String p7
     ) {
-        requestService.saveRequest(request, "/" + p1 + "/" + p2 + "/" + p3 + "/" + p4 + "/" + p5 + "/" + p6 + "/" + p7);
-        return "success";
+        return requestService.process(request, "/" + p1 + "/" + p2 + "/" + p3 + "/" + p4 + "/" + p5 + "/" + p6 + "/" + p7);
     }
 
     @RequestMapping("/{p1}/{p2}/{p3}/{p4}/{p5}/{p6}/{p7}/{p8}")
@@ -110,8 +102,7 @@ public class RequestController {
             @PathVariable String p7,
             @PathVariable String p8
     ) {
-        requestService.saveRequest(request, "/" + p1 + "/" + p2 + "/" + p3 + "/" + p4 + "/" + p5 + "/" + p6 + "/" + p7 + "/" + p8);
-        return "success";
+        return requestService.process(request, "/" + p1 + "/" + p2 + "/" + p3 + "/" + p4 + "/" + p5 + "/" + p6 + "/" + p7 + "/" + p8);
     }
 
     @RequestMapping("/{p1}/{p2}/{p3}/{p4}/{p5}/{p6}/{p7}/{p8}/{p9}")
@@ -127,8 +118,7 @@ public class RequestController {
             @PathVariable String p8,
             @PathVariable String p9
     ) {
-        requestService.saveRequest(request, "/" + p1 + "/" + p2 + "/" + p3 + "/" + p4 + "/" + p5 + "/" + p6 + "/" + p7 + "/" + p8 + "/" + p9);
-        return "success";
+        return requestService.process(request, "/" + p1 + "/" + p2 + "/" + p3 + "/" + p4 + "/" + p5 + "/" + p6 + "/" + p7 + "/" + p8 + "/" + p9);
     }
 
     @RequestMapping("/{p1}/{p2}/{p3}/{p4}/{p5}/{p6}/{p7}/{p8}/{p9}/{p10}")
@@ -145,7 +135,6 @@ public class RequestController {
             @PathVariable String p9,
             @PathVariable String p10
     ) {
-        requestService.saveRequest(request, "/" + p1 + "/" + p2 + "/" + p3 + "/" + p4 + "/" + p5 + "/" + p6 + "/" + p7 + "/" + p8 + "/" + p9 + "/" + p10);
-        return "success";
+        return requestService.process(request, "/" + p1 + "/" + p2 + "/" + p3 + "/" + p4 + "/" + p5 + "/" + p6 + "/" + p7 + "/" + p8 + "/" + p9 + "/" + p10);
     }
 }

@@ -1,7 +1,7 @@
 package com.shaw.onemock.controllers.dashboard;
 
 import com.shaw.onemock.dtos.RequestDto;
-import com.shaw.onemock.services.RequestService;
+import com.shaw.onemock.services.DashboardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/dashboard")
 public class HomeController {
     @Autowired
-    private RequestService requestService;
+    private DashboardService dashboardService;
 
     @GetMapping("")
     public String getHomePage(Model model) {
@@ -22,18 +22,23 @@ public class HomeController {
 
     @GetMapping("/capture")
     public String getCapture(Model model, @RequestParam(required = false, name = "id") Long id) {
-        model.addAttribute("requests", requestService.getAll());
+        model.addAttribute("requests", dashboardService.getAll());
         if (id == null) {
             model.addAttribute("hasFullRequest", false);
             return "capture";
         }
-        RequestDto requestDto = requestService.getOne(id);
+        RequestDto requestDto = dashboardService.getOne(id);
         if (requestDto != null) {
-            model.addAttribute("fullRequest", requestService.getOne(id));
+            model.addAttribute("fullRequest", dashboardService.getOne(id));
             model.addAttribute("hasFullRequest", true);
         } else {
             model.addAttribute("hasFullRequest", false);
         }
         return "capture";
+    }
+
+    @GetMapping("/mocks")
+    public String getMocks(){
+        return "mocks";
     }
 }
