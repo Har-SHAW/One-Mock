@@ -42,24 +42,25 @@ public class RequestService {
         return headers;
     }
 
-    public void saveRequest(HttpServletRequest request, String path, String body) {
+    public Request saveRequest(HttpServletRequest request, String path, String body) {
         DateFormat outputFormat = new SimpleDateFormat("HH:mm:ss");
         Request requestEntity = new Request(body, path, request.getMethod(), outputFormat.format(new Date()));
         Set<Header> headersList = getHeaders(request);
         headerRepository.saveAll(headersList);
         requestEntity.setHeaders(headersList);
-        repository.save(requestEntity);
+        return repository.save(requestEntity);
     }
+
 
     public String process(HttpServletRequest request, String path) {
         String response;
         String body = Utils.getBody(request);
-        saveRequest(request, path, body);
+        Request requestEntity = saveRequest(request, path, body);
         Optional<MockRequest> mockRequestOptional = mockRequestRepository.findByMethodAndPath(request.getMethod(), path);
         if (mockRequestOptional.isPresent()) {
             MockRequest mockRequest = mockRequestOptional.get();
-            if (mockRequest.getHasCustomResponse()) {
-                response = Utils.getCustomResponse(mockRequest.getCustomResponses(), body);
+            if (mockRequest.getHasMultipleResponse()) {
+                response = Utils.getCustomResponse(mockRequest.getCustomResponses(), body, requestEntity);
             } else {
                 response = mockRequest.getResponseBody();
             }

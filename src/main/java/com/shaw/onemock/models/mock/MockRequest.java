@@ -22,9 +22,9 @@ public class MockRequest {
     @NonNull
     private String responseBody;
     @NonNull
-    private Long duration;
+    private Integer duration;
     @NonNull
-    private Boolean hasCustomResponse;
+    private Boolean hasMultipleResponse;
 
     @OneToMany(mappedBy = "mockRequest")
     private List<CustomResponse> customResponses;
@@ -34,6 +34,6 @@ public class MockRequest {
         this.path = mockRequestDto.getPath();
         this.duration = mockRequestDto.getDuration();
         this.responseBody = mockRequestDto.getResponseBody();
-        this.hasCustomResponse = mockRequestDto.getHasCustomResponse();
+        this.hasMultipleResponse = mockRequestDto.getHasMultipleResponse();
     }
 }

@@ -16,8 +16,8 @@ public class MockRequestDto {
     private String method;
     private String path;
     private String responseBody;
-    private Long duration;
-    private Boolean hasCustomResponse;
+    private Integer duration = 0;
+    private Boolean hasMultipleResponse;
     private List<CustomResponseDto> customResponseDtoSet;
 
     public MockRequestDto(MockRequest mockRequest) {
@@ -25,7 +25,7 @@ public class MockRequestDto {
         this.path = mockRequest.getPath();
         this.responseBody = mockRequest.getResponseBody();
         this.duration = mockRequest.getDuration();
-        this.hasCustomResponse = mockRequest.getHasCustomResponse();
+        this.hasMultipleResponse = mockRequest.getHasMultipleResponse();
         this.customResponseDtoSet = new ArrayList<>();
         for (CustomResponse customResponse : mockRequest.getCustomResponses()) {
             this.customResponseDtoSet.add(new CustomResponseDto(customResponse));
@@ -46,7 +46,7 @@ public class MockRequestDto {
                 ", path='" + path + '\'' +
                 ", responseBody='" + responseBody + '\'' +
                 ", duration=" + duration +
-                ", hasCustomResponse=" + hasCustomResponse +
+                ", hasCustomResponse=" + hasMultipleResponse +
                 ", customResponseDtoSet=" + customResponseDtoSet +
                 '}';
     }

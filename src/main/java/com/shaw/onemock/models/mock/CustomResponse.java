@@ -15,7 +15,9 @@ public class CustomResponse {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long customResponseId;
     @NonNull
-    private String body;
+    private String requestValue;
+    @NonNull
+    private Boolean isHeader;
     @NonNull
     private String responseBody;
 
@@ -24,7 +26,8 @@ public class CustomResponse {
     private MockRequest mockRequest;
 
     public CustomResponse(CustomResponseDto customResponseDto) {
-        this.body = customResponseDto.getBody();
+        this.requestValue = customResponseDto.getRequestValue();
         this.responseBody = customResponseDto.getResponseBody();
+        this.isHeader = customResponseDto.getIsHeader();
     }
 }

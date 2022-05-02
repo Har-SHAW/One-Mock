@@ -22,12 +22,14 @@ public class MockService {
     public void addMock(MockRequestDto mockRequestDto) {
         MockRequest mockRequest = new MockRequest(mockRequestDto);
         mockRequest = mockRequestRepository.save(mockRequest);
-        if (mockRequest.getHasCustomResponse()) {
+        if (mockRequest.getHasMultipleResponse()) {
             List<CustomResponse> customResponses = new ArrayList<>();
             for (CustomResponseDto customResponseDto : mockRequestDto.getCustomResponseDtoSet()) {
-                CustomResponse customResponse = new CustomResponse(customResponseDto);
-                customResponse.setMockRequest(mockRequest);
-                customResponses.add(customResponse);
+                if (customResponseDto.getResponseBody() == null) {
+                    CustomResponse customResponse = new CustomResponse(customResponseDto);
+                    customResponse.setMockRequest(mockRequest);
+                    customResponses.add(customResponse);
+                }
             }
             customResponseRepository.saveAll(customResponses);
         }
