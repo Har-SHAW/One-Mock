@@ -8,57 +8,8 @@
     <link href="https://fonts.googleapis.com/css?family=Aclonica" rel="stylesheet">
     <title>Create Mock</title>
     <script src="/javascript/common.js"></script>
+    <script src="/javascript/create-mock.js"></script>
 </head>
-
-<script>
-    let last_mock_id = 0;
-    window.onload = function () {
-        var checkbox = document.getElementById("customResponse");
-        last_mock_id = 0;
-
-        checkbox.addEventListener('change', function() {
-            if (this.checked) {
-                document.getElementById("response_body").className = "disable";
-                document.getElementById("custom_response").className = "enable";
-            } else {
-                document.getElementById("response_body").className = "enable";
-                document.getElementById("custom_response").className = "disable";
-            }
-        });
-    };
-
-    function addCustomResponse(event){
-        event.preventDefault();
-        let t_body = document.getElementById('t_body');
-        let len = t_body.getElementsByTagName('tr').length;
-        let clone = t_body.getElementsByTagName('tr')[0].cloneNode(true);
-        let str = clone.innerHTML;
-        last_mock_id++;
-        str = str.replaceAll(clone.id.split("_")[2], ""+last_mock_id);
-        clone.id = 't_row_'+last_mock_id
-        clone.innerHTML = str;
-        t_body.appendChild(clone);
-    }
-
-    function deleteCustomResponse(event, index){
-        event.preventDefault();
-        let t_body = document.getElementById('t_body');
-        let list = t_body.getElementsByTagName('tr');
-
-        if(list.length == 1){
-            document.getElementById("customResponse").checked = false;
-            document.getElementById("response_body").className = "enable";
-            document.getElementById("custom_response").className = "disable";
-            return;
-        }
-
-        for(let i=0;i<list.length;i++){
-            if(list[i].id == 't_row_'+index){
-                list[i].remove();
-            }
-        }
-    }
-</script>
 
 <body>
 <div class="root">
@@ -101,6 +52,9 @@
             <div class="enable" id="response_body">
                 <textarea cols="66" id="responseBody" placeholder="Enter the Response Body" rows="5"
                           th:field="*{responseBody}"></textarea>
+                <br/>
+                <label>Status Code: </label>
+                <input th:field="*{statusCode}" type="number"/>
             </div>
 
             <label>Need Multiple Response? </label>
@@ -114,6 +68,7 @@
                         <th>Is Header?</th>
                         <th>If Request Body is</th>
                         <th>Then Response Body</th>
+                        <th>Status Code</th>
                         <th>Delete</th>
                     </tr>
                     </thead>
@@ -123,12 +78,16 @@
                             <input th:field="*{customResponseDtoSet[__${itemStat.index}__].isHeader}" type="checkbox"/>
                         </td>
                         <td>
-                            <textarea cols="66" placeholder="Enter the Request Body" rows="5"
+                            <textarea cols="60" placeholder="Enter the Request Body" rows="5"
                                       th:field="*{customResponseDtoSet[__${itemStat.index}__].requestValue}"></textarea>
                         </td>
                         <td>
-                            <textarea cols="66" placeholder="Enter the Response Body" rows="5"
+                            <textarea cols="60" placeholder="Enter the Response Body" rows="5"
                                       th:field="*{customResponseDtoSet[__${itemStat.index}__].responseBody}"></textarea>
+                        </td>
+                        <td>
+                            <input placeholder="Enter the Response Body" th:field="*{customResponseDtoSet[__${itemStat.index}__].statusCode}"
+                                   type="number"/>
                         </td>
                         <td>
                             <button th:onclick="deleteCustomResponse(event, 0);">Delete</button>

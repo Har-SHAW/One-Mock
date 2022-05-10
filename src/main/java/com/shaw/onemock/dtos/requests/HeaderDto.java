@@ -1,4 +1,4 @@
-package com.shaw.onemock.dtos;
+package com.shaw.onemock.dtos.requests;
 
 import com.shaw.onemock.models.requests.Header;
 import lombok.AllArgsConstructor;

@@ -1,5 +1,6 @@
 package com.shaw.onemock.services;
 
+import com.shaw.onemock.constants.GlobalConstants;
 import com.shaw.onemock.models.mock.MockRequest;
 import com.shaw.onemock.models.requests.Header;
 import com.shaw.onemock.models.requests.Request;
@@ -8,6 +9,8 @@ import com.shaw.onemock.repositories.request.HeaderRepository;
 import com.shaw.onemock.repositories.request.RequestRepository;
 import com.shaw.onemock.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.util.Pair;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -52,21 +55,23 @@ public class RequestService {
     }
 
 
-    public String process(HttpServletRequest request, String path) {
-        String response;
+    public ResponseEntity<String> process(HttpServletRequest request, String path) {
+        String response = GlobalConstants.DEFAULT_RESPONSE;
+        Integer statusCode = GlobalConstants.DEFAULT_RESPONSE_STATUS;
         String body = Utils.getBody(request);
         Request requestEntity = saveRequest(request, path, body);
         Optional<MockRequest> mockRequestOptional = mockRequestRepository.findByMethodAndPath(request.getMethod(), path);
         if (mockRequestOptional.isPresent()) {
             MockRequest mockRequest = mockRequestOptional.get();
             if (mockRequest.getHasMultipleResponse()) {
-                response = Utils.getCustomResponse(mockRequest.getCustomResponses(), body, requestEntity);
+                Pair<String, Integer> data = Utils.getCustomResponse(mockRequest.getCustomResponses(), body, requestEntity);
+                response = data.getFirst();
+                statusCode = data.getSecond();
             } else {
                 response = mockRequest.getResponseBody();
+                statusCode = mockRequest.getStatusCode();
             }
-        } else {
-            response = "success";
         }
-        return response;
+        return ResponseEntity.status(statusCode).body(response);
     }
 }

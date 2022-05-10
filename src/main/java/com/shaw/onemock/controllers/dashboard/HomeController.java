@@ -1,5 +1,6 @@
 package com.shaw.onemock.controllers.dashboard;
 
+import com.shaw.onemock.constants.GlobalConstants;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
     @GetMapping
     public String getHomePage(Model model) {
-        return "home-page";
+        return GlobalConstants.HOME_PAGE;
     }
 }

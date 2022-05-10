@@ -1,6 +1,8 @@
 package com.shaw.onemock.controllers.dashboard;
 
-import com.shaw.onemock.dtos.RequestDto;
+import com.shaw.onemock.constants.GlobalConstants;
+import com.shaw.onemock.dtos.requests.RequestDto;
+import com.shaw.onemock.exceptions.RequestNotFoundException;
 import com.shaw.onemock.services.CaptureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,11 +18,11 @@ public class CaptureController {
     private CaptureService captureService;
 
     @GetMapping
-    public String getCapture(Model model, @RequestParam(required = false, name = "id") Long id) {
+    public String getCapture(Model model, @RequestParam(required = false, name = "id") Long id) throws RequestNotFoundException {
         model.addAttribute("requests", captureService.getAll());
         if (id == null) {
             model.addAttribute("hasFullRequest", false);
-            return "capture";
+            return GlobalConstants.CAPTURE_PAGE;
         }
         RequestDto requestDto = captureService.getOne(id);
         if (requestDto != null) {
@@ -29,6 +31,6 @@ public class CaptureController {
         } else {
             model.addAttribute("hasFullRequest", false);
         }
-        return "capture";
+        return GlobalConstants.CAPTURE_PAGE;
     }
 }

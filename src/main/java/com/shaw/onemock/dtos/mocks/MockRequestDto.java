@@ -13,9 +13,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MockRequestDto {
+    private Long id;
     private String method;
     private String path;
     private String responseBody;
+    private Integer statusCode = 200;
     private Integer duration = 0;
     private Boolean hasMultipleResponse;
     private List<CustomResponseDto> customResponseDtoSet;
@@ -26,6 +28,8 @@ public class MockRequestDto {
         this.responseBody = mockRequest.getResponseBody();
         this.duration = mockRequest.getDuration();
         this.hasMultipleResponse = mockRequest.getHasMultipleResponse();
+        this.statusCode = mockRequest.getStatusCode();
+        this.id = mockRequest.getMockId();
         this.customResponseDtoSet = new ArrayList<>();
         for (CustomResponse customResponse : mockRequest.getCustomResponses()) {
             this.customResponseDtoSet.add(new CustomResponseDto(customResponse));

@@ -20,6 +20,8 @@ public class CustomResponse {
     private Boolean isHeader;
     @NonNull
     private String responseBody;
+    @NonNull
+    private Integer statusCode;
 
     @ManyToOne
     @JoinColumn(name = "mock_id")
@@ -29,5 +31,6 @@ public class CustomResponse {
         this.requestValue = customResponseDto.getRequestValue();
         this.responseBody = customResponseDto.getResponseBody();
         this.isHeader = customResponseDto.getIsHeader();
+        this.statusCode = customResponseDto.getStatusCode();
     }
 }

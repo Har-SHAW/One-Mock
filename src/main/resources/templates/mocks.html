@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -8,22 +8,8 @@
     <link href="https://fonts.googleapis.com/css?family=Aclonica" rel="stylesheet">
     <title>Mock Api's</title>
     <script src="/javascript/common.js"></script>
+    <script src="/javascript/mocks.js"></script>
 </head>
-
-<script>
-    window.onload = function () {
-        let doc = document.getElementById('request_scroll');
-        var scrollpos = localStorage.getItem('scrollpos');
-        if (scrollpos) doc.scrollTo(0, scrollpos);
-    };
-
-    function redirect(id) {
-        let doc = document.getElementById('request_scroll');
-        localStorage.setItem('scrollpos', doc.scrollTop);
-        location.href = '/dashboard/capture?id=' + id;
-    }
-
-</script>
 
 <body>
 <div class="root">
@@ -45,10 +31,71 @@
             </div>
         </div>
     </div>
-
+    <button onclick="location.href = '/dashboard/mocks/create';">Create a Mock</button>
     <!-- Body -->
     <div class="body">
+        <div class="left_body" id="request_scroll">
+            <div class="request"
+                 th:attr="onclick=${'redirect('+mock.id+')'}"
+                 th:each="mock : ${mocks}"
+                 th:id="${hasFullMock && (fullMock.id == mock.id)} ? 'selected_request' : 'request'">
+                <div class="method" th:text="${mock.method}"></div>
+                <div class="path" th:text="${mock.path}"></div>
+                <div class="time_stamp" th:text="${mock.duration}"></div>
+            </div>
+        </div>
+        <div class="right_body">
+            <div th:if="${hasFullMock}">
+                <div class="full_request">
 
+                    <form action="#" method="post" th:action="@{/dashboard/mocks}" th:object="${fullMock}">
+                        <div class="input_1">
+                            <label th:text="${'Method: '+fullMock.method}"></label>
+
+                            <label th:text="${'Path: '+fullMock.path}"></label>
+
+                            <label th:text="${'Duration: '+fullMock.duration+' seconds'}"></label>
+                        </div>
+                        <label th:text="${'Multi Response: '+fullMock.hasMultipleResponse}"></label>
+                        <div th:if="${fullMock.hasMultipleResponse}">
+                            <label>Multiple Response Body</label>
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>Is Header?</th>
+                                    <th>If Request Body is</th>
+                                    <th>Then Response Body</th>
+                                </tr>
+                                </thead>
+                                <tbody id="t_body">
+                                <tr id="t_row_0"
+                                    th:each="customResponseDto, itemStat : ${fullMock.customResponseDtoSet}">
+                                    <td>
+                                        <label th:text="${fullMock.customResponseDtoSet[__${itemStat.index}__].isHeader}"
+                                        ></label>
+                                    </td>
+                                    <td>
+                                        <p th:text="${fullMock.customResponseDtoSet[__${itemStat.index}__].requestValue}"></p>
+                                    </td>
+                                    <td>
+                                        <p th:text="${fullMock.customResponseDtoSet[__${itemStat.index}__].responseBody}"></p>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div th:unless="${fullMock.hasMultipleResponse}">
+                            <p th:text="fullMock.responseBody"></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div th:unless="${hasFullMock}">
+                <div class="full_request">
+                    <div>select a request to show</div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </body>

@@ -22,6 +22,8 @@ public class MockRequest {
     @NonNull
     private String responseBody;
     @NonNull
+    private Integer statusCode;
+    @NonNull
     private Integer duration;
     @NonNull
     private Boolean hasMultipleResponse;
@@ -35,5 +37,6 @@ public class MockRequest {
         this.duration = mockRequestDto.getDuration();
         this.responseBody = mockRequestDto.getResponseBody();
         this.hasMultipleResponse = mockRequestDto.getHasMultipleResponse();
+        this.statusCode = mockRequestDto.getStatusCode();
     }
 }

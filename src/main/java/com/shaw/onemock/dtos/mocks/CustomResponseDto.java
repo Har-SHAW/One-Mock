@@ -12,10 +12,12 @@ public class CustomResponseDto {
     private String requestValue;
     private String responseBody;
     private Boolean isHeader;
+    private Integer statusCode = 200;
 
     public CustomResponseDto(CustomResponse customResponse) {
         this.requestValue = customResponse.getRequestValue();
         this.responseBody = customResponse.getResponseBody();
         this.isHeader = customResponse.getIsHeader();
+        this.statusCode = customResponse.getStatusCode();
     }
 }
