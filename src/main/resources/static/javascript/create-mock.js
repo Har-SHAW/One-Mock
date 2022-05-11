@@ -1,7 +1,16 @@
 let last_mock_id = 0;
 window.onload = function () {
     var checkbox = document.getElementById("customResponse");
-    last_mock_id = 0;
+    let t_body = document.getElementById('t_body');
+    last_mock_id = t_body.getElementsByTagName('tr').length - 1;
+
+    if (checkbox.checked) {
+        document.getElementById("response_body").className = "disable";
+        document.getElementById("custom_response").className = "enable";
+    } else {
+        document.getElementById("response_body").className = "enable";
+        document.getElementById("custom_response").className = "disable";
+    }
 
     checkbox.addEventListener('change', function() {
         if (this.checked) {
@@ -15,15 +24,14 @@ window.onload = function () {
 };
 
 function addCustomResponse(event){
+    let newComp = `<td> <input type="checkbox" id="customResponseDtoSet::.isHeader1" name="customResponseDtoSet[::].isHeader" value="true"><input type="hidden" name="_customResponseDtoSet[::].isHeader" value="on"> </td> <td> <textarea cols="59" placeholder="Enter the Request Body" rows="5" id="customResponseDtoSet::.requestValue" name="customResponseDtoSet[::].requestValue"></textarea> </td> <td> <textarea cols="59" placeholder="Enter the Response Body" rows="5" id="customResponseDtoSet::.responseBody" name="customResponseDtoSet[::].responseBody"></textarea> </td> <td> <input placeholder="Enter the Response Body" type="number" id="customResponseDtoSet::.statusCode" name="customResponseDtoSet[::].statusCode" value="200"> </td> <td> <button onclick="deleteCustomResponse(event, ::);">Delete</button> </td>`;
+
     event.preventDefault();
     let t_body = document.getElementById('t_body');
     let len = t_body.getElementsByTagName('tr').length;
     let clone = t_body.getElementsByTagName('tr')[0].cloneNode(true);
-    let str = clone.innerHTML;
-    last_mock_id++;
-    str = str.replaceAll(clone.id.split("_")[2], ""+last_mock_id);
-    clone.id = 't_row_'+last_mock_id
-    clone.innerHTML = str;
+    clone.id = 't_row_'+last_mock_id++;
+    clone.innerHTML = newComp.replaceAll("::", ""+last_mock_id);
     t_body.appendChild(clone);
 }
 

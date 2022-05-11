@@ -85,7 +85,8 @@
                             </table>
                         </div>
                         <div th:unless="${fullMock.hasMultipleResponse}">
-                            <p th:text="fullMock.responseBody"></p>
+                            <label th:text="${'Status Code: '+fullMock.statusCode}"></label>
+                            <p th:text="${fullMock.responseBody}"></p>
                         </div>
                     </form>
                 </div>

@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CustomResponseDto {
+    private Long id;
     private String requestValue;
     private String responseBody;
     private Boolean isHeader;
@@ -19,5 +20,6 @@ public class CustomResponseDto {
         this.responseBody = customResponse.getResponseBody();
         this.isHeader = customResponse.getIsHeader();
         this.statusCode = customResponse.getStatusCode();
+        this.id = customResponse.getCustomResponseId();
     }
 }

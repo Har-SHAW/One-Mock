@@ -33,4 +33,11 @@ public class CustomResponse {
         this.isHeader = customResponseDto.getIsHeader();
         this.statusCode = customResponseDto.getStatusCode();
     }
+
+    public void copyFrom(CustomResponseDto customResponseDto){
+        this.requestValue = customResponseDto.getRequestValue();
+        this.responseBody = customResponseDto.getResponseBody();
+        this.isHeader = customResponseDto.getIsHeader();
+        this.statusCode = customResponseDto.getStatusCode();
+    }
 }

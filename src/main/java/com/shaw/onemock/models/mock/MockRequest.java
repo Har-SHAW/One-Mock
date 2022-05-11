@@ -39,4 +39,13 @@ public class MockRequest {
         this.hasMultipleResponse = mockRequestDto.getHasMultipleResponse();
         this.statusCode = mockRequestDto.getStatusCode();
     }
+
+    public void copyFrom(MockRequestDto mockRequestDto){
+        this.method = mockRequestDto.getMethod();
+        this.path = mockRequestDto.getPath();
+        this.duration = mockRequestDto.getDuration();
+        this.responseBody = mockRequestDto.getResponseBody();
+        this.hasMultipleResponse = mockRequestDto.getHasMultipleResponse();
+        this.statusCode = mockRequestDto.getStatusCode();
+    }
 }

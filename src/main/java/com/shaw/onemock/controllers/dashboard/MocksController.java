@@ -3,10 +3,12 @@ package com.shaw.onemock.controllers.dashboard;
 import com.shaw.onemock.constants.GlobalConstants;
 import com.shaw.onemock.dtos.mocks.CustomResponseDto;
 import com.shaw.onemock.dtos.mocks.MockRequestDto;
+import com.shaw.onemock.exceptions.CustomResponseNotFound;
 import com.shaw.onemock.exceptions.MockAlreadyExistException;
 import com.shaw.onemock.exceptions.MockRequestNotFound;
 import com.shaw.onemock.services.MockService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +25,16 @@ public class MocksController {
         mockRequestDto.addCustomResponseDto(new CustomResponseDto());
         model.addAttribute("mock", mockRequestDto);
         model.addAttribute("methods", GlobalConstants.METHODS);
+        model.addAttribute("mode", "create");
+        return GlobalConstants.CREATE_MOCK_PAGE;
+    }
+
+    @GetMapping("/update")
+    public String updateMock(Model model, @RequestParam(name = "id") Long id) throws MockRequestNotFound {
+        MockRequestDto mockRequestDto = mockService.getFullMock(id);
+        model.addAttribute("mock", mockRequestDto);
+        model.addAttribute("methods", GlobalConstants.METHODS);
+        model.addAttribute("mode", "update");
         return GlobalConstants.CREATE_MOCK_PAGE;
     }
 
@@ -30,6 +42,14 @@ public class MocksController {
     public String addMock(@ModelAttribute("mock") MockRequestDto mockRequestDto, Model model) throws MockAlreadyExistException {
         System.out.println(mockRequestDto);
         mockService.addMock(mockRequestDto);
+        model.addAttribute("methods", GlobalConstants.METHODS);
+        return GlobalConstants.CREATE_MOCK_PAGE;
+    }
+
+    @PostMapping("/edit")
+    public String updateMock(@ModelAttribute("mock") MockRequestDto mockRequestDto, Model model) throws MockAlreadyExistException, MockRequestNotFound, CustomResponseNotFound {
+        System.out.println(mockRequestDto);
+        mockService.updateMock(mockRequestDto);
         model.addAttribute("methods", GlobalConstants.METHODS);
         return GlobalConstants.CREATE_MOCK_PAGE;
     }

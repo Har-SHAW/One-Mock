@@ -34,8 +34,9 @@
 
     <!-- Body -->
     <div class="body">
-        <form action="#" method="post" th:action="@{/dashboard/mocks}" th:object="${mock}">
+        <form action="#" th:method="post" th:action="${mode == 'create' ? '/dashboard/mocks' : '/dashboard/mocks/edit'}" th:object="${mock}">
             <div class="input_1">
+                <input type="hidden" th:field="*{id}"/>
                 <label>Method:</label>
                 <select th:field="*{method}">
                     <option th:each="p : ${methods}" th:text="${p}" th:value="${p}"/>
@@ -66,23 +67,23 @@
                     <thead>
                     <tr>
                         <th>Is Header?</th>
-                        <th>If Request Body is</th>
-                        <th>Then Response Body</th>
+                        <th>Request</th>
+                        <th>Response Body</th>
                         <th>Status Code</th>
                         <th>Delete</th>
                     </tr>
                     </thead>
                     <tbody id="t_body">
-                    <tr id="t_row_0" th:each="customResponseDto, itemStat : *{customResponseDtoSet}">
+                    <tr th:id="${'t_row_'+itemStat.index}" th:each="customResponseDto, itemStat : *{customResponseDtoSet}">
                         <td>
                             <input th:field="*{customResponseDtoSet[__${itemStat.index}__].isHeader}" type="checkbox"/>
                         </td>
                         <td>
-                            <textarea cols="60" placeholder="Enter the Request Body" rows="5"
+                            <textarea cols="59" placeholder="Enter the Request Body" rows="5"
                                       th:field="*{customResponseDtoSet[__${itemStat.index}__].requestValue}"></textarea>
                         </td>
                         <td>
-                            <textarea cols="60" placeholder="Enter the Response Body" rows="5"
+                            <textarea cols="59" placeholder="Enter the Response Body" rows="5"
                                       th:field="*{customResponseDtoSet[__${itemStat.index}__].responseBody}"></textarea>
                         </td>
                         <td>
@@ -90,7 +91,7 @@
                                    type="number"/>
                         </td>
                         <td>
-                            <button th:onclick="deleteCustomResponse(event, 0);">Delete</button>
+                            <button th:attr="onclick=${'deleteCustomResponse(event, '+itemStat.index+');'}">Delete</button>
                         </td>
                     </tr>
                     </tbody>
