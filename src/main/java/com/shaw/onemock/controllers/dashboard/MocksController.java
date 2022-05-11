@@ -3,12 +3,10 @@ package com.shaw.onemock.controllers.dashboard;
 import com.shaw.onemock.constants.GlobalConstants;
 import com.shaw.onemock.dtos.mocks.CustomResponseDto;
 import com.shaw.onemock.dtos.mocks.MockRequestDto;
-import com.shaw.onemock.exceptions.CustomResponseNotFound;
-import com.shaw.onemock.exceptions.MockAlreadyExistException;
+import com.shaw.onemock.exceptions.MockAlreadyExist;
 import com.shaw.onemock.exceptions.MockRequestNotFound;
 import com.shaw.onemock.services.MockService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +16,19 @@ import org.springframework.web.bind.annotation.*;
 public class MocksController {
     @Autowired
     private MockService mockService;
+
+    @GetMapping
+    public String getMockPage(Model model, @RequestParam(required = false, name = "id") Long id) throws MockRequestNotFound {
+        model.addAttribute("mocks", mockService.getAllMocks());
+        if (id == null) {
+            model.addAttribute("hasFullMock", false);
+            return GlobalConstants.MOCKS_PAGE;
+        }
+        MockRequestDto mockRequestDto = mockService.getFullMock(id);
+        model.addAttribute("fullMock", mockService.getFullMock(id));
+        model.addAttribute("hasFullMock", true);
+        return GlobalConstants.MOCKS_PAGE;
+    }
 
     @GetMapping("/create")
     public String createMock(Model model) {
@@ -32,38 +43,36 @@ public class MocksController {
     @GetMapping("/update")
     public String updateMock(Model model, @RequestParam(name = "id") Long id) throws MockRequestNotFound {
         MockRequestDto mockRequestDto = mockService.getFullMock(id);
+        if (mockRequestDto.getCustomResponseDtoSet().isEmpty()) {
+            mockRequestDto.getCustomResponseDtoSet().add(new CustomResponseDto());
+        }
         model.addAttribute("mock", mockRequestDto);
         model.addAttribute("methods", GlobalConstants.METHODS);
         model.addAttribute("mode", "update");
         return GlobalConstants.CREATE_MOCK_PAGE;
     }
 
-    @PostMapping
-    public String addMock(@ModelAttribute("mock") MockRequestDto mockRequestDto, Model model) throws MockAlreadyExistException {
+    @PostMapping("/create")
+    public String addMock(@ModelAttribute("mock") MockRequestDto mockRequestDto, Model model) throws MockAlreadyExist {
         System.out.println(mockRequestDto);
         mockService.addMock(mockRequestDto);
         model.addAttribute("methods", GlobalConstants.METHODS);
-        return GlobalConstants.CREATE_MOCK_PAGE;
+        return "redirect:/dashboard/mocks";
     }
 
-    @PostMapping("/edit")
-    public String updateMock(@ModelAttribute("mock") MockRequestDto mockRequestDto, Model model) throws MockAlreadyExistException, MockRequestNotFound, CustomResponseNotFound {
+    @PostMapping("/update")
+    public String updateMock(@ModelAttribute("mock") MockRequestDto mockRequestDto, Model model) throws MockRequestNotFound {
         System.out.println(mockRequestDto);
         mockService.updateMock(mockRequestDto);
         model.addAttribute("methods", GlobalConstants.METHODS);
-        return GlobalConstants.CREATE_MOCK_PAGE;
+        return "redirect:/dashboard/mocks";
     }
 
-    @GetMapping
-    public String getMockPage(Model model, @RequestParam(required = false, name = "id") Long id) throws MockRequestNotFound {
+    @GetMapping("/delete")
+    public String deleteMock(Model model, @RequestParam(name = "id") Long mockId) {
+        mockService.deleteMock(mockId);
+        model.addAttribute("hasFullMock", false);
         model.addAttribute("mocks", mockService.getAllMocks());
-        if (id == null) {
-            model.addAttribute("hasFullMock", false);
-            return GlobalConstants.MOCKS_PAGE;
-        }
-        MockRequestDto mockRequestDto = mockService.getFullMock(id);
-        model.addAttribute("fullMock", mockService.getFullMock(id));
-        model.addAttribute("hasFullMock", true);
         return GlobalConstants.MOCKS_PAGE;
     }
 }

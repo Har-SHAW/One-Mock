@@ -34,9 +34,11 @@
 
     <!-- Body -->
     <div class="body">
-        <form action="#" th:method="post" th:action="${mode == 'create' ? '/dashboard/mocks' : '/dashboard/mocks/edit'}" th:object="${mock}">
+        <form action="#" method="post"
+              th:action="${mode == 'create' ? '/dashboard/mocks/create' : '/dashboard/mocks/update'}"
+              th:object="${mock}">
             <div class="input_1">
-                <input type="hidden" th:field="*{id}"/>
+                <input th:field="*{id}" type="hidden"/>
                 <label>Method:</label>
                 <select th:field="*{method}">
                     <option th:each="p : ${methods}" th:text="${p}" th:value="${p}"/>
@@ -74,7 +76,8 @@
                     </tr>
                     </thead>
                     <tbody id="t_body">
-                    <tr th:id="${'t_row_'+itemStat.index}" th:each="customResponseDto, itemStat : *{customResponseDtoSet}">
+                    <tr th:each="customResponseDto, itemStat : *{customResponseDtoSet}"
+                        th:id="${'t_row_'+itemStat.index}">
                         <td>
                             <input th:field="*{customResponseDtoSet[__${itemStat.index}__].isHeader}" type="checkbox"/>
                         </td>
@@ -87,11 +90,13 @@
                                       th:field="*{customResponseDtoSet[__${itemStat.index}__].responseBody}"></textarea>
                         </td>
                         <td>
-                            <input placeholder="Enter the Response Body" th:field="*{customResponseDtoSet[__${itemStat.index}__].statusCode}"
+                            <input placeholder="Status Code"
+                                   th:field="*{customResponseDtoSet[__${itemStat.index}__].statusCode}"
                                    type="number"/>
                         </td>
                         <td>
-                            <button th:attr="onclick=${'deleteCustomResponse(event, '+itemStat.index+');'}">Delete</button>
+                            <button th:attr="onclick=${'deleteCustomResponse(event, '+itemStat.index+');'}">Delete
+                            </button>
                         </td>
                     </tr>
                     </tbody>

@@ -9,3 +9,15 @@ function redirect(id) {
     localStorage.setItem('mock_scrollpos', doc.scrollTop);
     location.href = '/dashboard/mocks?id=' + id;
 }
+
+function openEdit(id) {
+    let doc = document.getElementById('request_scroll');
+    localStorage.setItem('mock_scrollpos', doc.scrollTop);
+    location.href = '/dashboard/mocks/update?id=' + id;
+}
+
+function openDelete(id) {
+    let doc = document.getElementById('request_scroll');
+    localStorage.setItem('mock_scrollpos', doc.scrollTop);
+    location.href = '/dashboard/mocks/delete?id=' + id;
+}

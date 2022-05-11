@@ -2,7 +2,7 @@ package com.shaw.onemock.services;
 
 import com.shaw.onemock.dtos.requests.PartialRequestDto;
 import com.shaw.onemock.dtos.requests.RequestDto;
-import com.shaw.onemock.exceptions.RequestNotFoundException;
+import com.shaw.onemock.exceptions.RequestNotFound;
 import com.shaw.onemock.models.requests.Request;
 import com.shaw.onemock.repositories.request.RequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +21,8 @@ public class CaptureService {
         return requests.stream().map(PartialRequestDto::new).collect(Collectors.toList());
     }
 
-    public RequestDto getOne(Long id) throws RequestNotFoundException {
-        Request request = requestRepository.findById(id).orElseThrow(RequestNotFoundException::new);
+    public RequestDto getOne(Long id) throws RequestNotFound {
+        Request request = requestRepository.findById(id).orElseThrow(RequestNotFound::new);
         return new RequestDto(request);
     }
 }

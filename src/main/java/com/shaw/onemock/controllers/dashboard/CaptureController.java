@@ -2,7 +2,7 @@ package com.shaw.onemock.controllers.dashboard;
 
 import com.shaw.onemock.constants.GlobalConstants;
 import com.shaw.onemock.dtos.requests.RequestDto;
-import com.shaw.onemock.exceptions.RequestNotFoundException;
+import com.shaw.onemock.exceptions.RequestNotFound;
 import com.shaw.onemock.services.CaptureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +18,7 @@ public class CaptureController {
     private CaptureService captureService;
 
     @GetMapping
-    public String getCapture(Model model, @RequestParam(required = false, name = "id") Long id) throws RequestNotFoundException {
+    public String getCapture(Model model, @RequestParam(required = false, name = "id") Long id) throws RequestNotFound {
         model.addAttribute("requests", captureService.getAll());
         if (id == null) {
             model.addAttribute("hasFullRequest", false);

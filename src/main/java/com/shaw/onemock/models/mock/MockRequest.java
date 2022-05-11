@@ -40,7 +40,7 @@ public class MockRequest {
         this.statusCode = mockRequestDto.getStatusCode();
     }
 
-    public void copyFrom(MockRequestDto mockRequestDto){
+    public void copyFrom(MockRequestDto mockRequestDto) {
         this.method = mockRequestDto.getMethod();
         this.path = mockRequestDto.getPath();
         this.duration = mockRequestDto.getDuration();
