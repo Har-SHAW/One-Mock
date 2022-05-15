@@ -1,7 +1,3 @@
-.nav {
-
-}
-
 .neck{
     height: 10vh;
     margin: 0 6vw 0 6vw;
@@ -13,8 +9,20 @@
     padding: 3px 0px 0px 0px;
 }
 
+.empty_body{
+    height: 79vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Aclonica';
+    color: grey;
+    font-size: 4rem;
+}
+
 .body {
-    height: 80vh;
+    height: 79vh;
     width: 90vw;
     margin-left: 5vw;
     margin-right: 5vw;
@@ -55,9 +63,13 @@
     cursor: pointer;
 }
 
+.request:hover{
+    filter: drop-shadow(4px 4px 4px #0085FF);
+}
+
 
 #selected_request {
-    filter: drop-shadow(4px 4px 4px #0085FF);
+    filter: drop-shadow(4px 4px 4px orange);
 }
 
 .method {
@@ -173,4 +185,37 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.create_mocks{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    background-color: #0085FF;
+    color: white;
+    transition: border-width 0.2s linear, width 0.2s linear, height 0.2s linear, box-shadow 0.2s linear;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    overflow: hidden;
+    width: 110px;
+    height: 110px;
+    box-shadow: 16px 16px 16px 8px rgb(0,0,0,0.25);
+    z-index: 10;
+    border: 10px double white;
+}
+
+.create_mocks .plus_span{
+    font-size: 5rem;
+    font-weight: bold;
+    transition: font-size 0.2s linear;
+}
+
+.create_mocks:hover{
+    width: 90px;
+    height: 90px;
+    box-shadow: 8px 8px 8px 4px rgb(0,0,0,0.25);
+    z-index: 10;
+    border: 20px double white;
 }

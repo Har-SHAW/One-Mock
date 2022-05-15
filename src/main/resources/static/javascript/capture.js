@@ -12,6 +12,8 @@ function redirect(id) {
 
 function toggleCapture(){
     let doc = document.getElementById('request_scroll');
-    localStorage.setItem('scrollPos', doc.scrollTop);
+    if(doc != null){
+        localStorage.setItem('scrollPos', doc.scrollTop);
+    }
     location.href = '/dashboard/capture/toggle-capture';
 }

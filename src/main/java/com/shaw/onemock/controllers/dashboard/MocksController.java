@@ -32,8 +32,7 @@ public class MocksController {
             id = mocks.get(0).getId();
         }
         model.addAttribute("fullMock", mockService.getFullMock(id));
-        model.addAttribute("hasFullMock", true);
-        model.addAttribute("empty", true);
+        model.addAttribute("empty", false);
         return GlobalConstants.MOCKS_PAGE;
     }
 

@@ -14,7 +14,6 @@
 
 <body>
 <div class="root">
-
     <!-- Navigation Bar -->
     <div class="nav">
         <div class="buttons">
@@ -35,19 +34,19 @@
 
     <!--  Neck  -->
     <div class="neck">
-        <div class="create_mocks" onclick="location.href = '/dashboard/mocks/create';">
-            <span class="plus_span">+</span>
-            <span class="create_span">New Mock</span>
-        </div>
         <label class="switch">
             <input id="capture" onclick="toggleCapture()" type="checkbox">
             <span class="slider round"></span>
         </label>
+        <div class="create_mocks" onclick="location.href = '/dashboard/mocks/create';">
+            <span class="plus_span">+</span>
+        </div>
     </div>
 
     <!-- Body -->
-    <div th:if="${empty}">
-        Empty
+    <div class="empty_body" th:if="${empty}">
+        <div>Nothing to Show</div>
+        <div style="font-size: 1.5rem">Create a mock using the ' + ' button.</div>
     </div>
     <div class="body" th:unless="${empty}">
         <div class="left_body" id="request_scroll">

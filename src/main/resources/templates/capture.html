@@ -13,7 +13,6 @@
 
 <body>
 <div class="root">
-
     <!-- Navigation Bar -->
     <div class="nav">
         <div class="buttons">
@@ -43,12 +42,15 @@
             <span style="font-family: 'Aclonica'; color: #0085FF;" th:if="${capture}">Capture ON</span>
             <span style="font-family: 'Aclonica'; color: grey;" th:unless="${capture}">Capture OFF</span>
         </div>
-
+        <div class="create_mocks" onclick="location.href = '/dashboard/capture';" style="background-color: green">
+            <img height="70px" src="/images/reload.png" style="color: white" width="70px">
+        </div>
     </div>
 
     <!-- Body -->
-    <div th:if="${empty}">
-        Empty
+    <div class="empty_body" th:if="${empty}">
+        <div>Nothing to Show</div>
+        <div style="font-size: 1.5rem">Turn ON Capture to start capturing the traffic.</div>
     </div>
     <div class="body" th:unless="${empty}">
         <div class="left_body" id="request_scroll">

@@ -5,13 +5,11 @@
     font-family: 'Aclonica';
     font-style: normal;
     font-size: 18px;
-    width: 100%;
     justify-content: center;
     align-items: center;
     height: 10vh;
     width: 100vw;
     background-color: #0085FF;
-    z-index: 20;
 }
 
 .buttons {
