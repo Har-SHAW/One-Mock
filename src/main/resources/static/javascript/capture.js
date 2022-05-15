@@ -9,3 +9,9 @@ function redirect(id) {
     localStorage.setItem('scrollPos', doc.scrollTop);
     location.href = '/dashboard/capture?id=' + id;
 }
+
+function toggleCapture(){
+    let doc = document.getElementById('request_scroll');
+    localStorage.setItem('scrollPos', doc.scrollTop);
+    location.href = '/dashboard/capture/toggle-capture';
+}

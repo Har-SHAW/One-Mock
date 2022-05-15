@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <link href="/css/capture.css" rel="stylesheet">
     <link href="/css/common.css" rel="stylesheet">
+    <link href="/css/mocks.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Aclonica" rel="stylesheet">
     <title>Mock Api's</title>
     <script src="/javascript/common.js"></script>
@@ -31,69 +32,79 @@
             </div>
         </div>
     </div>
-    <button onclick="location.href = '/dashboard/mocks/create';">Create a Mock</button>
+
+    <!--  Neck  -->
+    <div class="neck">
+        <div class="create_mocks" onclick="location.href = '/dashboard/mocks/create';">
+            <span class="plus_span">+</span>
+            <span class="create_span">New Mock</span>
+        </div>
+        <label class="switch">
+            <input id="capture" onclick="toggleCapture()" type="checkbox">
+            <span class="slider round"></span>
+        </label>
+    </div>
+
     <!-- Body -->
-    <div class="body">
+    <div th:if="${empty}">
+        Empty
+    </div>
+    <div class="body" th:unless="${empty}">
         <div class="left_body" id="request_scroll">
             <div class="request"
                  th:attr="onclick=${'redirect('+mock.id+')'}"
                  th:each="mock : ${mocks}"
-                 th:id="${hasFullMock && (fullMock.id == mock.id)} ? 'selected_request' : 'request'">
+                 th:id="${(fullMock.id == mock.id)} ? 'selected_request' : 'request'">
                 <div class="method" th:text="${mock.method}"></div>
                 <div class="path" th:text="${mock.path}"></div>
                 <div class="time_stamp" th:text="${mock.duration}"></div>
             </div>
         </div>
         <div class="right_body">
-            <div th:if="${hasFullMock}">
-                <div class="full_request">
-                    <button th:attr="onclick=${'openDelete('+fullMock.id+')'}">Delete</button>
-                    <button th:attr="onclick=${'openEdit('+fullMock.id+')'}">Edit</button>
-                    <div class="input_1">
-                        <label th:text="${'Method: '+fullMock.method}"></label>
-
-                        <label th:text="${'Path: '+fullMock.path}"></label>
-
-                        <label th:text="${'Duration: '+fullMock.duration+' seconds'}"></label>
-                    </div>
-                    <label th:text="${'Multi Response: '+fullMock.hasMultipleResponse}"></label>
-                    <div th:if="${fullMock.hasMultipleResponse}">
-                        <label>Multiple Response Body</label>
-                        <table>
-                            <thead>
-                            <tr>
-                                <th>Is Header?</th>
-                                <th>If Request Body is</th>
-                                <th>Then Response Body</th>
-                            </tr>
-                            </thead>
-                            <tbody id="t_body">
-                            <tr id="t_row_0"
-                                th:each="customResponseDto, itemStat : ${fullMock.customResponseDtoSet}">
-                                <td>
-                                    <label th:text="${fullMock.customResponseDtoSet[__${itemStat.index}__].isHeader}"
-                                    ></label>
-                                </td>
-                                <td>
-                                    <p th:text="${fullMock.customResponseDtoSet[__${itemStat.index}__].requestValue}"></p>
-                                </td>
-                                <td>
-                                    <p th:text="${fullMock.customResponseDtoSet[__${itemStat.index}__].responseBody}"></p>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div th:unless="${fullMock.hasMultipleResponse}">
-                        <label th:text="${'Status Code: '+fullMock.statusCode}"></label>
-                        <p th:text="${fullMock.responseBody}"></p>
-                    </div>
-
-                </div>
+            <div style="display: flex; flex-direction: row; width: 96%; margin: 0% 2% 5% 2%;">
+                <div class="delete_button" th:attr="onclick=${'openDelete('+fullMock.id+')'}">Delete</div>
+                <div class="edit_button" th:attr="onclick=${'openEdit('+fullMock.id+')'}">Edit</div>
             </div>
-            <div th:unless="${hasFullMock}">
-                <div class="full_request">
-                    <div>select a request to show</div>
+            <div class="full_request">
+
+                <div class="input_1">
+                    <label th:text="${'Method: '+fullMock.method}"></label>
+
+                    <label th:text="${'Path: '+fullMock.path}"></label>
+
+                    <label th:text="${'Duration: '+fullMock.duration+' seconds'}"></label>
+                </div>
+                <label th:text="${'Multi Response: '+fullMock.hasMultipleResponse}"></label>
+                <div th:if="${fullMock.hasMultipleResponse}">
+                    <label>Multiple Response Body</label>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Is Header?</th>
+                            <th>If Request Body is</th>
+                            <th>Then Response Body</th>
+                        </tr>
+                        </thead>
+                        <tbody id="t_body">
+                        <tr id="t_row_0"
+                            th:each="customResponseDto, itemStat : ${fullMock.customResponseDtoSet}">
+                            <td>
+                                <label th:text="${fullMock.customResponseDtoSet[__${itemStat.index}__].isHeader}"
+                                ></label>
+                            </td>
+                            <td>
+                                <p th:text="${fullMock.customResponseDtoSet[__${itemStat.index}__].requestValue}"></p>
+                            </td>
+                            <td>
+                                <p th:text="${fullMock.customResponseDtoSet[__${itemStat.index}__].responseBody}"></p>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div th:unless="${fullMock.hasMultipleResponse}">
+                    <label th:text="${'Status Code: '+fullMock.statusCode}"></label>
+                    <p th:text="${fullMock.responseBody}"></p>
                 </div>
             </div>
         </div>

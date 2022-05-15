@@ -3,6 +3,7 @@ package com.shaw.onemock.controllers.dashboard;
 import com.shaw.onemock.constants.GlobalConstants;
 import com.shaw.onemock.dtos.mocks.CustomResponseDto;
 import com.shaw.onemock.dtos.mocks.MockRequestDto;
+import com.shaw.onemock.dtos.mocks.SimpleMockDto;
 import com.shaw.onemock.exceptions.MockAlreadyExist;
 import com.shaw.onemock.exceptions.MockRequestNotFound;
 import com.shaw.onemock.services.MockService;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/dashboard/mocks")
@@ -19,14 +22,18 @@ public class MocksController {
 
     @GetMapping
     public String getMockPage(Model model, @RequestParam(required = false, name = "id") Long id) throws MockRequestNotFound {
-        model.addAttribute("mocks", mockService.getAllMocks());
-        if (id == null) {
-            model.addAttribute("hasFullMock", false);
+        List<SimpleMockDto> mocks = mockService.getAllMocks();
+        model.addAttribute("mocks", mocks);
+        if (mocks.isEmpty()) {
+            model.addAttribute("empty", true);
             return GlobalConstants.MOCKS_PAGE;
         }
-        MockRequestDto mockRequestDto = mockService.getFullMock(id);
+        if (id == null) {
+            id = mocks.get(0).getId();
+        }
         model.addAttribute("fullMock", mockService.getFullMock(id));
         model.addAttribute("hasFullMock", true);
+        model.addAttribute("empty", true);
         return GlobalConstants.MOCKS_PAGE;
     }
 
@@ -73,6 +80,6 @@ public class MocksController {
         mockService.deleteMock(mockId);
         model.addAttribute("hasFullMock", false);
         model.addAttribute("mocks", mockService.getAllMocks());
-        return GlobalConstants.MOCKS_PAGE;
+        return "redirect:/dashboard/mocks";
     }
 }

@@ -1,0 +1,71 @@
+
+.create_mocks{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    background-color: #0085FF;
+    color: white;
+    width: 110px;
+    height: 45px;
+    transition: border-width 0.2s linear, width 0.2s linear, height 0.2s linear, box-shadow 0.2s linear;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    overflow: hidden;
+    border: 0px double white;
+}
+
+.create_span{
+    font-family: 'Aclonica';
+    font-style: normal;
+    font-size: 0.9rem;
+}
+
+.create_mocks .plus_span{
+    display: none;
+}
+
+.create_mocks:hover{
+    width: 15vh;
+    height: 15vh;
+    box-shadow: 16px 16px 16px 8px rgb(0,0,0,0.25);
+    z-index: 10;
+    border: 20px double white;
+}
+
+.create_mocks:hover .plus_span{
+    display: block;
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+.create_mocks:hover .create_span{
+    display: none;
+}
+
+.delete_button, .edit_button{
+    padding: 10px 0px 10px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    width: 100%;
+    cursor: pointer;
+    transition: box-shadow 0.2s linear;
+    font-family: 'Aclonica';
+}
+
+.delete_button{
+    background-color: red;
+    border-radius: 10px 0px 0px 10px;
+}
+
+.edit_button{
+    background-color: blue;
+    border-radius: 0px 10px 10px 0px;
+}
+
+.delete_button:hover, .edit_button:hover{
+    box-shadow: 16px 16px 16px 8px rgb(0,0,0,0.25);
+}

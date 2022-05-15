@@ -1,5 +1,6 @@
 package com.shaw.onemock.services;
 
+import com.shaw.onemock.constants.CaptureState;
 import com.shaw.onemock.constants.GlobalConstants;
 import com.shaw.onemock.models.mock.MockRequest;
 import com.shaw.onemock.models.requests.Header;
@@ -45,13 +46,13 @@ public class RequestService {
         return headers;
     }
 
-    public Request saveRequest(HttpServletRequest request, String path, String body) {
+    public void saveRequest(HttpServletRequest request, String path, String body) {
         DateFormat outputFormat = new SimpleDateFormat("HH:mm:ss");
         Request requestEntity = new Request(body, path, request.getMethod(), outputFormat.format(new Date()));
         Set<Header> headersList = getHeaders(request);
         headerRepository.saveAll(headersList);
         requestEntity.setHeaders(headersList);
-        return repository.save(requestEntity);
+        CaptureState.setLastId(repository.save(requestEntity).getRequestId());
     }
 
 
@@ -59,12 +60,14 @@ public class RequestService {
         String response = GlobalConstants.DEFAULT_RESPONSE;
         Integer statusCode = GlobalConstants.DEFAULT_RESPONSE_STATUS;
         String body = Utils.getBody(request);
-        Request requestEntity = saveRequest(request, path, body);
+        if (CaptureState.getCapture()) {
+            saveRequest(request, path, body);
+        }
         Optional<MockRequest> mockRequestOptional = mockRequestRepository.findByMethodAndPath(request.getMethod(), path);
         if (mockRequestOptional.isPresent()) {
             MockRequest mockRequest = mockRequestOptional.get();
             if (mockRequest.getHasMultipleResponse()) {
-                Pair<String, Integer> data = Utils.getCustomResponse(mockRequest.getCustomResponses(), body, requestEntity);
+                Pair<String, Integer> data = Utils.getCustomResponse(mockRequest.getCustomResponses(), body, request);
                 response = data.getFirst();
                 statusCode = data.getSecond();
             } else {

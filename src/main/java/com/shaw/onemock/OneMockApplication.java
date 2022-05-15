@@ -1,5 +1,6 @@
 package com.shaw.onemock;
 
+import com.shaw.onemock.constants.CaptureState;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -19,6 +20,7 @@ public class OneMockApplication {
         } catch (IOException e) {
             System.err.println("Failed to create directory!" + e.getMessage());
         }
+        CaptureState.captureOff();
         SpringApplication.run(OneMockApplication.class, args);
     }
 
