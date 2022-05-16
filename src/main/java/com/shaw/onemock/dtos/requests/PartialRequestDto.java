@@ -1,5 +1,6 @@
 package com.shaw.onemock.dtos.requests;
 
+import com.shaw.onemock.constants.GlobalConstants;
 import com.shaw.onemock.models.requests.Request;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,6 +16,7 @@ public class PartialRequestDto {
     private String path;
     private String method;
     private String timeStamp;
+    private String color;
 
     public PartialRequestDto(Request request) {
         this.id = request.getRequestId();
@@ -22,6 +24,7 @@ public class PartialRequestDto {
         this.path = request.getPath();
         this.method = request.getMethod();
         this.timeStamp = request.getTimeStamp();
+        this.color = GlobalConstants.METHODS_COLORS.get(request.getMethod());
     }
 }
 

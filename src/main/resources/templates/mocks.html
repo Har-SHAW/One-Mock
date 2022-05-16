@@ -38,7 +38,7 @@
             <input id="capture" onclick="toggleCapture()" type="checkbox">
             <span class="slider round"></span>
         </label>
-        <div class="create_mocks" style="background-color: green" onclick="location.href = '/dashboard/mocks/create';">
+        <div class="create_mocks" onclick="location.href = '/dashboard/mocks/create';" style="background-color: green">
             <img height="55px" src="/images/plus.png" style="color: white" width="55px">
         </div>
     </div>
@@ -53,8 +53,9 @@
             <div class="request"
                  th:attr="onclick=${'redirect('+mock.id+')'}"
                  th:each="mock : ${mocks}"
-                 th:id="${(fullMock.id == mock.id)} ? 'selected_request' : 'request'">
-                <div class="method" th:text="${mock.method}"></div>
+                 th:id="${(fullMock.id == mock.id)} ? 'selected_request' : 'request'"
+                 th:style="${(fullMock.id != mock.id)} ? ${'filter: drop-shadow(4px 4px 4px '+mock.color+');'} : ${'color:white; background-color: '+mock.color}">
+                <div class="method" th:style="${'background-color: '+mock.color}" th:text="${mock.method}"></div>
                 <div class="path" th:text="${mock.path}"></div>
                 <div class="time_stamp" th:text="${mock.duration}"></div>
             </div>

@@ -57,7 +57,8 @@
             <div class="request"
                  th:attr="onclick=${'redirect('+request.id+')'}"
                  th:each="request : ${requests}"
-                 th:id="${(fullRequest.id == request.id)} ? 'selected_request' : 'request'">
+                 th:id="${(fullRequest.id == request.id)} ? 'selected_request' : 'request'"
+                 th:style="${(fullMock.id != request.id)} ? ${'filter: drop-shadow(4px 4px 4px '+request.color+');'} : ${'color:white; background-color: '+request.color}">
                 <div class="method" th:text="${request.method}"></div>
                 <div class="path" th:text="${request.path}"></div>
                 <div class="time_stamp" th:text="${request.timeStamp}"></div>

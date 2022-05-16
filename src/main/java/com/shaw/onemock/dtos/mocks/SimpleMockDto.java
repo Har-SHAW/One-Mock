@@ -1,5 +1,6 @@
 package com.shaw.onemock.dtos.mocks;
 
+import com.shaw.onemock.constants.GlobalConstants;
 import com.shaw.onemock.models.mock.MockRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,11 +14,13 @@ public class SimpleMockDto {
     private String method;
     private String path;
     private Integer duration = 0;
+    private String color;
 
     public SimpleMockDto(MockRequest mockRequest) {
         this.method = mockRequest.getMethod();
         this.path = mockRequest.getPath();
         this.duration = mockRequest.getDuration();
         this.id = mockRequest.getMockId();
+        this.color = GlobalConstants.METHODS_COLORS.get(mockRequest.getMethod());
     }
 }
