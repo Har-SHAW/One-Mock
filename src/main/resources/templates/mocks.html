@@ -54,7 +54,7 @@
                  th:attr="onclick=${'redirect('+mock.id+')'}"
                  th:each="mock : ${mocks}"
                  th:id="${(fullMock.id == mock.id)} ? 'selected_request' : 'request'"
-                 th:style="${(fullMock.id != mock.id)} ? ${'filter: drop-shadow(4px 4px 4px '+mock.color+');'} : ${'color:white; background-color: '+mock.color}">
+                 th:style="${'background-color: '+mock.secondColor+';border: 2px solid '+mock.color}">
                 <div class="method" th:style="${'background-color: '+mock.color}" th:text="${mock.method}"></div>
                 <div class="path" th:text="${mock.path}"></div>
                 <div class="time_stamp" th:text="${mock.duration}"></div>

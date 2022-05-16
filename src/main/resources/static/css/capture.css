@@ -50,10 +50,10 @@
 }
 
 .request {
-    width: 96%;
-    height: 10vh;
-    margin: 0px 2% 4% 2%;
-    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+    width: 94%;
+    height: 5vh;
+    margin: 0px 3% 1.5% 3%;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
     border-radius: 15px;
     background-color: white;
     display: flex;
@@ -64,16 +64,16 @@
 }
 
 .request:hover{
-    filter: drop-shadow(4px 4px 4px #0085FF);
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
 }
 
 
 #selected_request {
-    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
 }
 
 .method {
-    border-radius: 15px 0px 0px 15px;
+    border-radius: 12px 0px 0px 12px;
     height: 100%;
     color: white;
     text-align: center;

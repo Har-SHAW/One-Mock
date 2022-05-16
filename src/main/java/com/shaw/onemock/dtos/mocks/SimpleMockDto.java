@@ -15,6 +15,7 @@ public class SimpleMockDto {
     private String path;
     private Integer duration = 0;
     private String color;
+    private String secondColor;
 
     public SimpleMockDto(MockRequest mockRequest) {
         this.method = mockRequest.getMethod();
@@ -22,5 +23,6 @@ public class SimpleMockDto {
         this.duration = mockRequest.getDuration();
         this.id = mockRequest.getMockId();
         this.color = GlobalConstants.METHODS_COLORS.get(mockRequest.getMethod());
+        this.secondColor = GlobalConstants.LIGHT_METHODS_COLORS.get(mockRequest.getMethod());
     }
 }
