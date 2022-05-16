@@ -213,9 +213,8 @@ input:checked + .slider:before {
 }
 
 .create_mocks:hover{
-    width: 90px;
-    height: 90px;
-    box-shadow: 8px 8px 8px 4px rgb(0,0,0,0.25);
+    width: 86px;
+    height: 86px;
     z-index: 10;
-    border: 20px double white;
+    border: 22px double white;
 }
