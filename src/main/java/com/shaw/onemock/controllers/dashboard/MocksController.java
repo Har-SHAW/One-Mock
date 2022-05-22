@@ -69,7 +69,7 @@ public class MocksController {
     @PostMapping("/update")
     public String updateMock(@ModelAttribute("mock") MockRequestDto mockRequestDto, Model model) throws MockRequestNotFound {
         System.out.println(mockRequestDto);
-        mockService.updateMock(mockRequestDto);
+        mockService.updateMock(mockRequestDto, mockRequestDto.getId());
         model.addAttribute("methods", GlobalConstants.METHODS);
         return "redirect:/dashboard/mocks";
     }

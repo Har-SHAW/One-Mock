@@ -42,8 +42,8 @@ public class MockService {
         }
     }
 
-    public void updateMock(MockRequestDto mockRequestDto) throws MockRequestNotFound {
-        MockRequest mockRequest = mockRequestRepository.findById(mockRequestDto.getId()).orElseThrow(MockRequestNotFound::new);
+    public void updateMock(MockRequestDto mockRequestDto, Long id) throws MockRequestNotFound {
+        MockRequest mockRequest = mockRequestRepository.findById(id).orElseThrow(MockRequestNotFound::new);
         mockRequest.copyFrom(mockRequestDto);
         customResponseRepository.deleteAll(mockRequest.getCustomResponses());
         List<CustomResponse> customResponses = new ArrayList<>();
