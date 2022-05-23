@@ -26,14 +26,12 @@ public class MocksControllerRest {
 
     @PostMapping
     public SimpleResponse addMock(@RequestBody MockRequestDto mockRequestDto) throws MockAlreadyExist {
-        System.out.println(mockRequestDto);
         mockService.addMock(mockRequestDto);
         return new SimpleResponse("success", true, 200);
     }
 
     @PutMapping
     public SimpleResponse updateMock(@RequestBody MockRequestDto mockRequestDto, @RequestParam(name = "id") Long id) throws MockRequestNotFound {
-        System.out.println(mockRequestDto);
         mockService.updateMock(mockRequestDto, id);
         return new SimpleResponse("success", true, 200);
     }

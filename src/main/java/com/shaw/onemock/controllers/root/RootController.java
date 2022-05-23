@@ -26,4 +26,9 @@ public class RootController {
     public String getMocks() {
         return "index";
     }
+
+    @GetMapping("/mocks_create")
+    public String getCreateMocks() {
+        return "index";
+    }
 }
