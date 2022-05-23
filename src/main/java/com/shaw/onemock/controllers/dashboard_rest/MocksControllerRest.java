@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/mocks")
+@RequestMapping("/api/mocks")
 @CrossOrigin("http://localhost:3000")
 public class MocksControllerRest {
     @Autowired
