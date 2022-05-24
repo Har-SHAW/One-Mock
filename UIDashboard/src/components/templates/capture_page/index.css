@@ -206,8 +206,8 @@ input:checked + .slider:before {
     white-space: nowrap;
     cursor: pointer;
     overflow: hidden;
-    width: 15vh;
-    height: 15vh;
+    width: 13vh;
+    height: 13vh;
     box-shadow: 16px 16px 16px 8px rgb(0, 0, 0, 0.25);
     z-index: 10;
     border: 1.5vh double white;
@@ -220,8 +220,8 @@ input:checked + .slider:before {
 }
 
 .create_mocks:hover {
-    width: 12vh;
-    height: 12vh;
+    width: 10vh;
+    height: 10vh;
     z-index: 10;
     border: 3vh double white;
 }

@@ -9,7 +9,7 @@ const DeleteEditBar = (props) => {
             style={{
                 display: "flex",
                 flexDirection: "row",
-                width: "90%",
+                width: "94%",
             }}
         >
             <div

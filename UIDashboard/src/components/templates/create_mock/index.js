@@ -1,19 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-const CreateMockTemplate = props => {
+const CreateMockTemplate = (props) => {
     return (
-        <div className='root'>
+        <div className="root">
             {props.navigation}
             {props.body}
-            <div style={{height: "10vh"}}></div>
+            <div style={{ height: "10vh" }}></div>
         </div>
     );
 };
 
 CreateMockTemplate.propTypes = {
     navigation: PropTypes.element,
-    body: PropTypes.element
+    body: PropTypes.element,
 };
 
 export default CreateMockTemplate;

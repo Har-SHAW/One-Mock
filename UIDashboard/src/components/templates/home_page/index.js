@@ -9,7 +9,7 @@ const HomePageTemplate = (props) => {
                 {props.navigation}
                 <div class="one-mock">One Mock</div>
             </div>
-            <div style={{height: "40%"}}></div>
+            <div style={{ height: "40%" }}></div>
         </div>
     );
 };

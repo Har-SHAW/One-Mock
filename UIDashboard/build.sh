@@ -1,3 +1,4 @@
+npx prettier --write src
 npm run build
 rm -rf ../Server/src/main/resources/templates/index.html
 rm -rf ../Server/src/main/resources/static/static

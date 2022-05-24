@@ -15,13 +15,15 @@ const App = () => (
             <Route exact path="/capture">
                 <CapturePage />
             </Route>
-            <Route exact path="/mocks_create">
+            <Route exact path="/mocks_update/:id">
+                <CreateMockPage />
+            </Route>
+            <Route exact path="/mocks_create/">
                 <CreateMockPage />
             </Route>
             <Route exact path="/mocks">
                 <MocksPage />
             </Route>
-            
         </Switch>
     </Router>
 );

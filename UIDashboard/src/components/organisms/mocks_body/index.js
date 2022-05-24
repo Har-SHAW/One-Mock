@@ -26,6 +26,10 @@ const MocksBody = (props) => {
         }
     }
 
+    async function updateMock(id) {
+        location.href = "mocks_update/" + id;
+    }
+
     if (props.loading) {
         return (
             <div className="empty_body">
@@ -76,7 +80,7 @@ const MocksBody = (props) => {
                                     deleteMock(fullMock.id);
                                 }}
                                 onEditClick={() => {
-                                    console.log(fullMock.id);
+                                    updateMock(fullMock.id);
                                 }}
                             />
                             <div style={{ height: "3vh" }}></div>

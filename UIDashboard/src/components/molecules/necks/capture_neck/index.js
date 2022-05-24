@@ -13,8 +13,7 @@ const CaptureNeck = (props) => {
                     alignItems: "center",
                 }}
             >
-
-                <SlideSwitch turnOn={props.capture}/>
+                <SlideSwitch turnOn={props.capture} />
 
                 <div style={{ width: "10px" }} />
 
@@ -29,17 +28,15 @@ const CaptureNeck = (props) => {
                         Capture OFF
                     </span>
                 )}
-
             </div>
 
-            <RefreshCaptureButton/>
-            
+            <RefreshCaptureButton />
         </div>
     );
 };
 
 CaptureNeck.propTypes = {
-    capture: PropTypes.bool
+    capture: PropTypes.bool,
 };
 
 export default CaptureNeck;

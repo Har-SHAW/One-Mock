@@ -1,4 +1,4 @@
-.root{
+.root {
     height: 100vh;
     width: 100vw;
     position: relative;
@@ -14,7 +14,7 @@
     justify-content: center;
     bottom: 0px;
     width: 100vw;
-    font-family: 'Aclonica';
+    font-family: "Aclonica";
     font-style: normal;
     font-weight: bold;
     font-size: 100px;
@@ -28,6 +28,6 @@
     height: 60%;
     left: 0px;
     top: 0px;
-    background-color: #0085FF;
+    background-color: #0085ff;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }

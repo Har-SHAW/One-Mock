@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import './index.css'
+import "./index.css";
 
 const MocksTemplate = (props) => {
     return (
@@ -15,7 +15,7 @@ const MocksTemplate = (props) => {
 MocksTemplate.propTypes = {
     navigation: PropTypes.element,
     neck: PropTypes.element,
-    body: PropTypes.element
+    body: PropTypes.element,
 };
 
 export default MocksTemplate;

@@ -1,5 +1,9 @@
-import React, { useState } from "react";
-import { createMockApi } from "../../../apis/mocks_api";
+import React, { useState, useEffect } from "react";
+import {
+    createMockApi,
+    getFullMockApi,
+    updateMockApi,
+} from "../../../apis/mocks_api";
 import { GlobalConstants } from "../../../constants/GlobalConstants";
 
 const CreateMocksBody = (props) => {
@@ -20,8 +24,22 @@ const CreateMocksBody = (props) => {
         ],
     });
 
+    useEffect(async () => {
+        if (props.updateId && state.path == "") {
+            const response = await getFullMockApi(props.updateId);
+            setState(response);
+        }
+    });
+
     async function addMock() {
         const response = await createMockApi(state);
+        if (response.status) {
+            location.href = "/mocks";
+        }
+    }
+
+    async function updateMock() {
+        const response = await updateMockApi(props.updateId, state);
         if (response.status) {
             location.href = "/mocks";
         }
@@ -65,8 +83,10 @@ const CreateMocksBody = (props) => {
                             });
                         }}
                     >
-                        {GlobalConstants.methods.map((element) => (
-                            <option value={element}>{element}</option>
+                        {GlobalConstants.methods.map((element, index) => (
+                            <option key={"option_" + index} value={element}>
+                                {element}
+                            </option>
                         ))}
                     </select>
 
@@ -100,7 +120,7 @@ const CreateMocksBody = (props) => {
                     <label>Has Multiple Response?</label>
                     <input
                         type="checkbox"
-                        value={state.hasMultipleResponse}
+                        checked={state.hasMultipleResponse}
                         onChange={(value) => {
                             setState({
                                 ...state,
@@ -129,7 +149,7 @@ const CreateMocksBody = (props) => {
                                             <td>
                                                 <input
                                                     type="checkbox"
-                                                    value={element.isHeader}
+                                                    checked={element.isHeader}
                                                     onChange={(value) => {
                                                         const nextState = {
                                                             ...state,
@@ -255,7 +275,11 @@ const CreateMocksBody = (props) => {
                         />
                     </div>
                 )}
-                <button onClick={addMock}>Submit</button>
+                {props.updateId ? (
+                    <button onClick={updateMock}>UPDATE</button>
+                ) : (
+                    <button onClick={addMock}>SUBMIT</button>
+                )}
             </div>
         </div>
     );

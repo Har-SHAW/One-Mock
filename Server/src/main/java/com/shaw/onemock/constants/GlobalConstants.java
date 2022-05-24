@@ -10,42 +10,4 @@ public class GlobalConstants {
     public static final String MOCK_HEADER_KEY = "x-onemock";
     public static final String DEFAULT_RESPONSE = "success";
     public static final Integer DEFAULT_RESPONSE_STATUS = 200;
-    public static final String CREATE_MOCK_PAGE = "create-mock";
-    public static final String MOCKS_PAGE = "mocks";
-    public static final String CAPTURE_PAGE = "capture";
-    public static final String HOME_PAGE = "home-page";
-    public static final Map<String, String> METHODS_COLORS = new HashMap<String, String>() {{
-        put("GET", "#3094fc");
-        put("POST", "#22c77c");
-        put("PUT", "#fca02f");
-        put("PATCH", "#00dba8");
-        put("DELETE", "#f93e3d");
-        put("COPY", "white");
-        put("HEAD", "#9112ff");
-        put("OPTIONS", "#0d5ba6");
-        put("LINK", "white");
-        put("UNLINK", "white");
-        put("PURGE", "white");
-        put("LOCK", "white");
-        put("UNLOCK", "white");
-        put("PROPFIND", "white");
-        put("VIEW", "white");
-    }};
-    public static final Map<String, String> LIGHT_METHODS_COLORS = new HashMap<String, String>() {{
-        put("GET", "#cfe5fc");
-        put("POST", "#cfffe9");
-        put("PUT", "#fff0de");
-        put("PATCH", "#cffcf2");
-        put("DELETE", "#ffe3e3");
-        put("COPY", "white");
-        put("HEAD", "#f1e0ff");
-        put("OPTIONS", "#d1e8ff");
-        put("LINK", "white");
-        put("UNLINK", "white");
-        put("PURGE", "white");
-        put("LOCK", "white");
-        put("UNLOCK", "white");
-        put("PROPFIND", "white");
-        put("VIEW", "white");
-    }};
 }

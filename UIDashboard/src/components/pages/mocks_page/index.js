@@ -22,12 +22,7 @@ const MocksPage = (props) => {
         <MocksTemplate
             navigation={<NavigationBar />}
             neck={<MocksNeck />}
-            body={
-                <MocksBody
-                    mocksData={leftBodyData}
-                    loading={loading}
-                />
-            }
+            body={<MocksBody mocksData={leftBodyData} loading={loading} />}
         />
     );
 };

@@ -10,7 +10,7 @@ export async function getMocksApi() {
     return (await axios.get(baseApi)).data;
 }
 
-export async function updateMockApi(body, id) {
+export async function updateMockApi(id, body) {
     return (await axios.put(baseApi + "/?id=" + id, body)).data;
 }
 
