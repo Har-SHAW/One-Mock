@@ -7,7 +7,7 @@
     color: white;
     width: 50%;
     cursor: pointer;
-    transition: box-shadow 0.2s linear;
+    transition: width 0.1s linear;
     font-weight: 800;
     font-family: "Montserrat", sans-serif;
     border-radius: 15px;
@@ -25,11 +25,6 @@
     border: 2px solid #0d5ba6;
 }
 
-.delete_button:hover,
-.edit_button:hover {
-    box-shadow: 8px 8px 8px 4px rgb(0, 0, 0, 0.25);
-}
-
 table,
 th,
 td {
@@ -39,4 +34,43 @@ td {
 table {
     width: 100%;
     border-collapse: collapse;
+}
+
+.edit_button:hover {
+    width: 100%;
+}
+
+.delete_button:hover {
+    width: 100%;
+}
+
+input {
+    padding: 8px 16px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-family: "Rubik", sans-serif;
+    outline: 0;
+    transition: 0.2s;
+}
+
+input:focus {
+    border-color: #0f7ef1;
+}
+
+textarea {
+    padding: 8px 16px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-family: "Rubik", sans-serif;
+    outline: 0;
+    transition: 0.2s;
+}
+
+textarea:focus {
+    border-color: #0f7ef1;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
 }

@@ -73,7 +73,14 @@ const CreateMocksBody = (props) => {
     return (
         <div className="body">
             <div style={{ display: "flex", flexDirection: "column" }}>
-                <div className="input_1">
+                <div
+                    className="input_1"
+                    style={{
+                        width: "100%",
+                        display: "flex",
+                        justifyContent: "space-between",
+                    }}
+                >
                     <label>Method</label>
                     <select
                         onChange={(value) => {
@@ -247,7 +254,10 @@ const CreateMocksBody = (props) => {
                         <button onClick={addResponse}>Add Response</button>
                     </div>
                 ) : (
-                    <div className="input_2">
+                    <div
+                        className="input_2"
+                        style={{ display: "flex", flexDirection: "column" }}
+                    >
                         <textarea
                             placeholder="Response Body"
                             value={state.responseBody}

@@ -59,7 +59,7 @@ const MocksBody = (props) => {
                                 GlobalConstants.methods_color[element.method]
                             }
                             duration={element.duration}
-                            isSelected={false}
+                            isSelected={fullMock && element.id == fullMock.id}
                             id={element.id}
                             method={element.method}
                             path={element.path}
@@ -170,7 +170,7 @@ const MocksBody = (props) => {
                                         </label>
                                         <label>
                                             <b>Response Body: </b>
-                                            {fullMock.responseBody}
+                                            <pre>{fullMock.responseBody}</pre>
                                         </label>
                                     </div>
                                 )}
