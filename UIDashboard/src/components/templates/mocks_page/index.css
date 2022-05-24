@@ -1,0 +1,42 @@
+.delete_button,
+.edit_button {
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    width: 50%;
+    cursor: pointer;
+    transition: box-shadow 0.2s linear;
+    font-weight: 800;
+    font-family: "Montserrat", sans-serif;
+    border-radius: 15px;
+    font-size: 1.1rem;
+}
+
+.delete_button {
+    background-color: #f93e3d;
+    margin-right: 0.75%;
+    border: 2px solid #f93e3d;
+}
+
+.edit_button {
+    background-color: #0d5ba6;
+    border: 2px solid #0d5ba6;
+}
+
+.delete_button:hover,
+.edit_button:hover {
+    box-shadow: 8px 8px 8px 4px rgb(0, 0, 0, 0.25);
+}
+
+table,
+th,
+td {
+    border: 1px solid;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}

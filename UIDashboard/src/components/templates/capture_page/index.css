@@ -1,0 +1,227 @@
+.neck {
+    height: 10vh;
+    margin: 0 2vw 0 7vw;
+    width: 91vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.empty_body {
+    height: 80vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Aclonica";
+    color: grey;
+    font-size: 4rem;
+}
+
+.body {
+    height: 80vh;
+    width: 88vw;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+
+.left_body {
+    height: 80vh;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+}
+
+.right_body {
+    height: 80vh;
+    width: 47%;
+    margin: 0% 1.5% 0% 1.5%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.request {
+    width: 95%;
+    height: 5vh;
+    margin-bottom: 1.5%;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
+    border-radius: 15px;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.request:hover {
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
+}
+
+#selected_request {
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
+}
+
+.method {
+    border-radius: 12px 0px 0px 12px;
+    height: 100%;
+    color: white;
+    text-align: center;
+    font-size: 1.1rem;
+    width: 20%;
+    background-color: green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-family: "Montserrat", sans-serif;
+}
+
+.path {
+    width: 80%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    padding-left: 5%;
+    font-weight: 500;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.8rem;
+}
+
+.time_stamp {
+    width: 20%;
+}
+
+.full_request {
+    width: 90%;
+    margin: 0% 5% 2% 5%;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+}
+
+.header_title {
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    background-color: #0085ff;
+    color: white;
+    font-weight: bold;
+}
+
+.header_key,
+.header_value {
+    margin: 5px;
+    padding: 5px;
+}
+
+.request_body {
+    margin: 5px;
+    padding: 5px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: grey;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+}
+
+input:checked + .slider {
+    background-color: #0085ff;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #0085ff;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.create_mocks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    background-color: #0085ff;
+    color: white;
+    transition: border-width 0.2s linear, width 0.2s linear, height 0.2s linear,
+        box-shadow 0.2s linear;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    overflow: hidden;
+    width: 15vh;
+    height: 15vh;
+    box-shadow: 16px 16px 16px 8px rgb(0, 0, 0, 0.25);
+    z-index: 10;
+    border: 1.5vh double white;
+}
+
+.create_mocks .plus_span {
+    font-size: 5rem;
+    font-weight: bold;
+    transition: font-size 0.2s linear;
+}
+
+.create_mocks:hover {
+    width: 12vh;
+    height: 12vh;
+    z-index: 10;
+    border: 3vh double white;
+}
