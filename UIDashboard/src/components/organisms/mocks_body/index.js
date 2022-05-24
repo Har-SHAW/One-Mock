@@ -141,7 +141,13 @@ const MocksBody = (props) => {
                                                                     element.requestValue
                                                                 }
                                                             </td>
-                                                            <td>
+                                                            <td
+                                                                onClick={() =>
+                                                                    props.popupOpen(
+                                                                        element.responseBody
+                                                                    )
+                                                                }
+                                                            >
                                                                 {
                                                                     element.responseBody
                                                                 }
@@ -168,7 +174,13 @@ const MocksBody = (props) => {
                                             <b>Status Code: </b>
                                             {fullMock.statusCode}
                                         </label>
-                                        <label>
+                                        <label
+                                            onClick={() =>
+                                                props.popupOpen(
+                                                    fullMock.responseBody
+                                                )
+                                            }
+                                        >
                                             <b>Response Body: </b>
                                             <pre>{fullMock.responseBody}</pre>
                                         </label>

@@ -41,7 +41,7 @@ export const GlobalConstants = {
         DELETE: "#ffeded",
         COPY: "white",
         HEAD: "#f3e6ff",
-        OPTIONS: "#d1e8ff",
+        OPTIONS: "#e6f2ff",
         LINK: "white",
         UNLINK: "white",
         PURGE: "white",

@@ -1,7 +1,7 @@
 .neck {
     height: 10vh;
-    margin: 0 2vw 0 10vw;
-    width: 91vw;
+    margin: 0 2vw 0 9vw;
+    width: 89vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -56,7 +56,6 @@
     height: 5vh;
     margin-bottom: 0.5%;
     margin-top: 0.5%;
-    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
     border-radius: 15px;
     background-color: white;
     display: flex;
@@ -68,13 +67,14 @@
 }
 
 .request:hover {
-    transform: scale(1.04);
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
 }
 
 #selected_request {
-    margin-bottom: 2.5%;
-    margin-top: 2.5%;
+    margin-bottom: 3%;
+    margin-top: 3%;
     transform: scale(1.1);
+    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .method {
