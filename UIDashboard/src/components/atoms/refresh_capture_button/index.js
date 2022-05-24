@@ -9,10 +9,8 @@ const RefreshCaptureButton = props => {
                 style={{ backgroundColor: "brown" }}
             >
                 <img
-                    height="70px"
                     src={ReloadPng}
-                    style={{ color: "white" }}
-                    width="70px"
+                    style={{ color: "white", height: "10vh", width: "10vh" }}
                 />
             </div>
     );

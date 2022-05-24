@@ -10,10 +10,8 @@ const CreateMocksButton = props => {
                 style={{ backgroundColor: "green" }}
             >
                 <img
-                    height="55px"
                     src={PlusIcon}
-                    style={{ color: "white" }}
-                    width="55px"
+                    style={{ color: "white", height: "7vh", width: "7vh" }}
                 />
             </div>
     );

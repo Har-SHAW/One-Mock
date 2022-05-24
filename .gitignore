@@ -32,4 +32,4 @@ Server/!**/src/test/**/build/
 ### VS Code ###
 Server/.vscode/
 
-Dashboard/node_modules/
+UIDashboard/node_modules/

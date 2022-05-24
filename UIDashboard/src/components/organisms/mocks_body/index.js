@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import RequestChip from "../../molecules/request_chip";
 import { GlobalConstants } from "../../../constants/GlobalConstants";
@@ -7,6 +7,13 @@ import { deleteMockApi, getFullMockApi } from "../../../apis/mocks_api";
 
 const MocksBody = (props) => {
     const [fullMock, setFullMock] = useState(null);
+
+    useEffect(async () => {
+        if (fullMock == null && !props.loading) {
+            const response = await getFullMockApi(props.mocksData[0].id);
+            setFullMock(response);
+        }
+    });
 
     async function getFullMock(id) {
         setFullMock(await getFullMockApi(id));
