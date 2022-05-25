@@ -27,7 +27,7 @@ public class RootController {
         return "index";
     }
 
-    @GetMapping("/mocks_create")
+    @GetMapping("/mocks_update/{id}")
     public String getCreateMocks() {
         return "index";
     }
