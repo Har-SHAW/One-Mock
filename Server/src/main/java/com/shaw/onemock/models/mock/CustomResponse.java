@@ -23,6 +23,9 @@ public class CustomResponse {
     @NonNull
     private Integer statusCode;
 
+    @NonNull
+    private String format;
+
     @ManyToOne
     @JoinColumn(name = "mock_id")
     private MockRequest mockRequest;
@@ -32,6 +35,7 @@ public class CustomResponse {
         this.responseBody = customResponseDto.getResponseBody();
         this.isHeader = customResponseDto.getIsHeader();
         this.statusCode = customResponseDto.getStatusCode();
+        this.format = customResponseDto.getFormat();
     }
 
     public void copyFrom(CustomResponseDto customResponseDto) {
@@ -39,5 +43,6 @@ public class CustomResponse {
         this.responseBody = customResponseDto.getResponseBody();
         this.isHeader = customResponseDto.getIsHeader();
         this.statusCode = customResponseDto.getStatusCode();
+        this.format = customResponseDto.getFormat();
     }
 }

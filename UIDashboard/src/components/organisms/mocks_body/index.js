@@ -4,6 +4,7 @@ import RequestChip from "../../molecules/request_chip";
 import { GlobalConstants } from "../../../constants/GlobalConstants";
 import DeleteEditBar from "../../molecules/delete_edit_bar";
 import { deleteMockApi, getFullMockApi } from "../../../apis/mocks_api";
+import { formatRequestBody } from "../../../utils/formatter";
 
 const MocksBody = (props) => {
     const [fullMock, setFullMock] = useState(null);
@@ -124,6 +125,7 @@ const MocksBody = (props) => {
                                                     <th>isHeader</th>
                                                     <th>Request Value</th>
                                                     <th>Response Body</th>
+                                                    <th>Body Format</th>
                                                     <th>Status</th>
                                                 </tr>
                                             </thead>
@@ -141,16 +143,27 @@ const MocksBody = (props) => {
                                                                     element.requestValue
                                                                 }
                                                             </td>
-                                                            <td
-                                                                onClick={() =>
-                                                                    props.popupOpen(
-                                                                        element.responseBody
-                                                                    )
-                                                                }
-                                                            >
-                                                                {
-                                                                    element.responseBody
-                                                                }
+                                                            <td>
+                                                                <a
+                                                                    href=""
+                                                                    onClick={(
+                                                                        event
+                                                                    ) => {
+                                                                        event.preventDefault();
+
+                                                                        props.popupOpen(
+                                                                            formatRequestBody(
+                                                                                element.responseBody,
+                                                                                element.format
+                                                                            )
+                                                                        );
+                                                                    }}
+                                                                >
+                                                                    SHOW BODY
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                                {element.format}
                                                             </td>
                                                             <td>
                                                                 {

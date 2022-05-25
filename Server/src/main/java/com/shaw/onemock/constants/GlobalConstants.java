@@ -1,9 +1,7 @@
 package com.shaw.onemock.constants;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class GlobalConstants {
     public static final List<String> METHODS = Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "COPY", "HEAD", "OPTIONS", "LINK", "UNLINK", "PURGE", "LOCK", "UNLOCK", "PROPFIND", "VIEW");

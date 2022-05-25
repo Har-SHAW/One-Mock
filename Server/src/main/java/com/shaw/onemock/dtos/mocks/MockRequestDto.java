@@ -20,6 +20,8 @@ public class MockRequestDto {
     private Integer statusCode = 200;
     private Integer duration = 0;
     private Boolean hasMultipleResponse = false;
+
+    private String format;
     private List<CustomResponseDto> customResponseDtoSet;
 
     public MockRequestDto(MockRequest mockRequest) {
@@ -30,6 +32,7 @@ public class MockRequestDto {
         this.hasMultipleResponse = mockRequest.getHasMultipleResponse();
         this.statusCode = mockRequest.getStatusCode();
         this.id = mockRequest.getMockId();
+        this.format = mockRequest.getFormat();
         this.customResponseDtoSet = new ArrayList<>();
         for (CustomResponse customResponse : mockRequest.getCustomResponses()) {
             this.customResponseDtoSet.add(new CustomResponseDto(customResponse));

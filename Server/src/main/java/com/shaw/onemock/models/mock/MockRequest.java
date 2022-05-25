@@ -25,6 +25,9 @@ public class MockRequest {
     private Integer statusCode;
     @NonNull
     private Integer duration;
+
+    @NonNull
+    private String format;
     @NonNull
     private Boolean hasMultipleResponse;
 
@@ -38,6 +41,7 @@ public class MockRequest {
         this.responseBody = mockRequestDto.getResponseBody();
         this.hasMultipleResponse = mockRequestDto.getHasMultipleResponse();
         this.statusCode = mockRequestDto.getStatusCode();
+        this.format = mockRequestDto.getFormat();
     }
 
     public void copyFrom(MockRequestDto mockRequestDto) {
@@ -47,5 +51,6 @@ public class MockRequest {
         this.responseBody = mockRequestDto.getResponseBody();
         this.hasMultipleResponse = mockRequestDto.getHasMultipleResponse();
         this.statusCode = mockRequestDto.getStatusCode();
+        this.format = mockRequestDto.getFormat();
     }
 }

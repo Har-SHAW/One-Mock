@@ -1,0 +1,56 @@
+.giant_popup_background {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 100vw;
+    z-index: 20;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.giant_popup {
+    height: 95vh;
+    width: 95vw;
+    background-color: lightseagreen;
+    border-radius: 1vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.popup_title {
+    height: 7vh;
+    background-color: white;
+    border-radius: 1vh;
+    margin: 1vw 1vw 1vw 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup_body {
+    margin: 0 1vw 1vw 1vw;
+    background-color: white;
+    height: 100%;
+    width: 91vw;
+    border-radius: 1vh;
+    padding: 1vw 1vw 1vw 1vw;
+    overflow: auto;
+}
+
+.close_popup {
+    width: 3vw;
+    height: 2.5vw;
+    transition: background-color 0.2s linear;
+    align-self: flex-end;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 1vh 0 0;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}

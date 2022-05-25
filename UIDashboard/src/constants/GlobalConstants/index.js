@@ -50,4 +50,5 @@ export const GlobalConstants = {
         PROPFIND: "white",
         VIEW: "white",
     },
+    AVAILABLE_FORMATS: ["application/json", "text/plain"],
 };

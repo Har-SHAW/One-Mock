@@ -1,39 +1,93 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./index.css";
 
 const GiantPopup = (props) => {
+    function onFormat() {
+        document.getElementById("popup_data").value = JSON.stringify(
+            JSON.parse(document.getElementById("popup_data").value),
+            null,
+            4
+        );
+    }
     return props.isOpen ? (
-        <div
-            style={{
-                position: "absolute",
-                top: "0px",
-                left: "0px",
-                height: "100vh",
-                width: "100vw",
-                zIndex: "20",
-                backgroundColor: "rgba(0, 0, 0, 0.25)",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-            }}
-        >
-            <div
-                style={{
-                    height: "90vh",
-                    width: "90vw",
-                    backgroundColor: "white",
-                    borderRadius: "1vh",
-                    display: "flex",
-                    flexDirection: "column",
-                }}
-            >
-                <button
-                    onClick={props.onClose}
-                    style={{ width: "5%", alignSelf: "flex-end" }}
-                >
-                    Close
-                </button>
-                <pre>{props.body}</pre>
+        <div className="giant_popup_background">
+            <div className="giant_popup">
+                <div onClick={props.onClose} className="close_popup">
+                    X
+                </div>
+                {props.editable ? (
+                    <div
+                        className="popup_title"
+                        style={{ backgroundColor: "transparent" }}
+                    >
+                        <div
+                            className="popup_title"
+                            style={{
+                                width: "78%",
+                                backgroundColor: "white",
+                                margin: "0",
+                            }}
+                        >
+                            <label>{props.title}</label>
+                        </div>
+                        <div
+                            onClick={onFormat}
+                            className="popup_title"
+                            style={{
+                                width: "10%",
+                                backgroundColor: "blue",
+                                margin: "0 0 0 1%",
+                                color: "white",
+                                fontWeight: 800,
+                                fonFamily: '"Montserrat", sans-serif',
+                                fontSize: "1.1rem",
+                                cursor: "pointer",
+                            }}
+                        >
+                            Format
+                        </div>
+                        <div
+                            onClick={() => {
+                                props.onDone(
+                                    document.getElementById("popup_data").value
+                                );
+                            }}
+                            className="popup_title"
+                            style={{
+                                width: "10%",
+                                backgroundColor: "green",
+                                margin: "0 0 0 1%",
+                                color: "white",
+                                fontWeight: 800,
+                                fonFamily: '"Montserrat", sans-serif',
+                                fontSize: "1.1rem",
+                                cursor: "pointer",
+                            }}
+                        >
+                            Done
+                        </div>
+                    </div>
+                ) : (
+                    <div className="popup_title">
+                        <label>{props.title}</label>
+                    </div>
+                )}
+
+                {props.editable ? (
+                    <textarea
+                        id="popup_data"
+                        className="popup_body"
+                        placeholder="Enter the Response Body"
+                        style={{ resize: "none" }}
+                        defaultValue={props.value}
+                        spellCheck={false}
+                    ></textarea>
+                ) : (
+                    <div className="popup_body">
+                        <pre>{props.body}</pre>
+                    </div>
+                )}
             </div>
         </div>
     ) : (
@@ -45,6 +99,11 @@ GiantPopup.propTypes = {
     onClose: PropTypes.func,
     isOpen: PropTypes.bool,
     body: PropTypes.string,
+    title: PropTypes.string,
+    editable: PropTypes.bool,
+    onFormatClick: PropTypes.func,
+    onDone: PropTypes.func,
+    value: PropTypes.string,
 };
 
 export default GiantPopup;

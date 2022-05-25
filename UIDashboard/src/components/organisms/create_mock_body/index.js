@@ -5,6 +5,8 @@ import {
     updateMockApi,
 } from "../../../apis/mocks_api";
 import { GlobalConstants } from "../../../constants/GlobalConstants";
+import { deformatRequestBody } from "../../../utils/deformatter";
+import GiantPopup from "../../molecules/giant_popup";
 
 const CreateMocksBody = (props) => {
     const [state, setState] = useState({
@@ -14,15 +16,20 @@ const CreateMocksBody = (props) => {
         hasMultipleResponse: false,
         responseBody: "",
         statusCode: 200,
+        format: "",
         customResponseDtoSet: [
             {
                 requestValue: "",
                 isHeader: false,
                 responseBody: "",
+                format: "",
                 statusCode: 200,
             },
         ],
     });
+
+    const [popupOpen, setPopupOpen] = useState(false);
+    const [popupData, setPopupData] = useState();
 
     useEffect(async () => {
         if (props.updateId && state.path == "") {
@@ -70,8 +77,30 @@ const CreateMocksBody = (props) => {
         }
     }
 
+    function openPopup(element) {
+        setPopupOpen(true);
+        setPopupData(element);
+    }
+
     return (
         <div className="body">
+            <GiantPopup
+                isOpen={popupOpen}
+                onClose={() => setPopupOpen(false)}
+                body={popupOpen ? popupData.responseBody : ""}
+                title={popupOpen ? popupData.requestBody : ""}
+                editable={true}
+                onDone={(value) => {
+                    if (popupOpen) {
+                        popupData.responseBody = deformatRequestBody(
+                            value,
+                            popupData.format
+                        );
+                        setPopupOpen(false);
+                    }
+                }}
+                value={popupOpen ? popupData.responseBody : ""}
+            />
             <div style={{ display: "flex", flexDirection: "column" }}>
                 <div
                     className="input_1"
@@ -145,6 +174,7 @@ const CreateMocksBody = (props) => {
                                     <th>Is Header?</th>
                                     <th>Request</th>
                                     <th>Response Body</th>
+                                    <th>Body Format</th>
                                     <th>Status Code</th>
                                     <th>Delete</th>
                                 </tr>
@@ -196,25 +226,53 @@ const CreateMocksBody = (props) => {
                                                 />
                                             </td>
                                             <td>
-                                                <input
-                                                    type="text"
-                                                    value={element.responseBody}
+                                                {element.responseBody == "" ? (
+                                                    <button
+                                                        onClick={() =>
+                                                            openPopup(element)
+                                                        }
+                                                    >
+                                                        Enter Body
+                                                    </button>
+                                                ) : (
+                                                    <button
+                                                        onClick={() =>
+                                                            openPopup(element)
+                                                        }
+                                                    >
+                                                        Show Body
+                                                    </button>
+                                                )}
+                                            </td>
+                                            <td>
+                                                <select
+                                                    defaultValue={
+                                                        element.format
+                                                    }
                                                     onChange={(value) => {
-                                                        const nextState = {
-                                                            ...state,
-                                                            customResponseDtoSet:
-                                                                [
-                                                                    ...state.customResponseDtoSet,
-                                                                ],
-                                                        };
-                                                        nextState.customResponseDtoSet[
+                                                        state.customResponseDtoSet[
                                                             index
-                                                        ].responseBody =
+                                                        ].format =
                                                             value.target.value;
-
-                                                        setState(nextState);
                                                     }}
-                                                />
+                                                >
+                                                    <option value={""}>
+                                                        Select a Format
+                                                    </option>
+                                                    {GlobalConstants.AVAILABLE_FORMATS.map(
+                                                        (element, index) => (
+                                                            <option
+                                                                key={
+                                                                    "format_option" +
+                                                                    index
+                                                                }
+                                                                value={element}
+                                                            >
+                                                                {element}
+                                                            </option>
+                                                        )
+                                                    )}
+                                                </select>
                                             </td>
                                             <td>
                                                 <input
