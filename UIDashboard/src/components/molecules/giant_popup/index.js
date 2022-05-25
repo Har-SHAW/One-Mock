@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./index.css";
+import { formatRequestBody } from "../../../utils/formatter";
 
 const GiantPopup = (props) => {
     function onFormat() {
-        document.getElementById("popup_data").value = JSON.stringify(
-            JSON.parse(document.getElementById("popup_data").value),
-            null,
-            4
+        document.getElementById("popup_data").value = formatRequestBody(
+            document.getElementById("popup_data").value,
+            props.format
         );
     }
     return props.isOpen ? (
@@ -85,7 +85,9 @@ const GiantPopup = (props) => {
                     ></textarea>
                 ) : (
                     <div className="popup_body">
-                        <pre>{props.body}</pre>
+                        <div
+                            dangerouslySetInnerHTML={{ __html: props.body }}
+                        ></div>
                     </div>
                 )}
             </div>
@@ -104,6 +106,7 @@ GiantPopup.propTypes = {
     onFormatClick: PropTypes.func,
     onDone: PropTypes.func,
     value: PropTypes.string,
+    format: PropTypes.string,
 };
 
 export default GiantPopup;

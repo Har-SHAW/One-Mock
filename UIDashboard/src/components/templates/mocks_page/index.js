@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./index.css";
-import GiantPopup from "../../molecules/giant_popup";
 
 const MocksTemplate = (props) => {
     return (

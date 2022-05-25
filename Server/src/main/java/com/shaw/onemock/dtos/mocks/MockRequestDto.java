@@ -20,7 +20,6 @@ public class MockRequestDto {
     private Integer statusCode = 200;
     private Integer duration = 0;
     private Boolean hasMultipleResponse = false;
-
     private String format;
     private List<CustomResponseDto> customResponseDtoSet;
 

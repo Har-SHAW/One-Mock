@@ -2,8 +2,8 @@ package com.shaw.onemock.utils;
 
 import com.shaw.onemock.constants.GlobalConstants;
 import com.shaw.onemock.dtos.requests.HeaderDto;
+import com.shaw.onemock.dtos.utils.ResponseModel;
 import com.shaw.onemock.models.mock.CustomResponse;
-import org.springframework.data.util.Pair;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -41,15 +41,17 @@ public class Utils {
         return headers;
     }
 
-    public static Pair<String, Integer> getCustomResponse(List<CustomResponse> customResponses, String body, HttpServletRequest request) {
+    public static ResponseModel getCustomResponse(List<CustomResponse> customResponses, String body, HttpServletRequest request) {
         String response = GlobalConstants.DEFAULT_RESPONSE;
         Integer statusCode = GlobalConstants.DEFAULT_RESPONSE_STATUS;
+        String contentType = "text/plain";
         for (CustomResponse customResponse : customResponses) {
             if ((customResponse.getIsHeader() && checkHeader(customResponse.getRequestValue(), getHeaderDto(request))) || body.equals(customResponse.getRequestValue())) {
                 response = customResponse.getResponseBody();
                 statusCode = customResponse.getStatusCode();
+                contentType = customResponse.getFormat();
             }
         }
-        return Pair.of(response, statusCode);
+        return new ResponseModel(response, contentType, statusCode);
     }
 }

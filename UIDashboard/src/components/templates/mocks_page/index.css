@@ -36,33 +36,31 @@ table {
     border-collapse: collapse;
 }
 
-input {
-    padding: 8px 16px;
-    border: 2px solid #ddd;
-    border-radius: 4px;
-    font-family: "Rubik", sans-serif;
-    outline: 0;
-    transition: 0.2s;
-}
-
-input:focus {
-    border-color: #0f7ef1;
-}
-
-/* textarea {
-    padding: 8px 16px;
-    border: 2px solid #ddd;
-    border-radius: 4px;
-    font-family: "Rubik", sans-serif;
-    outline: 0;
-    transition: 0.2s;
-}
-
-textarea:focus {
-    border-color: #0f7ef1;
-} */
-
 form {
     display: flex;
     flex-direction: column;
+}
+
+.xtb {
+    display: table;
+    font-family: monospace;
+}
+.xtc {
+    display: table-cell;
+}
+.xmt {
+    color: #0000cc;
+    display: inline;
+}
+.xel {
+    color: #990000;
+    display: inline;
+}
+.xdt {
+    color: #000000;
+    display: inline;
+}
+.xat {
+    color: #ff0000;
+    display: inline;
 }

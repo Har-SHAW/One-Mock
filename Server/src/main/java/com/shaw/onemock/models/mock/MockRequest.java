@@ -25,7 +25,6 @@ public class MockRequest {
     private Integer statusCode;
     @NonNull
     private Integer duration;
-
     @NonNull
     private String format;
     @NonNull

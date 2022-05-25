@@ -2,6 +2,7 @@ package com.shaw.onemock.services;
 
 import com.shaw.onemock.constants.CaptureState;
 import com.shaw.onemock.constants.GlobalConstants;
+import com.shaw.onemock.dtos.utils.ResponseModel;
 import com.shaw.onemock.models.mock.MockRequest;
 import com.shaw.onemock.models.requests.Header;
 import com.shaw.onemock.models.requests.Request;
@@ -10,7 +11,7 @@ import com.shaw.onemock.repositories.request.HeaderRepository;
 import com.shaw.onemock.repositories.request.RequestRepository;
 import com.shaw.onemock.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.util.Pair;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -59,6 +60,7 @@ public class RequestService {
     public ResponseEntity<String> process(HttpServletRequest request, String path) {
         String response = GlobalConstants.DEFAULT_RESPONSE;
         Integer statusCode = GlobalConstants.DEFAULT_RESPONSE_STATUS;
+        MediaType contentType = MediaType.TEXT_PLAIN;
         String body = Utils.getBody(request);
         if (CaptureState.getCapture()) {
             saveRequest(request, path, body);
@@ -67,14 +69,16 @@ public class RequestService {
         if (mockRequestOptional.isPresent()) {
             MockRequest mockRequest = mockRequestOptional.get();
             if (mockRequest.getHasMultipleResponse()) {
-                Pair<String, Integer> data = Utils.getCustomResponse(mockRequest.getCustomResponses(), body, request);
-                response = data.getFirst();
-                statusCode = data.getSecond();
+                ResponseModel data = Utils.getCustomResponse(mockRequest.getCustomResponses(), body, request);
+                response = data.getResponseBody();
+                statusCode = data.getStatusCode();
+                contentType = data.getFormat();
             } else {
                 response = mockRequest.getResponseBody();
                 statusCode = mockRequest.getStatusCode();
+                contentType = ResponseModel.getMediaType(mockRequest.getFormat());
             }
         }
-        return ResponseEntity.status(statusCode).body(response);
+        return ResponseEntity.status(statusCode).contentType(contentType).body(response);
     }
 }

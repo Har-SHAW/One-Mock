@@ -13,5 +13,8 @@ export function deformatRequestBody(string, format) {
 
         case "text/plain":
             return deformatStringBody(string);
+
+        case "application/xml":
+            return string;
     }
 }

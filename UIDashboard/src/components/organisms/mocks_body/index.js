@@ -4,7 +4,7 @@ import RequestChip from "../../molecules/request_chip";
 import { GlobalConstants } from "../../../constants/GlobalConstants";
 import DeleteEditBar from "../../molecules/delete_edit_bar";
 import { deleteMockApi, getFullMockApi } from "../../../apis/mocks_api";
-import { formatRequestBody } from "../../../utils/formatter";
+import { coloredFormatRequestBody } from "../../../utils/formatter";
 
 const MocksBody = (props) => {
     const [fullMock, setFullMock] = useState(null);
@@ -150,9 +150,8 @@ const MocksBody = (props) => {
                                                                         event
                                                                     ) => {
                                                                         event.preventDefault();
-
                                                                         props.popupOpen(
-                                                                            formatRequestBody(
+                                                                            coloredFormatRequestBody(
                                                                                 element.responseBody,
                                                                                 element.format
                                                                             )
@@ -187,16 +186,20 @@ const MocksBody = (props) => {
                                             <b>Status Code: </b>
                                             {fullMock.statusCode}
                                         </label>
-                                        <label
-                                            onClick={() =>
+                                        <a
+                                            href=""
+                                            onClick={(event) => {
+                                                event.preventDefault();
                                                 props.popupOpen(
-                                                    fullMock.responseBody
-                                                )
-                                            }
+                                                    coloredFormatRequestBody(
+                                                        fullMock.responseBody,
+                                                        fullMock.format
+                                                    )
+                                                );
+                                            }}
                                         >
-                                            <b>Response Body: </b>
-                                            <pre>{fullMock.responseBody}</pre>
-                                        </label>
+                                            SHOW BODY
+                                        </a>
                                     </div>
                                 )}
                             </div>
