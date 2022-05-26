@@ -6,7 +6,6 @@ const CreateMockTemplate = (props) => {
         <div className="root">
             {props.navigation}
             {props.body}
-            <div style={{ height: "10vh" }}></div>
         </div>
     );
 };

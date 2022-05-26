@@ -2,12 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./index.css";
 import { formatRequestBody } from "../../../utils/formatter";
+import { GlobalConstants } from "../../../constants/GlobalConstants";
 
 const GiantPopup = (props) => {
     function onFormat() {
         document.getElementById("popup_data").value = formatRequestBody(
             document.getElementById("popup_data").value,
-            props.format
+            document.getElementById("body_format").value
         );
     }
     return props.isOpen ? (
@@ -30,6 +31,27 @@ const GiantPopup = (props) => {
                             }}
                         >
                             <label>{props.title}</label>
+                            <div>
+                                <label>Body Format: </label>
+                                <select
+                                    id="body_format"
+                                    defaultValue={props.format}
+                                >
+                                    {GlobalConstants.AVAILABLE_FORMATS.map(
+                                        (element, index) => (
+                                            <option
+                                                key={
+                                                    "popup_format_option" +
+                                                    index
+                                                }
+                                                value={element}
+                                            >
+                                                {element}
+                                            </option>
+                                        )
+                                    )}
+                                </select>
+                            </div>
                         </div>
                         <div
                             onClick={onFormat}
@@ -49,9 +71,11 @@ const GiantPopup = (props) => {
                         </div>
                         <div
                             onClick={() => {
-                                props.onDone(
-                                    document.getElementById("popup_data").value
-                                );
+                                props.onDone([
+                                    document.getElementById("popup_data").value,
+                                    document.getElementById("body_format")
+                                        .value,
+                                ]);
                             }}
                             className="popup_title"
                             style={{
@@ -103,7 +127,7 @@ GiantPopup.propTypes = {
     body: PropTypes.string,
     title: PropTypes.string,
     editable: PropTypes.bool,
-    onFormatClick: PropTypes.func,
+    onFormatChange: PropTypes.func,
     onDone: PropTypes.func,
     value: PropTypes.string,
     format: PropTypes.string,

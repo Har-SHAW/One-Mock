@@ -28,6 +28,11 @@ public class RootController {
     }
 
     @GetMapping("/mocks_update/{id}")
+    public String getUpdateMocks() {
+        return "index";
+    }
+
+    @GetMapping("/mocks_create")
     public String getCreateMocks() {
         return "index";
     }

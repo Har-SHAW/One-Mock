@@ -115,7 +115,7 @@ const MocksBody = (props) => {
                                     {fullMock.path}
                                 </label>
 
-                                <div style={{ height: "2vh" }}></div>
+                                <div style={{ height: "1vh" }}></div>
 
                                 {fullMock.hasMultipleResponse ? (
                                     <div>
@@ -182,10 +182,17 @@ const MocksBody = (props) => {
                                             flexDirection: "column",
                                         }}
                                     >
+                                        <div style={{ height: "5vh" }} />
                                         <label>
                                             <b>Status Code: </b>
                                             {fullMock.statusCode}
                                         </label>
+                                        <div style={{ height: "1vh" }} />
+                                        <label>
+                                            <strong>Format: </strong>
+                                            {fullMock.format}
+                                        </label>
+                                        <div style={{ height: "1vh" }} />
                                         <a
                                             href=""
                                             onClick={(event) => {
