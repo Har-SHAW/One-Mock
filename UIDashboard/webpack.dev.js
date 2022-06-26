@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const port = process.env.PORT || 3000;
 
@@ -16,8 +17,11 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ["style-loader", "css-loader"],
-            },
+                use: [
+                  MiniCssExtractPlugin.loader,
+                  "css-loader", "postcss-loader",
+                  ],
+              },
             {
                 test: /\.(png|jpe?g|gif)$/i,
                 loader: "file-loader",
@@ -34,6 +38,10 @@ module.exports = {
         filename: "[name].[fullhash].js",
     },
     plugins: [
+        new MiniCssExtractPlugin({
+            filename: "styles.css",
+            chunkFilename: "styles.css"
+          }),
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             favicon: "./public/favicon.ico",

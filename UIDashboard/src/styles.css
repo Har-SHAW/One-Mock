@@ -1,3 +1,9 @@
+@tailwind preflight;
+
+@tailwind components;
+
+@tailwind utilities;
+
 .nav {
     display: flex;
     flex-direction: row;

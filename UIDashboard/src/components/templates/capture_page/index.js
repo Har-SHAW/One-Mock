@@ -7,7 +7,7 @@ const CaptureTemplate = (props) => {
         <div className="root">
             {props.navigation}
             {props.neck}
-            <div className="body"></div>
+            {props.body}
         </div>
     );
 };

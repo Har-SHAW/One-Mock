@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const RequestChip = (props) => {
     return (
         <div
-            className="request"
+            className="request w-[88%] h-[5vh] rounded-[15px] my-[0.5%] shadow-lg hover:shadow-xl flex flex-row justify-center align-center cursor-pointer"
             id={props.isSelected ? "selected_request" : "request"}
             style={{
                 backgroundColor: props.secondaryColor,
@@ -21,7 +21,6 @@ const RequestChip = (props) => {
                 {props.method}
             </div>
             <div className="path">{props.path.replaceAll("/", " / ")}</div>
-            {/* <div className="time_stamp">{props.duration}</div> */}
         </div>
     );
 };
