@@ -2,10 +2,6 @@
     height: 10vh;
     margin: 0 2vw 0 9vw;
     width: 89vw;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .empty_body {
@@ -20,37 +16,6 @@
     font-size: 4rem;
 }
 
-.body {
-    height: 80vh;
-    width: 88vw;
-    display: flex;
-    flex-direction: row;
-    overflow: hidden;
-    justify-content: center;
-    align-items: center;
-}
-
-.left_body {
-    height: 80vh;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: auto;
-}
-
-.right_body {
-    height: 80vh;
-    width: 47%;
-    margin: 0% 1.5% 0% 1.5%;
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 500;
-    font-size: 0.9rem;
-}
-
 .request {
     transition: margin 0.2s linear, transform 0.2s;
 }
@@ -60,36 +25,6 @@
     margin-top: 3%;
     transform: scale(1.1);
     filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
-}
-
-.method {
-    border-radius: 12px 0px 0px 12px;
-    height: 100%;
-    color: white;
-    text-align: center;
-    font-size: 1.1rem;
-    width: 20%;
-    background-color: green;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-    font-family: "Montserrat", sans-serif;
-}
-
-.path {
-    width: 80%;
-    height: 5vh;
-    display: flex;
-    align-items: center;
-    padding-left: 5%;
-    font-weight: 500;
-    font-family: "Montserrat", sans-serif;
-    font-size: 0.8rem;
-}
-
-.time_stamp {
-    width: 20%;
 }
 
 .full_request {

@@ -5,31 +5,16 @@ import SlideSwitch from "../../../atoms/slide_switch";
 
 const CaptureNeck = (props) => {
     return (
-        <div className="neck">
-            <div
-                style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                }}
-            >
+        <div className="neck flex flex-row justify-between items-center">
+            <div className="flex justify-center items-center">
                 <SlideSwitch turnOn={props.capture} />
-
-                <div style={{ width: "10px" }} />
-
+                <div className="w-3" />
                 {props.capture ? (
-                    <span
-                        style={{ fontFamily: '"Aclonica"', color: "#0085FF" }}
-                    >
-                        Capture ON
-                    </span>
+                    <span className="font-acl text-onemock">Capture ON</span>
                 ) : (
-                    <span style={{ fontFamily: '"Aclonica"', color: "grey" }}>
-                        Capture OFF
-                    </span>
+                    <span className="font-acl text-gray-500">Capture OFF</span>
                 )}
             </div>
-
             <RefreshCaptureButton />
         </div>
     );

@@ -4,7 +4,7 @@ import CreateMocksButton from "../../../atoms/create_mocks_button";
 
 const MocksNeck = (props) => {
     return (
-        <div className="neck">
+        <div className="neck flex flex-row justify-between items-center">
             <label className="switch">
                 <input id="capture" type="checkbox" />
                 <span className="slider round" />

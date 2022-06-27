@@ -5,13 +5,7 @@ import EditIcon from "./edit.png";
 
 const DeleteEditBar = (props) => {
     return (
-        <div
-            style={{
-                display: "flex",
-                flexDirection: "row",
-                width: "94%",
-            }}
-        >
+        <div className="flex flex-row w-[94%]">
             <div
                 className="delete_button"
                 onClick={() => props.onDeleteClick()}

@@ -5,6 +5,9 @@ import { GlobalConstants } from "../../../constants/GlobalConstants";
 import DeleteEditBar from "../../molecules/delete_edit_bar";
 import { deleteMockApi, getFullMockApi } from "../../../apis/mocks_api";
 import { coloredFormatRequestBody } from "../../../utils/formatter";
+import Body from "../../atoms/body/body";
+import LeftBody from "../../atoms/body/left_body";
+import RightBody from "../../atoms/body/right_body";
 
 const MocksBody = (props) => {
     const [fullMock, setFullMock] = useState(null);
@@ -51,8 +54,8 @@ const MocksBody = (props) => {
         );
     } else {
         return (
-            <div className="body">
-                <div className="left_body">
+            <Body>
+                <LeftBody className="left_body">
                     {props.mocksData.map((element, index) => (
                         <RequestChip
                             key={"request_chip_" + index}
@@ -72,8 +75,8 @@ const MocksBody = (props) => {
                             onClick={() => getFullMock(element.id)}
                         />
                     ))}
-                </div>
-                <div className="right_body">
+                </LeftBody>
+                <RightBody>
                     {fullMock ? (
                         <div>
                             <DeleteEditBar
@@ -214,8 +217,8 @@ const MocksBody = (props) => {
                     ) : (
                         <div>No Mock Selected</div>
                     )}
-                </div>
-            </div>
+                </RightBody>
+            </Body>
         );
     }
 };

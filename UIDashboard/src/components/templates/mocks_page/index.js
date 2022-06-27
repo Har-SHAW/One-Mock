@@ -1,15 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./index.css";
+import BodyRoot from "../../atoms/body/root";
 
 const MocksTemplate = (props) => {
     return (
-        <div className="root">
+        <BodyRoot>
             {props.popup}
             {props.navigation}
             {props.neck}
             {props.body}
-        </div>
+        </BodyRoot>
     );
 };
 

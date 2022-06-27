@@ -13,14 +13,14 @@ const RequestChip = (props) => {
             onClick={() => props.onClick()}
         >
             <div
-                className="method"
+                className="rounded-l-xl text-white font-extrabold font-mont h-full text-center w-1/5 flex justify-center items-center"
                 style={{
                     backgroundColor: props.color,
                 }}
             >
                 {props.method}
             </div>
-            <div className="path">{props.path.replaceAll("/", " / ")}</div>
+            <div className="w-4/5 h-full flex items-center pl-[5%] font-mont font-medium text-xs">{props.path.replaceAll("/", " / ")}</div>
         </div>
     );
 };
