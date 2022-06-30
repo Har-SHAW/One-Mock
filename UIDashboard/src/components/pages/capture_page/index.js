@@ -10,7 +10,7 @@ const CapturePage = (props) => {
         <CaptureTemplate
             navigation={<NavigationBar />}
             neck={<CaptureNeck />}
-            body={<CaptureBody/>}
+            body={<CaptureBody />}
         />
     );
 };

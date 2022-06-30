@@ -20,7 +20,9 @@ const RequestChip = (props) => {
             >
                 {props.method}
             </div>
-            <div className="w-4/5 h-full flex items-center pl-[5%] font-mont font-medium text-xs">{props.path.replaceAll("/", " / ")}</div>
+            <div className="w-4/5 h-full flex items-center pl-[5%] font-mont font-medium text-xs">
+                {props.path.replaceAll("/", " / ")}
+            </div>
         </div>
     );
 };
