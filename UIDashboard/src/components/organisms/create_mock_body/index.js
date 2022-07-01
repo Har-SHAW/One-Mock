@@ -6,6 +6,7 @@ import {
 } from "../../../apis/mocks_api";
 import { GlobalConstants } from "../../../constants/GlobalConstants";
 import { deformatRequestBody } from "../../../utils/deformatter";
+import CancelCreateBar from "../../molecules/cancel_create_bar";
 import CreateMockTable from "../../molecules/create_mock_table";
 import GiantPopup from "../../molecules/giant_popup";
 
@@ -43,20 +44,20 @@ const CreateMocksBody = (props) => {
         }
     });
 
-    async function addMock(event) {
+    async function addMock() {
         if (document.getElementById("main_form").checkValidity()) {
-            event.preventDefault();
             console.log(state.customResponseDtoSet);
             const response = await createMockApi(state);
             if (response.status) {
                 location.href = "/mocks";
             }
+        } else {
+            document.getElementById("main_form").reportValidity();
         }
     }
 
-    async function updateMock(event) {
+    async function updateMock() {
         if (document.getElementById("main_form").checkValidity()) {
-            event.preventDefault();
             console.log(state);
             const response = await updateMockApi(props.updateId, state);
             if (response.status) {
@@ -123,7 +124,6 @@ const CreateMocksBody = (props) => {
                             );
                             popupData.responseBody =
                                 popupData.responseBody.replaceAll("\n", "");
-                            console.log(value[1]);
                             popupData.format = value[1];
                             setPopupOpen(false);
                             setLoading(false);
@@ -139,34 +139,14 @@ const CreateMocksBody = (props) => {
         );
     } else {
         return (
-            <div
-                style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    height: "90vh",
-                    overflow: "scroll",
-                }}
-            >
-                <form id="main_form">
-                    <div
-                        style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            width: "90vw",
-                            margin: "2vw 5vw 0 5vw",
-                        }}
-                    >
-                        <div
-                            style={{
-                                width: "100%",
-                                display: "flex",
-                                justifyContent: "space-between",
-                                margin: "2vh 0 2vh 0",
-                            }}
-                        >
-                            <div>
-                                <label>Method: </label>
+            <div className="flex justify-center h-full overflow-auto">
+                <form id="main_form" className="w-screen">
+                    <div className="flex flex-col w-1/2 mx-auto my-[2vw]">
+                        <div className="w-full flex justify-between my-[2vw]">
+                            <div className="w-1/6 flex flex-col space-y-1">
+                                <label>Method</label>
                                 <select
+                                    className="px-2.5 py-1.5"
                                     defaultValue={state.method}
                                     onChange={(value) => {
                                         state.method = value.target.value;
@@ -186,10 +166,10 @@ const CreateMocksBody = (props) => {
                                 </select>
                             </div>
 
-                            <div>
-                                <label>Path: </label>
+                            <div className="w-4/6 px-5 flex flex-col space-y-1">
+                                <label>Path</label>
                                 <input
-                                    style={{ width: "60vw" }}
+                                    className="px-2.5 py-1.5"
                                     placeholder="Path"
                                     type="text"
                                     defaultValue={state.path}
@@ -200,9 +180,10 @@ const CreateMocksBody = (props) => {
                                 />
                             </div>
 
-                            <div>
-                                <label>Duration: </label>
+                            <div className="w-1/6 flex flex-col space-y-1">
+                                <label>Duration</label>
                                 <input
+                                    className="px-2.5 py-1.5"
                                     placeholder="Duration"
                                     type="number"
                                     defaultValue={state.duration}
@@ -214,12 +195,8 @@ const CreateMocksBody = (props) => {
                                 />
                             </div>
                         </div>
-                        <div
-                            style={{
-                                margin: "2vh 0 2vh 0",
-                            }}
-                        >
-                            <label>Has Multiple Response?</label>
+                        <div className="my-2.5">
+                            <label>Multiple Response: </label>
                             <input
                                 type="checkbox"
                                 checked={state.hasMultipleResponse}
@@ -274,17 +251,11 @@ const CreateMocksBody = (props) => {
                                 }}
                             />
                         ) : (
-                            <div
-                                style={{
-                                    width: "100%",
-                                    display: "flex",
-                                    justifyContent: "space-between",
-                                    margin: "2vh 0 2vh 0",
-                                }}
-                            >
-                                <div>
-                                    <label>Status Code: </label>
+                            <div className="w-full flex justify-between my-[2vh] space-x-5">
+                                <div className="w-full flex flex-col space-y-1">
+                                    <label>Status Code</label>
                                     <input
+                                        className="px-2.5 py-1.5"
                                         type="number"
                                         placeholder="Status Code"
                                         defaultValue={state.statusCode}
@@ -296,9 +267,10 @@ const CreateMocksBody = (props) => {
                                         }}
                                     />
                                 </div>
-                                <div>
-                                    <label>BodyFormat: </label>
+                                <div className="w-full flex flex-col space-y-1">
+                                    <label>BodyFormat</label>
                                     <select
+                                        className="px-2.5 py-1.5"
                                         defaultValue={state.format}
                                         onChange={(value) => {
                                             state.format = value.target.value;
@@ -318,47 +290,44 @@ const CreateMocksBody = (props) => {
                                         )}
                                     </select>
                                 </div>
-                                <a
-                                    href=""
-                                    onClick={(event) => {
-                                        event.preventDefault();
-                                        openPopup(state);
-                                    }}
-                                >
-                                    {state.responseBody == ""
-                                        ? "ENTER BODY"
-                                        : "SHOW BODY"}
-                                </a>
+                                <div className="w-full flex flex-col space-y-1">
+                                    <label>Provide Body</label>
+                                    <div className="px-2.5 py-1.5 border-solid border border-black flex justify-center items-center">
+                                        <a
+                                            href=""
+                                            onClick={(event) => {
+                                                event.preventDefault();
+                                                openPopup(state);
+                                            }}
+                                        >
+                                            <strong>
+                                                <code>
+                                                    {state.responseBody == ""
+                                                        ? "ENTER BODY"
+                                                        : "SHOW BODY"}
+                                                </code>
+                                            </strong>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         )}
-                        <div
-                            style={{
-                                width: "100%",
-                                margin: "2vh 0 2vh 0",
-                                display: "flex",
-                                justifyContent: "space-around",
-                            }}
-                        >
-                            <input
-                                width="25vw"
-                                type="submit"
-                                onClick={(event) => {
-                                    event.preventDefault();
-                                    location.href = "/mocks";
-                                }}
-                                value="CANCEL"
-                            />
+                        <div className="w-full my-[2vh]">
                             {props.updateId ? (
-                                <input
-                                    type="submit"
-                                    onClick={updateMock}
-                                    value="UPDATE"
+                                <CancelCreateBar
+                                    submitText="UPDATE"
+                                    onCancelClick={() => {
+                                        location.href = "/mocks";
+                                    }}
+                                    onSubmitClick={updateMock}
                                 />
                             ) : (
-                                <input
-                                    type="submit"
-                                    onClick={addMock}
-                                    value="SUBMIT"
+                                <CancelCreateBar
+                                    submitText="SUBMIT"
+                                    onCancelClick={() => {
+                                        location.href = "/mocks";
+                                    }}
+                                    onSubmitClick={addMock}
                                 />
                             )}
                         </div>

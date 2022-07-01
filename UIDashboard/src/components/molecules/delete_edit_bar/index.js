@@ -12,7 +12,7 @@ const DeleteEditBar = (props) => {
             >
                 DELETE MOCK
                 <img
-                    style={{ marginLeft: "10px" }}
+                    className="ml-2.5"
                     height="17px"
                     width="17px"
                     src={DeleteIcon}
@@ -21,7 +21,7 @@ const DeleteEditBar = (props) => {
             <div className="edit_button" onClick={() => props.onEditClick()}>
                 UPDATE MOCK
                 <img
-                    style={{ marginLeft: "10px" }}
+                    className="ml-2.5"
                     height="17px"
                     width="17px"
                     src={EditIcon}

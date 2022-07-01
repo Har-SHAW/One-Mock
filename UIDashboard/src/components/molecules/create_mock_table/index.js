@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { GlobalConstants } from "../../../constants/GlobalConstants";
+import DeleteIcon from "../delete_edit_bar/delete.png";
 
 const CreateMockTable = (props) => {
     return (
@@ -20,55 +21,28 @@ const CreateMockTable = (props) => {
                     {props.customResponseDtoSet.map((element, index) => (
                         <tr key={"tr_response_" + element.randomId}>
                             <td>
-                                <div
-                                    style={{
-                                        display: "flex",
-                                    }}
-                                >
-                                    <input
-                                        type="checkbox"
-                                        checked={element.isHeader}
-                                        onChange={(value) =>
-                                            props.onHeaderChange(value, index)
-                                        }
-                                    />
-                                    <div
-                                        style={{
-                                            marginLeft: "10px",
-                                        }}
-                                    >
-                                        {element.isHeader ? "Yes" : "No"}
+                                <div className="flex flex-col justify-center items-center m-[10px]">
+                                    <div className="flex px-2.5 py-1.5">
+                                        <input
+                                            type="checkbox"
+                                            checked={element.isHeader}
+                                            onChange={(value) =>
+                                                props.onHeaderChange(
+                                                    value,
+                                                    index
+                                                )
+                                            }
+                                        />
+                                        <div className="ml-[10px]">
+                                            {element.isHeader ? "Yes" : "No"}
+                                        </div>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <div
-                                    style={{
-                                        display: "flex",
-                                        flexDirection: "column",
-                                        justifyContent: "center",
-                                        alignItems: "center",
-                                        margin: "10px 10px 10px 10px",
-                                    }}
-                                >
-                                    {element.isHeader ? (
-                                        <label>
-                                            Add a header to your request with
-                                            the key{" "}
-                                            <strong>
-                                                <code>x-onemock</code>
-                                            </strong>{" "}
-                                            and put the value as entered
-                                        </label>
-                                    ) : (
-                                        <label>
-                                            Send the body of the request as
-                                            entered
-                                        </label>
-                                    )}
-                                    <div style={{ height: "10px" }}></div>
+                                <div className="flex flex-col justify-center items-center m-[10px]">
                                     <input
-                                        style={{ width: "100%" }}
+                                        className="px-2.5 py-1.5 border border-black border-solid"
                                         placeholder={
                                             element.isHeader ? "value" : "body"
                                         }
@@ -86,84 +60,89 @@ const CreateMockTable = (props) => {
                                 </div>
                             </td>
                             <td>
-                                <div
-                                    style={{
-                                        display: "flex",
-                                        flexDirection: "column",
-                                        justifyContent: "center",
-                                        alignItems: "center",
-                                        margin: "10px 10px 10px 10px",
-                                    }}
-                                >
-                                    <label>
-                                        If the value matches with the given
-                                        value the following body will be sent
-                                    </label>
-                                    <div style={{ height: "10px" }}></div>
-                                    <a
-                                        href=""
-                                        onClick={(event) =>
-                                            props.onShowBodyClick(
-                                                event,
-                                                element
-                                            )
-                                        }
-                                    >
-                                        <strong>
-                                            <code>
-                                                {element.responseBody == ""
-                                                    ? "ENTER BODY"
-                                                    : "SHOW BODY"}
-                                            </code>
-                                        </strong>
-                                    </a>
+                                <div className="flex flex-col justify-center items-center m-[10px]">
+                                    <div className="w-full flex justify-center items-center">
+                                        <a
+                                            className="border border-black border-solid py-1.5 px-2.5 w-full text-center"
+                                            href=""
+                                            onClick={(event) =>
+                                                props.onShowBodyClick(
+                                                    event,
+                                                    element
+                                                )
+                                            }
+                                        >
+                                            <strong>
+                                                <code>
+                                                    {element.responseBody == ""
+                                                        ? "ENTER BODY"
+                                                        : "SHOW BODY"}
+                                                </code>
+                                            </strong>
+                                        </a>
+                                    </div>
                                 </div>
                             </td>
                             <td>
-                                <select
-                                    defaultValue={element.format}
-                                    onChange={(value) =>
-                                        props.onFormatChange(value, index)
-                                    }
-                                >
-                                    {GlobalConstants.AVAILABLE_FORMATS.map(
-                                        (element, index) => (
-                                            <option
-                                                key={"format_option" + index}
-                                                value={element}
-                                            >
-                                                {element}
-                                            </option>
-                                        )
-                                    )}
-                                </select>
+                                <div className="flex flex-col justify-center items-center m-[10px]">
+                                    <select
+                                        className="px-2.5 py-1.5 w-full border border-black border-solid"
+                                        defaultValue={element.format}
+                                        onChange={(value) =>
+                                            props.onFormatChange(value, index)
+                                        }
+                                    >
+                                        {GlobalConstants.AVAILABLE_FORMATS.map(
+                                            (element, index) => (
+                                                <option
+                                                    key={
+                                                        "format_option" + index
+                                                    }
+                                                    value={element}
+                                                >
+                                                    {element}
+                                                </option>
+                                            )
+                                        )}
+                                    </select>
+                                </div>
                             </td>
                             <td>
-                                <input
-                                    type="number"
-                                    defaultValue={element.statusCode}
-                                    onChange={(value) =>
-                                        props.onStatusCodeChange(value, index)
-                                    }
-                                    min={200}
-                                    max={500}
-                                />
+                                <div className="flex flex-col justify-center items-center m-[10px]">
+                                    <input
+                                        className="px-2.5 py-1.5 border border-black border-solid"
+                                        type="number"
+                                        defaultValue={element.statusCode}
+                                        onChange={(value) =>
+                                            props.onStatusCodeChange(
+                                                value,
+                                                index
+                                            )
+                                        }
+                                        min={200}
+                                        max={500}
+                                    />
+                                </div>
                             </td>
                             <td>
-                                <button
-                                    onClick={(event) => {
-                                        event.preventDefault();
-                                        props.deleteResponse(index);
-                                    }}
-                                >
-                                    DELETE
-                                </button>
+                                <div className="flex flex-col justify-center items-center m-[10px]">
+                                    <div>
+                                        <button
+                                            onClick={(event) => {
+                                                event.preventDefault();
+                                                props.deleteResponse(index);
+                                            }}
+                                        >
+                                            DELETE
+                                        </button>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-            <button style={{ margin: "2vh 0 0 0" }} onClick={props.addResponse}>
+            <button className="ml-[2vh]" onClick={props.addResponse}>
                 Add Response
             </button>
         </div>
