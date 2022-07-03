@@ -6,6 +6,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.List;
 
+//TODO custom responses should be deleted with the MockRequest
 @Entity
 @Data
 @AllArgsConstructor

@@ -33,3 +33,4 @@ Server/!**/src/test/**/build/
 Server/.vscode/
 
 UIDashboard/node_modules/
+UIDashboard/dist/

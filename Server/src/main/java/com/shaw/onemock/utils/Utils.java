@@ -54,4 +54,8 @@ public class Utils {
         }
         return new ResponseModel(response, contentType, statusCode);
     }
+
+    public static String convertPathToRegex(String path) {
+        return "^" + path.replaceAll("\\{\\}", "[^/?]+") + "$";
+    }
 }

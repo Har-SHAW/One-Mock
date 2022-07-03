@@ -19,6 +19,7 @@ public class RequestDto {
     private String method;
     private String timeStamp;
     private List<HeaderDto> headers;
+    private String params;
 
     public RequestDto(Request request) {
         this.id = request.getRequestId();
@@ -26,6 +27,7 @@ public class RequestDto {
         this.path = request.getPath();
         this.method = request.getMethod();
         this.timeStamp = request.getTimeStamp();
+        this.params = request.getParams();
         this.headers = new ArrayList<>();
         for (Header header : request.getHeaders()) {
             this.headers.add(new HeaderDto(header));

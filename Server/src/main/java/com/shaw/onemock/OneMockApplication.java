@@ -1,13 +1,21 @@
 package com.shaw.onemock;
 
 import com.shaw.onemock.constants.CaptureState;
+import com.shaw.onemock.constants.MockPathHolder;
+import com.shaw.onemock.projections.MockOnlyPath;
+import com.shaw.onemock.repositories.mock.MockRequestRepository;
+import com.shaw.onemock.utils.Utils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.data.util.Pair;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @SpringBootApplication
 public class OneMockApplication {
@@ -21,7 +29,13 @@ public class OneMockApplication {
             System.err.println("Failed to create directory!" + e.getMessage());
         }
         CaptureState.captureOff();
-        SpringApplication.run(OneMockApplication.class, args);
+
+        ConfigurableApplicationContext context = SpringApplication.run(OneMockApplication.class, args);
+
+        MockPathHolder mockPathHolder = context.getBean(MockPathHolder.class);
+        MockRequestRepository mockRequestRepository = context.getBean(MockRequestRepository.class);
+        List<MockOnlyPath> paths = mockRequestRepository.findBy(MockOnlyPath.class);
+        mockPathHolder.addAllPaths(paths.stream().map(e -> Pair.of(e.getMockId(), Utils.convertPathToRegex(e.getPath()))).collect(Collectors.toList()));
     }
 
 }

@@ -1,5 +1,6 @@
 package com.shaw.onemock.services;
 
+import com.shaw.onemock.constants.MockPathHolder;
 import com.shaw.onemock.dtos.mocks.CustomResponseDto;
 import com.shaw.onemock.dtos.mocks.MockRequestDto;
 import com.shaw.onemock.dtos.mocks.SimpleMockDto;
@@ -9,7 +10,9 @@ import com.shaw.onemock.models.mock.CustomResponse;
 import com.shaw.onemock.models.mock.MockRequest;
 import com.shaw.onemock.repositories.mock.CustomResponseRepository;
 import com.shaw.onemock.repositories.mock.MockRequestRepository;
+import com.shaw.onemock.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -22,6 +25,8 @@ public class MockService {
     private MockRequestRepository mockRequestRepository;
     @Autowired
     private CustomResponseRepository customResponseRepository;
+    @Autowired
+    private MockPathHolder mockPathHolder;
 
     public void addMock(MockRequestDto mockRequestDto) throws MockAlreadyExist {
         if (mockRequestRepository.existsByMethodAndPath(mockRequestDto.getMethod(), mockRequestDto.getPath())) {
@@ -40,6 +45,7 @@ public class MockService {
             }
             customResponseRepository.saveAll(customResponses);
         }
+        mockPathHolder.addPath(Pair.of(mockRequest.getMockId(), Utils.convertPathToRegex(mockRequestDto.getPath())));
     }
 
     public void updateMock(MockRequestDto mockRequestDto, Long id) throws MockRequestNotFound {
@@ -61,6 +67,7 @@ public class MockService {
 
     public void deleteMock(Long mockId) {
         mockRequestRepository.deleteById(mockId);
+        mockPathHolder.removePath(mockId);
     }
 
     public List<SimpleMockDto> getAllMocks() {

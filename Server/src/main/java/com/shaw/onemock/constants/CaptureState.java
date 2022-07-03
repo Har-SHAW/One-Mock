@@ -1,5 +1,6 @@
 package com.shaw.onemock.constants;
 
+//TODO Make it as a bean
 public class CaptureState {
     private static boolean capture = false;
     private static Long lastId;

@@ -5,11 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+//TODO remove body
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class PartialRequestDto {
-
     private Long id;
     private String body;
     private String path;

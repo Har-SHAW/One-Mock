@@ -18,10 +18,11 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                  MiniCssExtractPlugin.loader,
-                  "css-loader", "postcss-loader",
-                  ],
-              },
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                    "postcss-loader",
+                ],
+            },
             {
                 test: /\.(png|jpe?g|gif)$/i,
                 loader: "file-loader",
@@ -40,8 +41,8 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin({
             filename: "styles.css",
-            chunkFilename: "styles.css"
-          }),
+            chunkFilename: "styles.css",
+        }),
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             favicon: "./public/favicon.ico",

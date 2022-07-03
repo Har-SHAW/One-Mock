@@ -27,6 +27,9 @@ public class Request {
     @NonNull
     private String timeStamp;
 
+    @NonNull
+    private String params;
+
     @ManyToMany
     @JoinTable(
             name = "request_header",
