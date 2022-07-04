@@ -4,7 +4,12 @@ import PropTypes from "prop-types";
 const SlideSwitch = (props) => {
     return (
         <label className="switch">
-            <input id="capture" defaultChecked={props.turnOn} type="checkbox" />
+            <input
+                id="capture"
+                defaultChecked={props.turnOn}
+                type="checkbox"
+                onChange={() => props.onToggle()}
+            />
             <span className="slider round" />
         </label>
     );
@@ -12,6 +17,7 @@ const SlideSwitch = (props) => {
 
 SlideSwitch.propTypes = {
     turnOn: PropTypes.bool,
+    onToggle: PropTypes.func,
 };
 
 export default SlideSwitch;

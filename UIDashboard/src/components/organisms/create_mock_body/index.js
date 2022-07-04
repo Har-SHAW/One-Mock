@@ -169,6 +169,7 @@ const CreateMocksBody = (props) => {
                             <div className="w-4/6 px-5 flex flex-col space-y-1">
                                 <label>Path</label>
                                 <input
+                                    pattern="^(\/[^?]+)+(\?([^=?&/]+=[^=?&/]+)(&[^=?&/]+=[^=?&/]+)*)?"
                                     className="px-2.5 py-1.5"
                                     placeholder="Path"
                                     type="text"

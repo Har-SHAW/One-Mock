@@ -2,6 +2,7 @@ package com.shaw.onemock.models.mock;
 
 import com.shaw.onemock.dtos.mocks.MockRequestDto;
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.*;
 import java.util.List;
@@ -34,7 +35,7 @@ public class MockRequest {
     @OneToMany(mappedBy = "mockRequest")
     private List<CustomResponse> customResponses;
 
-    public MockRequest(MockRequestDto mockRequestDto) {
+    public MockRequest(@NotNull MockRequestDto mockRequestDto) {
         this.method = mockRequestDto.getMethod();
         this.path = mockRequestDto.getPath();
         this.duration = mockRequestDto.getDuration();
@@ -44,7 +45,7 @@ public class MockRequest {
         this.format = mockRequestDto.getFormat();
     }
 
-    public void copyFrom(MockRequestDto mockRequestDto) {
+    public void copyFrom(@NotNull MockRequestDto mockRequestDto) {
         this.method = mockRequestDto.getMethod();
         this.path = mockRequestDto.getPath();
         this.duration = mockRequestDto.getDuration();

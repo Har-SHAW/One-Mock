@@ -76,9 +76,9 @@ public class RequestService {
         Integer statusCode = GlobalConstants.DEFAULT_RESPONSE_STATUS;
         MediaType contentType = MediaType.TEXT_PLAIN;
         String body = Utils.getBody(request);
-        List<String> paths = Arrays.asList(path.split("/?"));
+        String[] paths = path.split("\\?");
         if (CaptureState.getCapture()) {
-            saveRequest(request, paths.get(0), paths.size() == 2 ? paths.get(1) : "", body);
+            saveRequest(request, paths[0], paths.length == 2 ? paths[1] : "", body);
         }
 
         Long mockId = matchMockPathPool(path);

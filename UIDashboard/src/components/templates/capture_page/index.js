@@ -6,6 +6,7 @@ import BodyRoot from "../../atoms/body/root";
 const CaptureTemplate = (props) => {
     return (
         <BodyRoot>
+            {props.popup}
             {props.navigation}
             {props.neck}
             {props.body}
@@ -13,6 +14,11 @@ const CaptureTemplate = (props) => {
     );
 };
 
-CaptureTemplate.propTypes = {};
+CaptureTemplate.propTypes = {
+    popup: PropTypes.element,
+    navigation: PropTypes.element,
+    neck: PropTypes.element,
+    body: PropTypes.element,
+};
 
 export default CaptureTemplate;

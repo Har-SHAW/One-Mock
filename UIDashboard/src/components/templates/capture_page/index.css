@@ -17,12 +17,21 @@
 }
 
 .request {
+    margin-bottom: 0.5%;
+    margin-top: 0.5%;
     transition: margin 0.2s linear, transform 0.2s;
 }
 
-#selected_request {
+.selected_request {
     margin-bottom: 3%;
     margin-top: 3%;
+    transform: scale(1.1);
+    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.selected_request:first-child {
+    margin-bottom: 3%;
+    margin-top: 0.5%;
     transform: scale(1.1);
     filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
 }

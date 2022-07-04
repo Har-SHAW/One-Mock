@@ -7,7 +7,10 @@ const CaptureNeck = (props) => {
     return (
         <div className="neck flex flex-row justify-between items-center">
             <div className="flex justify-center items-center">
-                <SlideSwitch turnOn={props.capture} />
+                <SlideSwitch
+                    turnOn={props.capture}
+                    onToggle={() => props.onToggle()}
+                />
                 <div className="w-3" />
                 {props.capture ? (
                     <span className="font-acl text-onemock">Capture ON</span>
@@ -22,6 +25,7 @@ const CaptureNeck = (props) => {
 
 CaptureNeck.propTypes = {
     capture: PropTypes.bool,
+    onToggle: PropTypes.func,
 };
 
 export default CaptureNeck;

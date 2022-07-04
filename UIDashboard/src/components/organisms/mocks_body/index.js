@@ -12,12 +12,12 @@ import RightBody from "../../atoms/body/right_body";
 const MocksBody = (props) => {
     const [fullMock, setFullMock] = useState(null);
 
-    useEffect(async () => {
-        if (fullMock == null && !props.loading) {
-            const response = await getFullMockApi(props.mocksData[0].id);
-            setFullMock(response);
-        }
-    });
+    // useEffect(async () => {
+    //     if (fullMock == null && !props.loading) {
+    //         const response = await getFullMockApi(props.mocksData[0].id);
+    //         setFullMock(response);
+    //     }
+    // });
 
     async function getFullMock(id) {
         setFullMock(await getFullMockApi(id));
@@ -55,7 +55,7 @@ const MocksBody = (props) => {
     } else {
         return (
             <Body>
-                <LeftBody className="left_body">
+                <LeftBody>
                     {props.mocksData.map((element, index) => (
                         <RequestChip
                             key={"request_chip_" + index}
@@ -215,7 +215,13 @@ const MocksBody = (props) => {
                             </div>
                         </div>
                     ) : (
-                        <div>No Mock Selected</div>
+                        <div className="h-full w-full flex flex-col justify-center items-center font-acl text-gray-500 text-5xl bg-gray-200">
+                            <div>Mock Details</div>
+                            <div className="h-5"></div>
+                            <div style={{ fontSize: "1.5rem" }}>
+                                Select a Mock to show details.
+                            </div>
+                        </div>
                     )}
                 </RightBody>
             </Body>

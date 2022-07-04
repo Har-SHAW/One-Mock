@@ -4,8 +4,10 @@ import PropTypes from "prop-types";
 const RequestChip = (props) => {
     return (
         <div
-            className="request w-[88%] h-[5vh] rounded-[15px] my-[0.5%] shadow-lg hover:shadow-xl flex flex-row justify-center align-center cursor-pointer"
-            id={props.isSelected ? "selected_request" : "request"}
+            className={`request w-[88%] h-[5vh] rounded-[15px] shadow-lg hover:shadow-xl flex flex-row justify-center align-center cursor-pointer ${
+                props.isSelected ? "request selected_request" : "request"
+            }`}
+            //id={props.isSelected ? "selected_request" : "request"}
             style={{
                 backgroundColor: props.secondaryColor,
                 border: "2px solid " + props.color,
