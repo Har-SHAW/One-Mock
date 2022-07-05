@@ -25,10 +25,10 @@ public class Request {
     private String method;
 
     @NonNull
-    private String timeStamp;
+    private String params;
 
     @NonNull
-    private String params;
+    private String timeStamp;
 
     @ManyToMany
     @JoinTable(

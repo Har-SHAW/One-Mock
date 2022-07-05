@@ -58,4 +58,13 @@ public class Utils {
     public static String convertPathToRegex(String path) {
         return "^" + path.replaceAll("\\{\\}", "[^/?]+") + "$";
     }
+
+    public static String getParamString(HttpServletRequest request) {
+        List<String> paramString = new ArrayList<>();
+        for (String param : request.getParameterMap().keySet()) {
+            String singleParam = param + "=" + String.join(",", request.getParameterValues(param));
+            paramString.add(singleParam);
+        }
+        return String.join("&", paramString);
+    }
 }

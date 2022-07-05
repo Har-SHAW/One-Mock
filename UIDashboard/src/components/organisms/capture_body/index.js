@@ -7,6 +7,7 @@ import RequestChip from "../../molecules/request_chip";
 import { GlobalConstants } from "../../../constants/GlobalConstants";
 import RightBody from "../../atoms/body/right_body";
 import { getFullRequestApi } from "../../../apis/capture_api";
+import RequestDetails from "../../molecules/request_details";
 
 const CaptureBody = (props) => {
     const [fullRequest, setFullRequest] = useState(null);
@@ -60,7 +61,7 @@ const CaptureBody = (props) => {
                 </LeftBody>
                 <RightBody>
                     {fullRequest != null ? (
-                        <div>{fullRequest.id}</div>
+                        <RequestDetails request={fullRequest} />
                     ) : (
                         <div>no</div>
                     )}

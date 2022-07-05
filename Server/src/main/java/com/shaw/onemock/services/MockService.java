@@ -3,11 +3,11 @@ package com.shaw.onemock.services;
 import com.shaw.onemock.constants.MockPathHolder;
 import com.shaw.onemock.dtos.mocks.CustomResponseDto;
 import com.shaw.onemock.dtos.mocks.MockRequestDto;
-import com.shaw.onemock.dtos.mocks.SimpleMockDto;
 import com.shaw.onemock.exceptions.MockAlreadyExist;
 import com.shaw.onemock.exceptions.MockRequestNotFound;
 import com.shaw.onemock.models.mock.CustomResponse;
 import com.shaw.onemock.models.mock.MockRequest;
+import com.shaw.onemock.projections.PartialMockProjection;
 import com.shaw.onemock.repositories.mock.CustomResponseRepository;
 import com.shaw.onemock.repositories.mock.MockRequestRepository;
 import com.shaw.onemock.utils.Utils;
@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class MockService {
@@ -70,9 +69,8 @@ public class MockService {
         mockPathHolder.removePath(mockId);
     }
 
-    public List<SimpleMockDto> getAllMocks() {
-        List<MockRequest> mockRequests = mockRequestRepository.findAll();
-        return mockRequests.stream().map(SimpleMockDto::new).collect(Collectors.toList());
+    public List<PartialMockProjection> getAllMocks() {
+        return mockRequestRepository.findBy(PartialMockProjection.class);
     }
 
     public MockRequestDto getFullMock(Long id) throws MockRequestNotFound {
