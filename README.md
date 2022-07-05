@@ -19,17 +19,6 @@ A developer friendly mock server with GUI, Traffic Capturing and many more featu
 - SQliteDB and Java allows the mocks and capture history portable across the machines.
 
 
-## Upcoming Features
-
-- Dark Mode
-
-## Tech Stack
-
-**Client:** React, TailwindCSS
-
-**Server:** Spring Boot, SqliteDB
-
-
 ## Requirements
 
 To run this project, you will need to install the following in your machine.
@@ -67,6 +56,12 @@ function App() {
   return <Component />
 }
 ```
+
+## Tech Stack
+
+**Client:** React, TailwindCSS
+
+**Server:** Spring Boot, SqliteDB
 
 
 ## Demo
