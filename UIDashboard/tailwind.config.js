@@ -12,6 +12,7 @@ module.exports = {
         extend: {
             colors: {
                 onemock: "#0085FF",
+                heading: "#0d5ba6",
             },
         },
     },

@@ -87,7 +87,8 @@ const MocksBody = (props) => {
                                     updateMock(fullMock.id);
                                 }}
                             />
-                            <div style={{ height: "3vh" }}></div>
+                            <div className="mb-5"></div>
+
                             <div
                                 style={{
                                     display: "flex",
@@ -118,7 +119,9 @@ const MocksBody = (props) => {
                                     {fullMock.path}
                                 </label>
 
-                                <div style={{ height: "1vh" }}></div>
+                                <div className="bg-gray-500 mt-10 mb-5 text-white py-2.5 font-bold rounded-tl-[15px] rounded-tr-[15px] w-[94%] text-center">
+                                    Mock Response Body
+                                </div>
 
                                 {fullMock.hasMultipleResponse ? (
                                     <div>
@@ -185,7 +188,6 @@ const MocksBody = (props) => {
                                             flexDirection: "column",
                                         }}
                                     >
-                                        <div style={{ height: "5vh" }} />
                                         <label>
                                             <b>Status Code: </b>
                                             {fullMock.statusCode}
@@ -197,6 +199,7 @@ const MocksBody = (props) => {
                                         </label>
                                         <div style={{ height: "1vh" }} />
                                         <a
+                                            className="text-lg"
                                             href=""
                                             onClick={(event) => {
                                                 event.preventDefault();
@@ -208,10 +211,15 @@ const MocksBody = (props) => {
                                                 );
                                             }}
                                         >
-                                            SHOW BODY
+                                            <strong>
+                                                <code>SHOW BODY</code>
+                                            </strong>
                                         </a>
                                     </div>
                                 )}
+                                <div className="bg-gray-500 mt-10 mb-5 text-white py-2.5 font-bold rounded-tl-[15px] rounded-tr-[15px] w-[94%] text-center">
+                                    Mock Headers
+                                </div>
                             </div>
                         </div>
                     ) : (

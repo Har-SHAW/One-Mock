@@ -8,6 +8,7 @@ import { GlobalConstants } from "../../../constants/GlobalConstants";
 import RightBody from "../../atoms/body/right_body";
 import { getFullRequestApi } from "../../../apis/capture_api";
 import RequestDetails from "../../molecules/request_details";
+import { coloredFormatRequestBody } from "../../../utils/formatter";
 
 const CaptureBody = (props) => {
     const [fullRequest, setFullRequest] = useState(null);
@@ -61,9 +62,61 @@ const CaptureBody = (props) => {
                 </LeftBody>
                 <RightBody>
                     {fullRequest != null ? (
-                        <RequestDetails request={fullRequest} />
+                        <div className="flex flex-col">
+                            <RequestDetails request={fullRequest} />
+                            <div className="bg-gray-500 mt-10 text-white py-2.5 font-bold rounded-tl-[15px] rounded-tr-xl w-[94%] text-center">
+                                Request Body
+                            </div>
+                            {fullRequest.body && fullRequest.body != "" ? (
+                                <div>
+                                    <a
+                                        className="mt-2.5 text-lg"
+                                        href=""
+                                        onClick={(event) => {
+                                            event.preventDefault();
+                                            props.popupOpen(
+                                                coloredFormatRequestBody(
+                                                    fullRequest.body,
+                                                    fullRequest.headers.filter(
+                                                        (e) =>
+                                                            e.key.toLowerCase() ==
+                                                            "content-type"
+                                                    )[0].value
+                                                )
+                                            );
+                                        }}
+                                    >
+                                        <strong>
+                                            <code>SHOW BODY</code>
+                                        </strong>
+                                    </a>
+                                    <label className="ml-10">
+                                        <strong className="underline">
+                                            Format:
+                                        </strong>{" "}
+                                        {
+                                            fullRequest.headers.filter(
+                                                (e) =>
+                                                    e.key.toLowerCase() ==
+                                                    "content-type"
+                                            )[0].value
+                                        }
+                                    </label>
+                                </div>
+                            ) : (
+                                <div className="text-black mt-2.5">
+                                    EMPTY BODY
+                                </div>
+                            )}
+                        </div>
                     ) : (
-                        <div>no</div>
+                        <div className="h-full w-full flex flex-col justify-center items-center font-acl text-gray-500 text-5xl bg-gray-200">
+                            <div>Request Details</div>
+                            <div className="h-5"></div>
+                            <div style={{ fontSize: "1.5rem" }}>
+                                Select a Request to show details.
+                            </div>
+                        </div>
                     )}
                 </RightBody>
             </Body>

@@ -164,6 +164,9 @@ export function coloredFormatRequestBody(string, format) {
 
         case "application/xml":
             return coloredFormatXmlBody(string, true);
+
+        default:
+            return string;
     }
 }
 

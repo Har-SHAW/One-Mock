@@ -10,7 +10,6 @@
     transition: width 0.1s linear;
     font-weight: 800;
     font-family: "Montserrat", sans-serif;
-    border-radius: 15px;
     font-size: 1.1rem;
 }
 
@@ -18,11 +17,13 @@
     background-color: #f93e3d;
     margin-right: 0.75%;
     border: 2px solid #f93e3d;
+    border-radius: 15px 15px 0 0;
 }
 
 .edit_button {
     background-color: #0d5ba6;
     border: 2px solid #0d5ba6;
+    border-radius: 15px 15px 0 0;
 }
 
 table {
