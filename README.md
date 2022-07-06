@@ -1,12 +1,14 @@
-         @@@@@@                                          @@@@       @@@@                               @@@@
-      @@@@@* @@@@@                                       @@@@@     @@@@@                               @@@@
-    :@@@@      @@@@@  @@  @@@@@@@    :@@@@@@@@#         o@@@@@@   @@@@@@*    @@@@@@@@@     @@@@@@@@@   @@@@    @@@
-    @@@@@      *@@@@  @@@@@   @@@@  @@@@    @@@@        @@@@@@@   @@@@@@@  8@@@@    @@@@  @@@@     @@  @@@@   @@@
-    @@@@:       @@@@  @@@@    @@@@ @@@@#    @@@@        @@ #@@@@ @@@@@@@@  @@@@     @@@@ @@@@          @@@@.@@@
-    @@@@@      @@@@@  @@@@    @@@@ @@@@@@@@@@@8        @@@  @@@@ @@  @@@@  @@@@     @@@@ @@@@          @@@@@@@@@
-     @@@@&     @@@@   @@@@    @@@@  @@@@     @@#       @@@   @@@@@@  @@@@@ @@@@     @@@@  @@@@     @@  @@@@ :@@@@
-       @@@@@@@@@@&    @@@@    @@@    @@@@@@@@@         @@@   @@@@@   @@@@@   @@@@@@@@@     @@@@@@@@@   @@@@   @@@@
-                             @@@
+```
+     @@@@@@                                       @@@@       @@@@                               @@@@
+  @@@@@* @@@@@                                    @@@@@     @@@@@                               @@@@
+:@@@@      @@@@@  @@  @@@@@@@    :@@@@@@@@#      o@@@@@@   @@@@@@*    @@@@@@@@@     @@@@@@@@@   @@@@    @@@
+@@@@@      *@@@@  @@@@@   @@@@  @@@@    @@@@     @@@@@@@   @@@@@@@  8@@@@    @@@@  @@@@     @@  @@@@   @@@
+@@@@:       @@@@  @@@@    @@@@ @@@@#    @@@@     @@ #@@@@ @@@@@@@@  @@@@     @@@@ @@@@          @@@@.@@@
+@@@@@      @@@@@  @@@@    @@@@ @@@@@@@@@@@8     @@@  @@@@ @@  @@@@  @@@@     @@@@ @@@@          @@@@@@@@@
+ @@@@&     @@@@   @@@@    @@@@  @@@@     @@#    @@@   @@@@@@  @@@@@ @@@@     @@@@  @@@@     @@  @@@@ :@@@@
+   @@@@@@@@@@&    @@@@    @@@    @@@@@@@@@      @@@   @@@@@   @@@@@   @@@@@@@@@     @@@@@@@@@   @@@@   @@@@
+                         @@@                    
+```
 
 A developer friendly mock server with GUI, Traffic Capturing and many more features.
 
@@ -21,52 +23,53 @@ A developer friendly mock server with GUI, Traffic Capturing and many more featu
 
 ## Requirements
 
-To run this project, you will need to install the following in your machine.
+To run the server, you will need to install the following in your machine.
 
 `Java`
 
 
 ## Run Locally
 
-Download the `.jar` file from the following link.
+- Download the `.jar` build file from https://github.com/har-shaw/One-Mock
 
+
+**Start the Server**
 ```bash
-  https://link-to-jar-file
+java -jar onemock.jar
 ```
+Default port is `8080`
 
-Go to the directory where it is downloaded
-
+**Start the Server with custom port**
 ```bash
-  cd /path/to/onemock.jar
-```
-
-Start the server
-
-```bash
-  java -jar onemock.jar
+java -jar -Dserver.port=8090 onemock.jar
 ```
 
 
 ## Usage
 
-```javascript
-import Component from 'my-project'
+Access the dashboard at http://localhost:8080/home from any browser.
 
-function App() {
-  return <Component />
-}
+To use the mock server in any front-end code put the base url as `http://localhost:8080/onemock` and append the rest of the path to this.
+
+**For Example**
+
+```javascript
+const base_url = "http://localhost:8080/onemock";
+
+let fetchRes = fetch(base_url + "/todos/1");
+
+fetchRes
+    .then((res) => res.json())
+    .then((data) => {
+        console.log(data);
+    });
 ```
 
 ## Tech Stack
 
-**Client:** React, TailwindCSS
+**Dashboard:** React, TailwindCSS
 
-**Server:** Spring Boot, SqliteDB
-
-
-## Demo
-
-Insert gif or link to demo
+**Server:** Spring Boot, SQLite Database
 
 
 ## Documentation
@@ -76,23 +79,14 @@ Insert gif or link to demo
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[MPL-2.0 license](https://github.com/Har-SHAW/One-Mock/blob/master/LICENSE.txt)
 
-
-## Badges
-
-Add badges from somewhere like: [shields.io](https://shields.io/)
-
-[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
-
-[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
-
-[![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
+[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://github.com/Har-SHAW/One-Mock/blob/master/LICENSE.txt) [![License: MPL 2.0](https://img.shields.io/badge/Docs-One%20Mock-blue.svg)](https://github.com/Har-SHAW/One-Mock/blob/master/LICENSE.txt) [![License: MPL 2.0](https://img.shields.io/badge/Author-Harsha-red.svg)](https://github.com/Har-SHAW)
 
 
 ## Authors
 
-- [@har-shaw](https://www.github.com/har-shaw)
+[Har-SHAW](https://www.github.com/har-shaw)
 
 
 ## Feedback
