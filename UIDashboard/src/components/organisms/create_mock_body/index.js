@@ -9,6 +9,11 @@ import { deformatRequestBody } from "../../../utils/deformatter";
 import CancelCreateBar from "../../molecules/cancel_create_bar";
 import CreateMockTable from "../../molecules/create_mock_table";
 import GiantPopup from "../../molecules/giant_popup";
+import DropDown from "../drop-down";
+import AvailablePathsDropDown from "../drop-down/available_paths";
+import DurationDropDown from "../drop-down/duration";
+import MultipleResponseDropDown from "../drop-down/multiple_response";
+import RequestValueDropDown from "../drop-down/request_value";
 
 const CreateMocksBody = (props) => {
     const [state, setState] = useState({
@@ -142,6 +147,14 @@ const CreateMocksBody = (props) => {
             <div className="flex justify-center h-full overflow-auto">
                 <form id="main_form" className="w-screen">
                     <div className="flex flex-col w-1/2 mx-auto my-[2vw]">
+                        <div className="flex space-x-2">
+                            <AvailablePathsDropDown />
+                            <DurationDropDown />
+                        </div>
+                        <div className="flex space-x-2">
+                            <MultipleResponseDropDown />
+                            <RequestValueDropDown />
+                        </div>
                         <div className="w-full flex justify-between my-[2vw]">
                             <div className="w-1/6 flex flex-col space-y-1">
                                 <label>Method</label>
