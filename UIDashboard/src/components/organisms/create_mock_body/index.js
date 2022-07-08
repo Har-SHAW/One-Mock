@@ -184,7 +184,7 @@ const CreateMocksBody = (props) => {
                                 <input
                                     pattern="^(\/[^?]+)+(\?([^=?&/]+=[^=?&/]+)(&[^=?&/]+=[^=?&/]+)*)?"
                                     className="px-2.5 py-1.5"
-                                    placeholder="Path"
+                                    placeholder="Enter the Path"
                                     type="text"
                                     defaultValue={state.path}
                                     onChange={(value) => {
@@ -282,7 +282,7 @@ const CreateMocksBody = (props) => {
                                     />
                                 </div>
                                 <div className="w-full flex flex-col space-y-1">
-                                    <label>BodyFormat</label>
+                                    <label>Body Format</label>
                                     <select
                                         className="px-2.5 py-1.5"
                                         defaultValue={state.format}

@@ -15,7 +15,7 @@
 .gradient {
     position: relative;
     width: 100%;
-    height: 60%;
+    height: 100%;
     left: 0px;
     top: 0px;
     background-color: #0085ff;
@@ -272,6 +272,14 @@ input:checked + .slider:before {
     margin-bottom: 1.25rem;
 }
 
+.mb-1 {
+    margin-bottom: 0.25rem;
+}
+
+.mb-3 {
+    margin-bottom: 0.75rem;
+}
+
 .inline-block {
     display: inline-block;
 }
@@ -402,6 +410,12 @@ input:checked + .slider:before {
     margin-left: calc(1.25rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
+.space-x-44 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(11rem * var(--tw-space-x-reverse));
+    margin-left: calc(11rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
 .overflow-auto {
     overflow: auto;
 }
@@ -412,6 +426,10 @@ input:checked + .slider:before {
 
 .rounded-\[15px\] {
     border-radius: 15px;
+}
+
+.rounded-xl {
+    border-radius: 12px;
 }
 
 .rounded-l-xl {
@@ -482,6 +500,10 @@ input:checked + .slider:before {
     padding: 0.5rem;
 }
 
+.p-5 {
+    padding: 1.25rem;
+}
+
 .px-\[1\.5\%\] {
     padding-left: 1.5%;
     padding-right: 1.5%;
@@ -522,6 +544,16 @@ input:checked + .slider:before {
     padding-right: 1.25rem;
 }
 
+.py-5 {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+}
+
+.px-12 {
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
 .pl-\[5\%\] {
     padding-left: 5%;
 }
@@ -532,6 +564,10 @@ input:checked + .slider:before {
 
 .text-start {
     text-align: start;
+}
+
+.text-end {
+    text-align: end;
 }
 
 .font-mont {
@@ -555,6 +591,11 @@ input:checked + .slider:before {
 .text-5xl {
     font-size: 3rem;
     line-height: 1;
+}
+
+.text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
 }
 
 .font-extrabold {
@@ -582,6 +623,16 @@ input:checked + .slider:before {
 .text-gray-500 {
     --tw-text-opacity: 1;
     color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+.text-gray-700 {
+    --tw-text-opacity: 1;
+    color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+
+.text-gray-600 {
+    --tw-text-opacity: 1;
+    color: rgb(75 85 99 / var(--tw-text-opacity));
 }
 
 .text-onemock {

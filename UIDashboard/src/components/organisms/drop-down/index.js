@@ -19,7 +19,7 @@ const DropDown = (props) => {
     }
     return (
         <div
-            className="my-2.5"
+            className="my-2.5 text-gray-700"
             style={{ width: props.width, userSelect: "none" }}
         >
             <div className="cursor-pointer" onClick={toggle}>

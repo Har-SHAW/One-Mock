@@ -11,12 +11,11 @@ ${AnsiColor.BRIGHT_BLUE}
                              @@@
 ${AnsiColor.BRIGHT_WHITE}
 --------------------------------------------------------------------------------------------------------------------------------
-${AnsiColor.BRIGHT_BLUE}    Application Name    :      ${application.title}
-    Application Version :      ${application.version}
-    Spring Boot Version :     ${spring-boot.formatted-version}
+${AnsiColor.BRIGHT_BLUE}     Title   :      ${application.title}
+     Version :      ${application.version}
 ${AnsiColor.BRIGHT_WHITE}
-    Open the One Mock dashboard at       http://localhost:${server.port}/dashboard
+    Open the dashboard in browser at     http://localhost:${server.port}
     Put the base url in your project as  http://localhost:${server.port}/onemock
 
-    You can also replace the host with your machine's IP to connect with devices within your local network
+    You can also replace the localhost with your machine's IP to connect with devices within your local network
 --------------------------------------------------------------------------------------------------------------------------------

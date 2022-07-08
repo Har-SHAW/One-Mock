@@ -25,7 +25,9 @@ const NavigationBar = (props) => {
                 </div>
                 <div
                     className="nav_button"
-                    onClick={() => (location.href = "/home")}
+                    onClick={() =>
+                        window.open("https://github.com/Har-SHAW/One-Mock")
+                    }
                 >
                     Github
                 </div>
