@@ -8,7 +8,7 @@
 
 A developer friendly mock server with GUI, Traffic Capturing and many more features.
 
-[![License: MPL 2.0](https://img.shields.io/badge/Download-OneMock-brightgreen.svg)](https://github.com/Har-SHAW/One-Mock/releases/download/One-Mock/onemock-1.0.jar)&emsp;[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-00a2ab.svg)](https://github.com/Har-SHAW/One-Mock/blob/master/LICENSE.txt)&emsp;[![License: MPL 2.0](https://img.shields.io/badge/Docs-One%20Mock-blue.svg)](https://github.com/Har-SHAW/One-Mock/blob/master/LICENSE.txt)&emsp;[![License: MPL 2.0](https://img.shields.io/badge/Author-Harshaw-eb2aae.svg)](https://github.com/Har-SHAW)
+[![Download](https://img.shields.io/badge/Download-One%20Mock-00c735.svg)](https://github.com/Har-SHAW/One-Mock/releases/download/One-Mock/onemock-1.0.jar)&emsp;[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-00a2ab.svg)](https://github.com/Har-SHAW/One-Mock/blob/master/LICENSE.txt)&emsp;[![Documentation](https://img.shields.io/badge/Docs-One%20Mock-blue.svg)](https://github.com/Har-SHAW/One-Mock/blob/master/LICENSE.txt)&emsp;[![Author](https://img.shields.io/badge/Author-Harshaw-eb2aae.svg)](https://github.com/Har-SHAW)&emsp;[![Contact](https://img.shields.io/badge/Contact-Gmail.com-red)](mailto:harshavardhan.gadireddy@gmail.com)
 
 ## Features
 
@@ -27,7 +27,7 @@ To run the server, you will need to install the following in your machine.
 
 ## Run Locally
 
-- Download the `.jar` build file from https://github.com/Har-SHAW/One-Mock/releases/download/One-Mock/onemock-1.0.jar
+- Download the `.jar` build file from&ensp;[![Download](https://img.shields.io/badge/Download-One%20Mock-00c735.svg)](https://github.com/Har-SHAW/One-Mock/releases/download/One-Mock/onemock-1.0.jar)
 
 
 **Start the Server**
@@ -86,5 +86,5 @@ fetchRes
 
 ## Feedback
 
-If you have any feedback, please reach out to us at harshavardhan.gadireddy@gmail.com
+If you have any feedback, please reach out to me at harshavardhan.gadireddy@gmail.com
 

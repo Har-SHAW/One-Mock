@@ -13,9 +13,13 @@ const CaptureNeck = (props) => {
                 />
                 <div className="w-3" />
                 {props.capture ? (
-                    <span className="font-acl text-onemock">Capture ON</span>
+                    <span className="font-acl text-lg text-onemock">
+                        Capture ON
+                    </span>
                 ) : (
-                    <span className="font-acl text-gray-500">Capture OFF</span>
+                    <span className="font-acl text-lg text-gray-500">
+                        Capture OFF
+                    </span>
                 )}
             </div>
             <RefreshCaptureButton />
