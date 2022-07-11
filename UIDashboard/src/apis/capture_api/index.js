@@ -1,6 +1,9 @@
 import axios from "axios";
 
-const baseApi = "http://localhost:8080/api/capture";
+const baseApi =
+    process.env.MODE === "development"
+        ? "http://localhost:8080/api/capture"
+        : "api/capture";
 
 export async function getAllRequests() {
     return (await axios.get(baseApi)).data;

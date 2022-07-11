@@ -2,6 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+require("dotenv").config({ path: "./.env" });
 
 const port = process.env.PORT || 3000;
 
@@ -39,6 +40,12 @@ module.exports = {
         filename: "[name].[fullhash].js",
     },
     plugins: [
+        new webpack.DefinePlugin({
+            "process.env": {
+                MODE: '"development"',
+                VERSION: `'${process.env.npm_package_version}'`,
+            },
+        }),
         new MiniCssExtractPlugin({
             filename: "styles.css",
             chunkFilename: "styles.css",

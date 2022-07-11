@@ -5,8 +5,9 @@ import com.shaw.onemock.dtos.mocks.CustomResponseDto;
 import com.shaw.onemock.dtos.mocks.MockRequestDto;
 import com.shaw.onemock.exceptions.MockAlreadyExist;
 import com.shaw.onemock.exceptions.MockRequestNotFound;
-import com.shaw.onemock.models.mock.CustomResponse;
-import com.shaw.onemock.models.mock.MockRequest;
+import com.shaw.onemock.entities.mock.CustomResponse;
+import com.shaw.onemock.entities.mock.MockRequest;
+import com.shaw.onemock.models.MockPool;
 import com.shaw.onemock.projections.PartialMockProjection;
 import com.shaw.onemock.repositories.mock.CustomResponseRepository;
 import com.shaw.onemock.repositories.mock.MockRequestRepository;
@@ -44,7 +45,7 @@ public class MockService {
             }
             customResponseRepository.saveAll(customResponses);
         }
-        mockPathHolder.addPath(Pair.of(mockRequest.getMockId(), Utils.convertPathToRegex(mockRequestDto.getPath())));
+        mockPathHolder.addPath(new MockPool(mockRequest.getMockId(), mockRequestDto.getPath(), Utils.convertPathToRegex(mockRequestDto.getPath()), mockRequestDto.getMethod()));
     }
 
     public void updateMock(MockRequestDto mockRequestDto, Long id) throws MockRequestNotFound {

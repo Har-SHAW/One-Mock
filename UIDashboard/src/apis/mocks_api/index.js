@@ -1,6 +1,9 @@
 import axios from "axios";
 
-const baseApi = "http://localhost:8080/api/mocks";
+const baseApi =
+    process.env.MODE === "development"
+        ? "http://localhost:8080/api/mocks"
+        : "api/mocks";
 
 export async function createMockApi(body) {
     return (await axios.post(baseApi, body)).data;

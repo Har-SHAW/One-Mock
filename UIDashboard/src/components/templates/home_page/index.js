@@ -8,7 +8,7 @@ const HomePageTemplate = (props) => {
         <BodyRoot>
             <div className="gradient">
                 {props.navigation}
-                <div class="one-mock">One Mock</div>
+                <div className="one-mock">One Mock</div>
             </div>
             <div className="flex justify-between w-screen space-x-44">
                 <div className="flex flex-col py-5 px-12 text-gray-600 w-full">

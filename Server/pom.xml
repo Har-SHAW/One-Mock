@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.shaw</groupId>
 	<artifactId>onemock</artifactId>
-	<version>1.0</version>
+	<version>1.1</version>
 	<name>OneMock</name>
 	<description>A tool for mocking api&apos;s</description>
 	<properties>

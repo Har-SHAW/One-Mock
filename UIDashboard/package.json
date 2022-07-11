@@ -1,6 +1,6 @@
 {
     "name": "one-mock-dashboard",
-    "version": "1.0.0",
+    "version": "v1.1",
     "main": "index.js",
     "scripts": {
         "start": "webpack serve --config ./webpack.dev.js --mode development",
@@ -41,7 +41,8 @@
         "tailwindcss": "^3.1.4",
         "webpack": "^5.3.2",
         "webpack-cli": "^4.1.0",
-        "webpack-dev-server": "^3.11.0"
+        "webpack-dev-server": "^3.11.0",
+        "dotenv": "^16.0.1"
     },
     "dependencies": {
         "axios": "^0.21.1",

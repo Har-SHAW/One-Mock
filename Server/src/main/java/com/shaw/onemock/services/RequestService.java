@@ -4,9 +4,10 @@ import com.shaw.onemock.constants.CaptureState;
 import com.shaw.onemock.constants.GlobalConstants;
 import com.shaw.onemock.constants.MockPathHolder;
 import com.shaw.onemock.dtos.utils.ResponseModel;
-import com.shaw.onemock.models.mock.MockRequest;
-import com.shaw.onemock.models.requests.Header;
-import com.shaw.onemock.models.requests.Request;
+import com.shaw.onemock.entities.mock.MockRequest;
+import com.shaw.onemock.entities.requests.Header;
+import com.shaw.onemock.entities.requests.Request;
+import com.shaw.onemock.models.MockPool;
 import com.shaw.onemock.repositories.mock.MockRequestRepository;
 import com.shaw.onemock.repositories.request.HeaderRepository;
 import com.shaw.onemock.repositories.request.RequestRepository;
@@ -21,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class RequestService {
@@ -60,11 +62,10 @@ public class RequestService {
         CaptureState.setLastId(repository.save(requestEntity).getRequestId());
     }
 
-    public Long matchMockPathPool(String path) {
-        System.out.println(path);
-        for (Pair<Long, String> regexPath : mockPathHolder.getPaths()) {
-            if (path.matches(regexPath.getSecond())) {
-                return regexPath.getFirst();
+    public Long matchMockPathPool(String path, String method) {
+        for (MockPool regexPath : mockPathHolder.getPaths()) {
+            if (path.matches(regexPath.getRegexPath()) && method.equals(regexPath.getMethod())) {
+                return regexPath.getMockId();
             }
         }
         return 0L;
@@ -77,15 +78,22 @@ public class RequestService {
         MediaType contentType = MediaType.TEXT_PLAIN;
         String body = Utils.getBody(request);
         String params = Utils.getParamString(request);
-        System.out.println(params);
         if (CaptureState.getCapture()) {
             saveRequest(request, path, params, body);
         }
 
-        Long mockId = matchMockPathPool(path);
+        Long mockId = matchMockPathPool(path, request.getMethod());
         Optional<MockRequest> mockRequestOptional = mockRequestRepository.findById(mockId);
         if (mockRequestOptional.isPresent()) {
             MockRequest mockRequest = mockRequestOptional.get();
+            if (mockRequest.getDuration() > 0){
+                try {
+                    TimeUnit.SECONDS.sleep(mockRequest.getDuration());
+                } catch (InterruptedException ie) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+
             if (mockRequest.getHasMultipleResponse()) {
                 ResponseModel data = Utils.getCustomResponse(mockRequest.getCustomResponses(), body, request);
                 response = data.getResponseBody();

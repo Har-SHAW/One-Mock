@@ -1,7 +1,7 @@
 package com.shaw.onemock.dtos.requests;
 
-import com.shaw.onemock.models.requests.Header;
-import com.shaw.onemock.models.requests.Request;
+import com.shaw.onemock.entities.requests.Header;
+import com.shaw.onemock.entities.requests.Request;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
