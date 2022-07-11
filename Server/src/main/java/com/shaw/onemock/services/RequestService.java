@@ -13,7 +13,6 @@ import com.shaw.onemock.repositories.request.HeaderRepository;
 import com.shaw.onemock.repositories.request.RequestRepository;
 import com.shaw.onemock.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.util.Pair;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -86,7 +85,7 @@ public class RequestService {
         Optional<MockRequest> mockRequestOptional = mockRequestRepository.findById(mockId);
         if (mockRequestOptional.isPresent()) {
             MockRequest mockRequest = mockRequestOptional.get();
-            if (mockRequest.getDuration() > 0){
+            if (mockRequest.getDuration() > 0) {
                 try {
                     TimeUnit.SECONDS.sleep(mockRequest.getDuration());
                 } catch (InterruptedException ie) {

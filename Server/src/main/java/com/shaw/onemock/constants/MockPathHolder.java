@@ -2,7 +2,6 @@ package com.shaw.onemock.constants;
 
 import com.shaw.onemock.models.MockPool;
 import lombok.Data;
-import org.springframework.data.util.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
