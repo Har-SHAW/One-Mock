@@ -5,11 +5,9 @@ import {
     updateMockApi,
 } from "../../../apis/mocks_api";
 import { GlobalConstants } from "../../../constants/GlobalConstants";
-import { deformatRequestBody } from "../../../utils/deformatter";
 import CancelCreateBar from "../../molecules/cancel_create_bar";
 import CreateMockTable from "../../molecules/create_mock_table";
 import GiantPopup from "../../molecules/giant_popup";
-import DropDown from "../drop-down";
 import AvailablePathsDropDown from "../drop-down/available_paths";
 import DurationDropDown from "../drop-down/duration";
 import MultipleResponseDropDown from "../drop-down/multiple_response";
@@ -136,9 +134,6 @@ const CreateMocksBody = (props) => {
                     }}
                     value={popupOpen ? popupData.responseBody : ""}
                     format={popupOpen ? popupData.format : ""}
-                    onFormatChange={(value) => {
-                        console.log(value.target.value);
-                    }}
                 />
             </div>
         );
@@ -182,9 +177,10 @@ const CreateMocksBody = (props) => {
                             <div className="w-4/6 px-5 flex flex-col space-y-1">
                                 <label>Path</label>
                                 <input
-                                    pattern="^(\/[^?]+)+(\?([^=?&/]+=[^=?&/]+)(&[^=?&/]+=[^=?&/]+)*)?"
+                                    pattern="^(\/(([^?\/{}]+)|\{\}))+(\?([^=?&/]+=[^=?&/]+)(&[^=?&/]+=[^=?&/]+)*)?"
                                     className="px-2.5 py-1.5"
                                     placeholder="Enter the Path"
+                                    title='Please see "Available/Allowed Paths" Section'
                                     type="text"
                                     defaultValue={state.path}
                                     onChange={(value) => {

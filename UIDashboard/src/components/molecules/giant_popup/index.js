@@ -127,7 +127,6 @@ GiantPopup.propTypes = {
     body: PropTypes.string,
     title: PropTypes.string,
     editable: PropTypes.bool,
-    onFormatChange: PropTypes.func,
     onDone: PropTypes.func,
     value: PropTypes.string,
     format: PropTypes.string,

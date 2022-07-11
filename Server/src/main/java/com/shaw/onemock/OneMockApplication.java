@@ -5,6 +5,7 @@ import com.shaw.onemock.constants.MockPathHolder;
 import com.shaw.onemock.models.MockPool;
 import com.shaw.onemock.projections.MockOnlyPath;
 import com.shaw.onemock.repositories.mock.MockRequestRepository;
+import com.shaw.onemock.repositories.request.RequestRepository;
 import com.shaw.onemock.services.UpdateService;
 import com.shaw.onemock.utils.Utils;
 import org.springframework.boot.SpringApplication;
@@ -41,6 +42,9 @@ public class OneMockApplication {
 
         UpdateService updateService = context.getBean(UpdateService.class);
         updateService.checkForUpdate();
+
+        RequestRepository requestRepository = context.getBean(RequestRepository.class);
+        requestRepository.deleteAll();
     }
 
 }
