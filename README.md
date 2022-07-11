@@ -1,18 +1,14 @@
 </br>
 
-[![Download](https://img.shields.io/badge/Download-One%20Mock-00c735.svg)](https://github.com/Har-SHAW/One-Mock/releases/download/One-Mock/onemock-v1.1.jar)&emsp;[![Download](https://img.shields.io/badge/Download%20Size-<%2050%20MB-9bbd00.svg)](https://github.com/Har-SHAW/One-Mock/releases/download/One-Mock/onemock-v1.1.jar)&emsp;[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-00a2ab.svg)](https://github.com/Har-SHAW/One-Mock/blob/master/LICENSE.txt)&emsp;[![Documentation](https://img.shields.io/badge/Docs-One%20Mock-blue.svg)](https://github.com/Har-SHAW/One-Mock/blob/master/LICENSE.txt)&emsp;[![Author](https://img.shields.io/badge/Author-Harshaw-eb2aae.svg)](https://github.com/Har-SHAW)&emsp;[![Contact](https://img.shields.io/badge/Contact-%40Gmail-red)](mailto:harshavardhan.gadireddy@gmail.com)
-
-</br>
-
 <p align="center">
   <img src="https://github.com/Har-SHAW/One-Mock/blob/master/onemock.png" />
 </p>
 
 <br/>
 
+[![Download](https://img.shields.io/badge/Download-One%20Mock-00c735.svg)](https://github.com/Har-SHAW/One-Mock/releases/download/One-Mock/onemock-v1.1.jar)&emsp;[![Download](https://img.shields.io/badge/Download%20Size-<%2050%20MB-9bbd00.svg)](https://github.com/Har-SHAW/One-Mock/releases/download/One-Mock/onemock-v1.1.jar)&emsp;[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-00a2ab.svg)](https://github.com/Har-SHAW/One-Mock/blob/master/LICENSE.txt)&emsp;[![Documentation](https://img.shields.io/badge/Docs-One%20Mock-blue.svg)](https://github.com/Har-SHAW/One-Mock/blob/master/LICENSE.txt)&emsp;[![Author](https://img.shields.io/badge/Author-Harshaw-eb2aae.svg)](https://github.com/Har-SHAW)&emsp;[![Contact](https://img.shields.io/badge/Contact-%40Gmail-red)](mailto:harshavardhan.gadireddy@gmail.com)
+
 A developer friendly mock server with user friendly GUI, Traffic Capturing and many more features. This gives boost in the front-end development without any actual production server.
-
-
 
 ## Run Locally
 
@@ -29,7 +25,6 @@ Default port is `8080`
 ```bash
 java -jar -Dserver.port=9001 onemock-v1.1.jar
 ```
-
 
 ## Features
 
