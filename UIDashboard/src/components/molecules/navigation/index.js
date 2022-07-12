@@ -3,28 +3,28 @@ import PropTypes from "prop-types";
 
 const NavigationBar = (props) => {
     return (
-        <div className="nav">
-            <div className="buttons">
+        <div className="flex text-white font-acl text-[20px] justify-center items-center h-[10vh] w-screen bg-onemock font-bold">
+            <div className="flex w-[60%] justify-between">
                 <div
-                    className="nav_button"
+                    className="cursor-pointer"
                     onClick={() => (location.href = "/home")}
                 >
                     Home
                 </div>
                 <div
-                    className="nav_button"
+                    className="cursor-pointer"
                     onClick={() => (location.href = "/capture")}
                 >
                     Capture
                 </div>
                 <div
-                    className="nav_button"
+                    className="cursor-pointer"
                     onClick={() => (location.href = "/mocks")}
                 >
                     Mock Api's
                 </div>
                 <div
-                    className="nav_button"
+                    className="cursor-pointer"
                     onClick={() =>
                         window.open("https://github.com/Har-SHAW/One-Mock")
                     }

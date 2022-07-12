@@ -35,6 +35,7 @@ const MocksPage = (props) => {
                     isOpen={isPopupOpen}
                     onClose={() => setPopupOpen(false)}
                     body={popupBody}
+                    title="Body of the Request"
                 />
             }
             body={

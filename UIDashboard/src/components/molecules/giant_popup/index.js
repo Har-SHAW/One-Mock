@@ -11,7 +11,7 @@ const GiantPopup = (props) => {
         );
         if (formatText == null) {
             document.getElementById("format_error").innerHTML =
-                "Error in formatting, the given text is not in " +
+                "Error in formatting, the given input is not in " +
                 document.getElementById("body_format").value +
                 " format";
             document.getElementById("format_error").style =
@@ -35,14 +35,14 @@ const GiantPopup = (props) => {
                 <div className="flex">
                     <div
                         id="format_error"
-                        className="h-12 w-full bg-red-600 text-white font-bold font-mont rounded-tl-xl flex justify-center items-center"
+                        className="h-9 w-full bg-red-600 text-white font-bold font-mont rounded-tl-xl flex justify-center items-center"
                         style={{ visibility: "hidden" }}
                     >
                         Error in Format
                     </div>
                     <div
                         onClick={props.onClose}
-                        className="w-14 h-12 self-end cursor-pointer bg-red-600 flex justify-center items-center text-white font-bold font-mont rounded-tr-xl"
+                        className="w-16 h-9 self-end cursor-pointer bg-red-600 flex justify-center items-center text-white font-bold font-mont rounded-tr-xl"
                     >
                         X
                     </div>
@@ -52,10 +52,12 @@ const GiantPopup = (props) => {
                         className="h-[7vh] bg-white rounded-xl m-[1vw] flex justify-center items-center"
                         style={{ backgroundColor: "transparent" }}
                     >
-                        <div className="h-[7vh] w-[78%] bg-white rounded-xl m-0 flex justify-center items-center">
+                        <div className="h-[7vh] w-[78%] bg-white rounded-xl m-0 flex justify-around items-center font-mont font-bold">
                             <label>{props.title}</label>
                             <div>
-                                <label>Body Format: </label>
+                                <label className="font-bold">
+                                    Body Format :{" "}
+                                </label>
                                 <select
                                     id="body_format"
                                     defaultValue={props.format}
@@ -99,7 +101,7 @@ const GiantPopup = (props) => {
                         </div>
                     </div>
                 ) : (
-                    <div className="h-[7vh] bg-white rounded-xl m-[1vw] flex justify-center items-center">
+                    <div className="h-[7vh] bg-white rounded-xl m-[1vw] flex justify-center items-center font-mont font-bold">
                         <label>{props.title}</label>
                     </div>
                 )}
@@ -114,7 +116,7 @@ const GiantPopup = (props) => {
                         spellCheck={false}
                     ></textarea>
                 ) : (
-                    <div className="bg-white overflow-auto p-10 rounded-xl w-[90vw] h-full">
+                    <div className="bg-white overflow-auto p-7 rounded-xl w-[90vw] h-full mx-auto mb-4">
                         <div
                             dangerouslySetInnerHTML={{ __html: props.body }}
                         ></div>

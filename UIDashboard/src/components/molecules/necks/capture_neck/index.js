@@ -22,7 +22,7 @@ const CaptureNeck = (props) => {
                     </span>
                 )}
             </div>
-            <RefreshCaptureButton />
+            <RefreshCaptureButton onRefresh={props.onRefresh} />
         </div>
     );
 };
@@ -30,6 +30,7 @@ const CaptureNeck = (props) => {
 CaptureNeck.propTypes = {
     capture: PropTypes.bool,
     onToggle: PropTypes.func,
+    onRefresh: PropTypes.func,
 };
 
 export default CaptureNeck;

@@ -117,8 +117,8 @@ const CreateMocksBody = (props) => {
                         setLoading(false);
                     }}
                     body={popupOpen ? popupData.responseBody : ""}
-                    title={popupOpen ? popupData.requestBody : ""}
                     editable={true}
+                    title="Mock Body Editor"
                     onDone={(value) => {
                         if (popupOpen) {
                             popupData.responseBody = value[0].replaceAll(

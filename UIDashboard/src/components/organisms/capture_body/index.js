@@ -9,6 +9,9 @@ import RightBody from "../../atoms/body/right_body";
 import { getFullRequestApi } from "../../../apis/capture_api";
 import RequestDetails from "../../molecules/request_details";
 import { coloredFormatRequestBody } from "../../../utils/formatter";
+import DummyLoading from "../../atoms/dummy/loading_dummy";
+import DummyCaptureBody from "../../atoms/dummy/capture_dummy";
+import DummyRequestDetails from "../../atoms/dummy/request_details_dummy";
 
 const CaptureBody = (props) => {
     const [fullRequest, setFullRequest] = useState(null);
@@ -18,23 +21,9 @@ const CaptureBody = (props) => {
     }
 
     if (props.loading) {
-        return (
-            <div className="empty_body">
-                <div>Loading ...</div>
-                <div style={{ fontSize: "1.5rem" }}>
-                    Create a mock using the ' + ' button.
-                </div>
-            </div>
-        );
+        return <DummyLoading />;
     } else if (props.requestsData.length == 0) {
-        return (
-            <div className="empty_body">
-                <div>Nothing to Show</div>
-                <div style={{ fontSize: "1.5rem" }}>
-                    Create a mock using the ' + ' button.
-                </div>
-            </div>
-        );
+        return <DummyCaptureBody />;
     } else {
         return (
             <Body>
@@ -110,13 +99,7 @@ const CaptureBody = (props) => {
                             )}
                         </div>
                     ) : (
-                        <div className="h-full w-full flex flex-col justify-center items-center font-acl text-gray-500 text-5xl bg-gray-200">
-                            <div>Request Details</div>
-                            <div className="h-5"></div>
-                            <div style={{ fontSize: "1.5rem" }}>
-                                Select a Request to show details.
-                            </div>
-                        </div>
+                        <DummyRequestDetails />
                     )}
                 </RightBody>
             </Body>

@@ -4,7 +4,11 @@ import ReloadPng from "./reload.png";
 
 const RefreshCaptureButton = (props) => {
     return (
-        <div className="create_mocks" style={{ backgroundColor: "brown" }}>
+        <div
+            className="create_mocks"
+            style={{ backgroundColor: "brown" }}
+            onClick={props.onRefresh}
+        >
             <img
                 src={ReloadPng}
                 style={{ color: "white", height: "9vh", width: "9vh" }}
@@ -13,6 +17,8 @@ const RefreshCaptureButton = (props) => {
     );
 };
 
-RefreshCaptureButton.propTypes = {};
+RefreshCaptureButton.propTypes = {
+    onRefresh: PropTypes.func,
+};
 
 export default RefreshCaptureButton;

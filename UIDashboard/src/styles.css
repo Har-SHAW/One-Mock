@@ -2,33 +2,6 @@
 
 @tailwind utilities;
 
-.nav {
-    display: flex;
-    flex-direction: row;
-    color: white;
-    font-family: "Aclonica";
-    font-style: normal;
-    font-size: 20px;
-    justify-content: center;
-    align-items: center;
-    height: 10vh;
-    width: 100vw;
-    background-color: #0085ff;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-.buttons {
-    display: flex;
-    flex-direction: row;
-    width: 60%;
-    justify-content: space-between;
-}
-
 body {
     margin: 0;
-}
-
-.nav_button {
-    cursor: pointer;
 }

@@ -36,7 +36,7 @@ public class MockService {
         if (mockRequest.getHasMultipleResponse()) {
             List<CustomResponse> customResponses = new ArrayList<>();
             for (CustomResponseDto customResponseDto : mockRequestDto.getCustomResponseDtoSet()) {
-                if (customResponseDto.getResponseBody() != null && !customResponseDto.getResponseBody().equals("")) {
+                if (customResponseDto.getRequestValue() != null && !customResponseDto.getRequestValue().equals("")) {
                     CustomResponse customResponse = new CustomResponse(customResponseDto);
                     customResponse.setMockRequest(mockRequest);
                     customResponses.add(customResponse);
@@ -53,7 +53,7 @@ public class MockService {
         customResponseRepository.deleteAll(mockRequest.getCustomResponses());
         List<CustomResponse> customResponses = new ArrayList<>();
         for (CustomResponseDto customResponseDto : mockRequestDto.getCustomResponseDtoSet()) {
-            if (customResponseDto.getResponseBody() != null && !customResponseDto.getResponseBody().equals("")) {
+            if (customResponseDto.getRequestValue() != null && !customResponseDto.getRequestValue().equals("")) {
                 CustomResponse customResponse = new CustomResponse(customResponseDto);
                 customResponse.setMockRequest(mockRequest);
                 customResponses.add(customResponse);
