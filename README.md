@@ -60,6 +60,11 @@ fetchRes
     });
 ```
 
+## Known Issues
+
+- At present only supported formats for request body are `plain/text` `application/json` `application/xml`
+
+
 ## Tech Stack
 
 **Dashboard:**&ensp;&ensp;&ensp;React, TailwindCSS
