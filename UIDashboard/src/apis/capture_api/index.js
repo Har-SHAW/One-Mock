@@ -1,6 +1,7 @@
 import axios from "axios";
+import { HostName } from "../base";
 
-const baseApi = "http://localhost:8080/api/capture";
+const baseApi = HostName + "api/capture";
 
 export async function getAllRequests() {
     return (await axios.get(baseApi)).data;

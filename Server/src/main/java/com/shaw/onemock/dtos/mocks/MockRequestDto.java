@@ -1,7 +1,7 @@
 package com.shaw.onemock.dtos.mocks;
 
-import com.shaw.onemock.models.mock.CustomResponse;
-import com.shaw.onemock.models.mock.MockRequest;
+import com.shaw.onemock.entities.mock.CustomResponse;
+import com.shaw.onemock.entities.mock.MockRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

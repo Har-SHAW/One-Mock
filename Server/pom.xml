@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.shaw</groupId>
 	<artifactId>onemock</artifactId>
-	<version>1.0</version>
+	<version>v1.1</version>
 	<name>OneMock</name>
 	<description>A tool for mocking api&apos;s</description>
 	<properties>
@@ -59,6 +59,12 @@
     </dependencies>
 
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -70,6 +76,16 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<delimiters>
+						<delimiter>@</delimiter>
+					</delimiters>
+					<useDefaultDelimiters>false</useDefaultDelimiters>
 				</configuration>
 			</plugin>
 		</plugins>

@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
@@ -38,6 +39,12 @@ module.exports = {
         publicPath: "/",
     },
     plugins: [
+        new webpack.DefinePlugin({
+            "process.env": {
+                MODE: '"production"',
+                VERSION: `'${process.env.npm_package_version}'`,
+            },
+        }),
         new MiniCssExtractPlugin({
             filename: "static/styles.css",
             chunkFilename: "static/styles.css",

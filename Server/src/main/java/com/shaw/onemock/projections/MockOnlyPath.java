@@ -4,4 +4,6 @@ public interface MockOnlyPath {
     Long getMockId();
 
     String getPath();
+
+    String getMethod();
 }

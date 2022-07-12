@@ -10,7 +10,6 @@ import {
     getCaptureState,
     toggleCaptureApi,
 } from "../../../apis/capture_api";
-import { async } from "regenerator-runtime";
 
 const CapturePage = (props) => {
     const [leftBodyData, setLeftBodyData] = useState(null);
@@ -27,6 +26,13 @@ const CapturePage = (props) => {
     async function toggleCapture() {
         const response = await toggleCaptureApi();
         setCaptureState(response.status);
+    }
+
+    async function refreshCapture() {
+        setLoading(true);
+        const response = await getAllRequests();
+        setLeftBodyData(response);
+        setLoading(false);
     }
 
     useEffect(async () => {
@@ -48,6 +54,7 @@ const CapturePage = (props) => {
                 <CaptureNeck
                     capture={captureState}
                     onToggle={() => toggleCapture()}
+                    onRefresh={() => refreshCapture()}
                 />
             }
             popup={

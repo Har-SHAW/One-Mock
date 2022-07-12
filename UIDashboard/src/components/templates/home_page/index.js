@@ -1,14 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./index.css";
 import BodyRoot from "../../atoms/body/root";
 
 const HomePageTemplate = (props) => {
     return (
         <BodyRoot>
-            <div className="gradient">
+            <div className="relative w-full h-full left-0 top-0 bg-onemock shadow-2xl">
                 {props.navigation}
-                <div class="one-mock">One Mock</div>
+                <div className="absolute flex justify-center bottom-5 w-screen font-acl font-bold text-[100px] text-white z-10">
+                    One Mock
+                </div>
             </div>
             <div className="flex justify-between w-screen space-x-44">
                 <div className="flex flex-col py-5 px-12 text-gray-600 w-full">

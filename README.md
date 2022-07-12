@@ -6,9 +6,25 @@
 
 <br/>
 
-A developer friendly mock server with GUI, Traffic Capturing and many more features.
+[![Download](https://img.shields.io/badge/Download-One%20Mock-00c735.svg)](https://github.com/Har-SHAW/One-Mock/releases/download/One-Mock/onemock-v1.1.jar)&emsp;[![Release](https://img.shields.io/badge/Latest-Release%20v1.1-af40ff.svg)](https://github.com/Har-SHAW/One-Mock/releases/download/One-Mock/onemock-v1.1.jar)&emsp;[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-00a2ab.svg)](https://github.com/Har-SHAW/One-Mock/blob/master/LICENSE.txt)&emsp;[![Documentation](https://img.shields.io/badge/Docs-One%20Mock-blue.svg)](https://github.com/Har-SHAW/One-Mock/blob/master/LICENSE.txt)&emsp;[![Author](https://img.shields.io/badge/Author-Harshaw-eb2aae.svg)](https://github.com/Har-SHAW)&emsp;[![Contact](https://img.shields.io/badge/Contact-%40Gmail.com-red)](mailto:harshavardhan.gadireddy@gmail.com)
 
-[![License: MPL 2.0](https://img.shields.io/badge/Download-OneMock-brightgreen.svg)](https://github.com/Har-SHAW/One-Mock/releases/download/One-Mock/onemock-1.0.jar)&emsp;[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-00a2ab.svg)](https://github.com/Har-SHAW/One-Mock/blob/master/LICENSE.txt)&emsp;[![License: MPL 2.0](https://img.shields.io/badge/Docs-One%20Mock-blue.svg)](https://github.com/Har-SHAW/One-Mock/blob/master/LICENSE.txt)&emsp;[![License: MPL 2.0](https://img.shields.io/badge/Author-Harshaw-eb2aae.svg)](https://github.com/Har-SHAW)
+A developer friendly mock server with GUI, Traffic Capturing and with many more features. This gives boost in your front-end development without any actual production server.
+
+## Run Locally
+
+- Download the `onemock-v1.1.jar` build file from the latest release, click [here](https://github.com/Har-SHAW/One-Mock/releases/download/One-Mock/onemock-v1.1.jar) to download.
+
+
+**Start the Server**
+```bash
+java -jar onemock-v1.1.jar
+```
+Default port is `8080`
+
+**Start the Server with custom port**
+```bash
+java -jar -Dserver.port=9001 onemock-v1.1.jar
+```
 
 ## Features
 
@@ -24,27 +40,9 @@ To run the server, you will need to install the following in your machine.
 
 `Java`
 
-
-## Run Locally
-
-- Download the `.jar` build file from https://github.com/Har-SHAW/One-Mock/releases/download/One-Mock/onemock-1.0.jar
-
-
-**Start the Server**
-```bash
-java -jar onemock-1.0.jar
-```
-Default port is `8080`
-
-**Start the Server with custom port**
-```bash
-java -jar -Dserver.port=9001 onemock-1.0.jar
-```
-
-
 ## Usage
 
-Access the dashboard at http://localhost:8080/home from any browser.
+Access the dashboard at `http://localhost:8080/home` from any browser.
 
 To use the mock server in any front-end code put the base url as `http://localhost:8080/onemock` and append the rest of the path to this.
 
@@ -62,11 +60,16 @@ fetchRes
     });
 ```
 
+## Known Issues
+
+- At present only supported formats for request body are `plain/text` `application/json` `application/xml`
+
+
 ## Tech Stack
 
-**Dashboard:** React, TailwindCSS
+**Dashboard:**&ensp;&ensp;&ensp;React, TailwindCSS
 
-**Server:** Spring Boot, SQLite Database
+**Server:** &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Spring Boot, SQLite DB
 
 
 ## Documentation
@@ -86,5 +89,5 @@ fetchRes
 
 ## Feedback
 
-If you have any feedback, please reach out to us at harshavardhan.gadireddy@gmail.com
+If you have any feedback, please reach out to me at harshavardhan.gadireddy@gmail.com
 

@@ -1,4 +1,4 @@
-package com.shaw.onemock.models.requests;
+package com.shaw.onemock.entities.requests;
 
 import lombok.*;
 

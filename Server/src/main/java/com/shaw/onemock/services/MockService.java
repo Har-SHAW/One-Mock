@@ -3,16 +3,16 @@ package com.shaw.onemock.services;
 import com.shaw.onemock.constants.MockPathHolder;
 import com.shaw.onemock.dtos.mocks.CustomResponseDto;
 import com.shaw.onemock.dtos.mocks.MockRequestDto;
+import com.shaw.onemock.entities.mock.CustomResponse;
+import com.shaw.onemock.entities.mock.MockRequest;
 import com.shaw.onemock.exceptions.MockAlreadyExist;
 import com.shaw.onemock.exceptions.MockRequestNotFound;
-import com.shaw.onemock.models.mock.CustomResponse;
-import com.shaw.onemock.models.mock.MockRequest;
+import com.shaw.onemock.models.MockPool;
 import com.shaw.onemock.projections.PartialMockProjection;
 import com.shaw.onemock.repositories.mock.CustomResponseRepository;
 import com.shaw.onemock.repositories.mock.MockRequestRepository;
 import com.shaw.onemock.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ public class MockService {
         if (mockRequest.getHasMultipleResponse()) {
             List<CustomResponse> customResponses = new ArrayList<>();
             for (CustomResponseDto customResponseDto : mockRequestDto.getCustomResponseDtoSet()) {
-                if (customResponseDto.getResponseBody() != null && !customResponseDto.getResponseBody().equals("")) {
+                if (customResponseDto.getRequestValue() != null && !customResponseDto.getRequestValue().equals("")) {
                     CustomResponse customResponse = new CustomResponse(customResponseDto);
                     customResponse.setMockRequest(mockRequest);
                     customResponses.add(customResponse);
@@ -44,7 +44,7 @@ public class MockService {
             }
             customResponseRepository.saveAll(customResponses);
         }
-        mockPathHolder.addPath(Pair.of(mockRequest.getMockId(), Utils.convertPathToRegex(mockRequestDto.getPath())));
+        mockPathHolder.addPath(new MockPool(mockRequest.getMockId(), mockRequestDto.getPath(), Utils.convertPathToRegex(mockRequestDto.getPath()), mockRequestDto.getMethod()));
     }
 
     public void updateMock(MockRequestDto mockRequestDto, Long id) throws MockRequestNotFound {
@@ -53,7 +53,7 @@ public class MockService {
         customResponseRepository.deleteAll(mockRequest.getCustomResponses());
         List<CustomResponse> customResponses = new ArrayList<>();
         for (CustomResponseDto customResponseDto : mockRequestDto.getCustomResponseDtoSet()) {
-            if (customResponseDto.getResponseBody() != null && !customResponseDto.getResponseBody().equals("")) {
+            if (customResponseDto.getRequestValue() != null && !customResponseDto.getRequestValue().equals("")) {
                 CustomResponse customResponse = new CustomResponse(customResponseDto);
                 customResponse.setMockRequest(mockRequest);
                 customResponses.add(customResponse);

@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { GlobalConstants } from "../../../constants/GlobalConstants";
-import DeleteIcon from "../delete_edit_bar/delete.png";
 
 const CreateMockTable = (props) => {
     return (

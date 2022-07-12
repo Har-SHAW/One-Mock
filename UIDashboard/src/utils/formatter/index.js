@@ -111,7 +111,11 @@ function coloredFormatXmlBody(xml, colorize, indent) {
 }
 
 function formatJsonBody(string) {
-    return JSON.stringify(JSON.parse(string), undefined, 4);
+    try {
+        return JSON.stringify(JSON.parse(string), undefined, 4);
+    } catch {
+        return null;
+    }
 }
 
 function formatXmlBody(sourceXml) {
@@ -137,8 +141,11 @@ function formatXmlBody(sourceXml) {
     xsltProcessor.importStylesheet(xsltDoc);
     var resultDoc = xsltProcessor.transformToDocument(xmlDoc);
     var resultXml = new XMLSerializer().serializeToString(resultDoc);
-    console.log(resultXml);
-    return resultXml;
+    if (resultXml.includes("</parsererror>")) {
+        return null;
+    } else {
+        return resultXml;
+    }
 }
 
 export function formatRequestBody(string, format) {

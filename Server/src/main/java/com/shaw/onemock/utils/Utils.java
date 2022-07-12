@@ -3,7 +3,7 @@ package com.shaw.onemock.utils;
 import com.shaw.onemock.constants.GlobalConstants;
 import com.shaw.onemock.dtos.requests.HeaderDto;
 import com.shaw.onemock.dtos.utils.ResponseModel;
-import com.shaw.onemock.models.mock.CustomResponse;
+import com.shaw.onemock.entities.mock.CustomResponse;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;

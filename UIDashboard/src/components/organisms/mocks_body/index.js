@@ -8,19 +8,17 @@ import { coloredFormatRequestBody } from "../../../utils/formatter";
 import Body from "../../atoms/body/body";
 import LeftBody from "../../atoms/body/left_body";
 import RightBody from "../../atoms/body/right_body";
+import MocksBodyTable from "../../molecules/mocks_body_table";
+import DummyLoading from "../../atoms/dummy/loading_dummy";
+import DummyMocksBody from "../../atoms/dummy/mocks_dummy";
+import DummyMocksDetails from "../../atoms/dummy/mock_details_dummy";
 
 const MocksBody = (props) => {
     const [fullMock, setFullMock] = useState(null);
 
-    // useEffect(async () => {
-    //     if (fullMock == null && !props.loading) {
-    //         const response = await getFullMockApi(props.mocksData[0].id);
-    //         setFullMock(response);
-    //     }
-    // });
-
     async function getFullMock(id) {
         setFullMock(await getFullMockApi(id));
+        console.log(await getFullMockApi(id));
     }
 
     async function deleteMock(id) {
@@ -35,23 +33,9 @@ const MocksBody = (props) => {
     }
 
     if (props.loading) {
-        return (
-            <div className="empty_body">
-                <div>Loading ...</div>
-                <div style={{ fontSize: "1.5rem" }}>
-                    Create a mock using the ' + ' button.
-                </div>
-            </div>
-        );
+        return <DummyLoading />;
     } else if (props.mocksData.length == 0) {
-        return (
-            <div className="empty_body">
-                <div>Nothing to Show</div>
-                <div style={{ fontSize: "1.5rem" }}>
-                    Create a mock using the ' + ' button.
-                </div>
-            </div>
-        );
+        return <DummyMocksBody />;
     } else {
         return (
             <Body>
@@ -89,20 +73,8 @@ const MocksBody = (props) => {
                             />
                             <div className="mb-5"></div>
 
-                            <div
-                                style={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                }}
-                            >
-                                <div
-                                    style={{
-                                        width: "90%",
-                                        display: "flex",
-                                        justifyContent: "space-between",
-                                        marginBottom: "1%",
-                                    }}
-                                >
+                            <div className="flex flex-col">
+                                <div className="w-[90%] flex justify-between mb-5">
                                     <label>
                                         <b>Method: </b>
                                         {fullMock.method}
@@ -124,80 +96,22 @@ const MocksBody = (props) => {
                                 </div>
 
                                 {fullMock.hasMultipleResponse ? (
-                                    <div>
-                                        <table style={{ width: "100%" }}>
-                                            <thead>
-                                                <tr>
-                                                    <th>isHeader</th>
-                                                    <th>Request Value</th>
-                                                    <th>Response Body</th>
-                                                    <th>Body Format</th>
-                                                    <th>Status</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {fullMock.customResponseDtoSet.map(
-                                                    (element) => (
-                                                        <tr>
-                                                            <td>
-                                                                {element.isHeader
-                                                                    ? "Yes"
-                                                                    : "No"}
-                                                            </td>
-                                                            <td>
-                                                                {
-                                                                    element.requestValue
-                                                                }
-                                                            </td>
-                                                            <td>
-                                                                <a
-                                                                    href=""
-                                                                    onClick={(
-                                                                        event
-                                                                    ) => {
-                                                                        event.preventDefault();
-                                                                        props.popupOpen(
-                                                                            coloredFormatRequestBody(
-                                                                                element.responseBody,
-                                                                                element.format
-                                                                            )
-                                                                        );
-                                                                    }}
-                                                                >
-                                                                    SHOW BODY
-                                                                </a>
-                                                            </td>
-                                                            <td>
-                                                                {element.format}
-                                                            </td>
-                                                            <td>
-                                                                {
-                                                                    element.statusCode
-                                                                }
-                                                            </td>
-                                                        </tr>
-                                                    )
-                                                )}
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                    <MocksBodyTable
+                                        fullMock={fullMock}
+                                        popupOpen={props.popupOpen}
+                                    />
                                 ) : (
-                                    <div
-                                        style={{
-                                            display: "flex",
-                                            flexDirection: "column",
-                                        }}
-                                    >
+                                    <div className="flex flex-col">
                                         <label>
                                             <b>Status Code: </b>
                                             {fullMock.statusCode}
                                         </label>
-                                        <div style={{ height: "1vh" }} />
+                                        <div className="h-2" />
                                         <label>
                                             <strong>Format: </strong>
                                             {fullMock.format}
                                         </label>
-                                        <div style={{ height: "1vh" }} />
+                                        <div className="h-2" />
                                         <a
                                             className="text-lg"
                                             href=""
@@ -217,19 +131,10 @@ const MocksBody = (props) => {
                                         </a>
                                     </div>
                                 )}
-                                <div className="bg-gray-500 mt-10 mb-5 text-white py-2.5 font-bold rounded-tl-[15px] rounded-tr-[15px] w-[94%] text-center">
-                                    Mock Headers
-                                </div>
                             </div>
                         </div>
                     ) : (
-                        <div className="h-full w-full flex flex-col justify-center items-center font-acl text-gray-500 text-5xl bg-gray-200">
-                            <div>Mock Details</div>
-                            <div className="h-5"></div>
-                            <div style={{ fontSize: "1.5rem" }}>
-                                Select a Mock to show details.
-                            </div>
-                        </div>
+                        <DummyMocksDetails />
                     )}
                 </RightBody>
             </Body>

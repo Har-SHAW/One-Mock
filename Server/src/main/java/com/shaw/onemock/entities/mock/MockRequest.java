@@ -1,4 +1,4 @@
-package com.shaw.onemock.models.mock;
+package com.shaw.onemock.entities.mock;
 
 import com.shaw.onemock.dtos.mocks.MockRequestDto;
 import lombok.*;

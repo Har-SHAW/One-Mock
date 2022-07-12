@@ -14,12 +14,12 @@ public class CustomBeans {
     }
 
     @Bean
-    public WebMvcConfigurer corsConfigurer() {
+    public WebMvcConfigurer CORSConfig() {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/onemock").allowedOriginPatterns("*");
-                registry.addMapping("/**").allowedOriginPatterns("http://localhost:8080", "http://localhost:3000");
+                registry.addMapping("/onemock").allowedOriginPatterns("*").allowedMethods("*");
+                registry.addMapping("/**").allowedOriginPatterns("http://localhost:8080", "http://localhost:3000").allowedMethods("*");
             }
         };
     }

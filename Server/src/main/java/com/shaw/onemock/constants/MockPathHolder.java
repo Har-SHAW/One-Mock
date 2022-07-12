@@ -1,32 +1,32 @@
 package com.shaw.onemock.constants;
 
+import com.shaw.onemock.models.MockPool;
 import lombok.Data;
-import org.springframework.data.util.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
 public class MockPathHolder {
-    private List<Pair<Long, String>> paths;
+    private List<MockPool> paths;
 
     public MockPathHolder() {
         paths = new ArrayList<>();
     }
 
-    public void addPath(Pair<Long, String> path) {
+    public void addPath(MockPool path) {
         paths.add(path);
     }
 
     public void removePath(Long mockId) {
-        paths.remove(paths.stream().filter(e -> e.getFirst().equals(mockId)).findFirst().orElse(Pair.of(0L, "")));
+        paths.remove(paths.stream().filter(e -> e.getMockId().equals(mockId)).findFirst().orElse(new MockPool()));
     }
 
-    public List<Pair<Long, String>> getPaths() {
+    public List<MockPool> getPaths() {
         return this.paths;
     }
 
-    public void addAllPaths(List<Pair<Long, String>> paths) {
+    public void addAllPaths(List<MockPool> paths) {
         this.paths.addAll(paths);
     }
 }
