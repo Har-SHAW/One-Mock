@@ -2,7 +2,7 @@ import React, { PropTypes } from "react";
 
 const DummyRequestDetails = (props) => {
     return (
-        <div className="h-[80vh] w-full flex flex-col justify-center items-center font-acl text-gray-500 text-5xl bg-gray-200">
+        <div className="h-[80vh] w-full flex flex-col justify-center items-center font-acl text-gray-500 text-5xl bg-gray-200 mt-[1%]">
             <div>Request Details</div>
             <div className="h-5"></div>
             <div style={{ fontSize: "1.5rem" }}>
