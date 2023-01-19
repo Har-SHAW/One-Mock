@@ -3,7 +3,6 @@ import { HostName } from "../apis/base";
 
 export async function checkUpdates() {
     const response = await axios.get(HostName + "api/update_status");
-    console.log(response.data);
     if (response.data && response.data.status) {
         if (
             confirm(
