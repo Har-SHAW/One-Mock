@@ -1,0 +1,29 @@
+.OneMockAnimation {
+    animation-name: slideDown;
+    animation-duration: 500ms;
+}
+
+.ContentAnimation {
+    animation-name: slideUp;
+    animation-duration: 500ms;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(200%);
+    }
+
+    to {
+        transform: translateY(0%);
+    }
+}

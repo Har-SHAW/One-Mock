@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import CreateMockTemplate from "../../templates/create_mock";
+import CreateMockTemplate from "../../frames/create_mock";
 import NavigationBar from "../../molecules/navigation";
 import CreateMocksBody from "../../organisms/create_mock_body";
 import { useParams } from "react-router-dom";

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import MocksTemplate from "../../templates/mocks_page";
+import MocksTemplate from "../../frames/mocks_page";
 import NavigationBar from "../../molecules/navigation";
 import MocksNeck from "../../molecules/necks/mocks_neck";
 import MocksBody from "../../organisms/mocks_body";

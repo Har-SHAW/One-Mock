@@ -5,13 +5,13 @@ import BodyRoot from "../../atoms/body/root";
 const HomePageTemplate = (props) => {
     return (
         <BodyRoot>
-            <div className="relative w-full h-full left-0 top-0 bg-onemock shadow-2xl">
+            <div className="OneMockAnimation relative w-full h-full left-0 top-0 bg-onemock shadow-2xl">
                 {props.navigation}
                 <div className="absolute flex justify-center bottom-5 w-screen font-acl font-bold text-[100px] text-white z-10">
                     One Mock
                 </div>
             </div>
-            <div className="flex justify-between w-screen space-x-44">
+            <div className="flex justify-between w-screen space-x-44 ContentAnimation">
                 <div className="flex flex-col py-5 px-12 text-gray-600 w-full">
                     <div className="font-bold text-3xl mb-1">Usage</div>
                     <pre className="bg-gray-200 p-5 rounded-xl w-full">

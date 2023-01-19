@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import CaptureTemplate from "../../templates/capture_page";
+import CaptureTemplate from "../../frames/capture_page";
 import NavigationBar from "../../molecules/navigation";
 import CaptureNeck from "../../molecules/necks/capture_neck";
 import CaptureBody from "../../organisms/capture_body";
