@@ -18,7 +18,6 @@ const MocksBody = (props) => {
 
     async function getFullMock(id) {
         setFullMock(await getFullMockApi(id));
-        console.log(await getFullMockApi(id));
     }
 
     async function deleteMock(id) {

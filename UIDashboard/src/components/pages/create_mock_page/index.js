@@ -7,7 +7,6 @@ import { useParams } from "react-router-dom";
 
 const CreateMockPage = (props) => {
     const { id } = useParams();
-    console.log(id);
     return (
         <CreateMockTemplate
             navigation={<NavigationBar />}

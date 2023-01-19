@@ -49,7 +49,6 @@ const CreateMocksBody = (props) => {
 
     async function addMock() {
         if (document.getElementById("main_form").checkValidity()) {
-            console.log(state.customResponseDtoSet);
             const response = await createMockApi(state);
             if (response.status) {
                 location.href = "/mocks";
@@ -61,7 +60,6 @@ const CreateMocksBody = (props) => {
 
     async function updateMock() {
         if (document.getElementById("main_form").checkValidity()) {
-            console.log(state);
             const response = await updateMockApi(props.updateId, state);
             if (response.status) {
                 location.href = "/mocks";
@@ -91,7 +89,6 @@ const CreateMocksBody = (props) => {
     }
 
     function deleteResponse(index) {
-        console.log(index);
         if (state.customResponseDtoSet.length > 1) {
             state.customResponseDtoSet.splice(index, 1);
             setState({
@@ -256,7 +253,6 @@ const CreateMocksBody = (props) => {
                                 }}
                                 onShowBodyClick={(event, element) => {
                                     event.preventDefault();
-                                    console.log(element);
                                     openPopup(element);
                                 }}
                             />
