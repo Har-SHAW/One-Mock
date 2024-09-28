@@ -1,31 +1,19 @@
 package com.shaw.onemock.constants;
 
-//TODO Make it as a bean
+import lombok.Data;
+import org.springframework.stereotype.Component;
+
+@Component
+@Data
 public class CaptureState {
-    private static boolean capture = false;
-    private static Long lastId;
+    private boolean capture = false;
+    private Long lastId;
 
-    public static Long getLastId() {
-        return lastId;
-    }
-
-    public static void setLastId(Long id) {
-        lastId = id;
-    }
-
-    public static void captureOn() {
-        capture = true;
-    }
-
-    public static void captureOff() {
+    public void captureOff() {
         capture = false;
     }
 
-    public static void toggle() {
+    public void toggle() {
         capture = !capture;
-    }
-
-    public static boolean getCapture() {
-        return capture;
     }
 }

@@ -28,7 +28,7 @@ const CreateMockTable = (props) => {
                                             onChange={(value) =>
                                                 props.onHeaderChange(
                                                     value,
-                                                    index
+                                                    index,
                                                 )
                                             }
                                         />
@@ -52,7 +52,7 @@ const CreateMockTable = (props) => {
                                         onChange={(value) =>
                                             props.onRequestValueChange(
                                                 value,
-                                                index
+                                                index,
                                             )
                                         }
                                     />
@@ -67,7 +67,7 @@ const CreateMockTable = (props) => {
                                             onClick={(event) =>
                                                 props.onShowBodyClick(
                                                     event,
-                                                    element
+                                                    element,
                                                 )
                                             }
                                         >
@@ -101,7 +101,7 @@ const CreateMockTable = (props) => {
                                                 >
                                                     {element}
                                                 </option>
-                                            )
+                                            ),
                                         )}
                                     </select>
                                 </div>
@@ -115,7 +115,7 @@ const CreateMockTable = (props) => {
                                         onChange={(value) =>
                                             props.onStatusCodeChange(
                                                 value,
-                                                index
+                                                index,
                                             )
                                         }
                                         min={200}

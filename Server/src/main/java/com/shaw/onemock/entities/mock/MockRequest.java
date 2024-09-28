@@ -1,10 +1,10 @@
 package com.shaw.onemock.entities.mock;
 
 import com.shaw.onemock.dtos.mocks.MockRequestDto;
+import jakarta.persistence.*;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
 
-import javax.persistence.*;
 import java.util.List;
 
 //TODO custom responses should be deleted with the MockRequest

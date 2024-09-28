@@ -4,8 +4,8 @@ import com.shaw.onemock.constants.GlobalConstants;
 import com.shaw.onemock.dtos.requests.HeaderDto;
 import com.shaw.onemock.dtos.utils.ResponseModel;
 import com.shaw.onemock.entities.mock.CustomResponse;
+import jakarta.servlet.http.HttpServletRequest;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
@@ -43,7 +43,7 @@ public class Utils {
 
     public static ResponseModel getCustomResponse(List<CustomResponse> customResponses, String body, HttpServletRequest request) {
         String response = GlobalConstants.DEFAULT_RESPONSE;
-        Integer statusCode = GlobalConstants.DEFAULT_RESPONSE_STATUS;
+        int statusCode = GlobalConstants.DEFAULT_RESPONSE_STATUS;
         String contentType = "text/plain";
         for (CustomResponse customResponse : customResponses) {
             if ((customResponse.getIsHeader() && checkHeader(customResponse.getRequestValue(), getHeaderDto(request))) || body.equals(customResponse.getRequestValue())) {
@@ -56,7 +56,7 @@ public class Utils {
     }
 
     public static String convertPathToRegex(String path) {
-        return "^" + path.replaceAll("\\{\\}", "[^/?]+") + "$";
+        return "^" + path.replaceAll("\\{}", "[^/?]+") + "$";
     }
 
     public static String getParamString(HttpServletRequest request) {

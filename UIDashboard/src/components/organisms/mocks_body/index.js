@@ -120,8 +120,8 @@ const MocksBody = (props) => {
                                                 props.popupOpen(
                                                     coloredFormatRequestBody(
                                                         fullMock.responseBody,
-                                                        fullMock.format
-                                                    )
+                                                        fullMock.format,
+                                                    ),
                                                 );
                                             }}
                                         >

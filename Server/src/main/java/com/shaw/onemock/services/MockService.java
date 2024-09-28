@@ -12,6 +12,7 @@ import com.shaw.onemock.projections.PartialMockProjection;
 import com.shaw.onemock.repositories.mock.CustomResponseRepository;
 import com.shaw.onemock.repositories.mock.MockRequestRepository;
 import com.shaw.onemock.utils.Utils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +37,7 @@ public class MockService {
         if (mockRequest.getHasMultipleResponse()) {
             List<CustomResponse> customResponses = new ArrayList<>();
             for (CustomResponseDto customResponseDto : mockRequestDto.getCustomResponseDtoSet()) {
-                if (customResponseDto.getRequestValue() != null && !customResponseDto.getRequestValue().equals("")) {
+                if (StringUtils.isNotEmpty(customResponseDto.getRequestValue())) {
                     CustomResponse customResponse = new CustomResponse(customResponseDto);
                     customResponse.setMockRequest(mockRequest);
                     customResponses.add(customResponse);
@@ -53,7 +54,7 @@ public class MockService {
         customResponseRepository.deleteAll(mockRequest.getCustomResponses());
         List<CustomResponse> customResponses = new ArrayList<>();
         for (CustomResponseDto customResponseDto : mockRequestDto.getCustomResponseDtoSet()) {
-            if (customResponseDto.getRequestValue() != null && !customResponseDto.getRequestValue().equals("")) {
+            if (StringUtils.isNotEmpty(customResponseDto.getRequestValue())) {
                 CustomResponse customResponse = new CustomResponse(customResponseDto);
                 customResponse.setMockRequest(mockRequest);
                 customResponses.add(customResponse);

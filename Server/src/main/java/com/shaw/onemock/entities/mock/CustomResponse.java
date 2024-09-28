@@ -1,9 +1,8 @@
 package com.shaw.onemock.entities.mock;
 
 import com.shaw.onemock.dtos.mocks.CustomResponseDto;
+import jakarta.persistence.*;
 import lombok.*;
-
-import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor

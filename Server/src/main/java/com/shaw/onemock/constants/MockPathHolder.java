@@ -22,10 +22,6 @@ public class MockPathHolder {
         paths.remove(paths.stream().filter(e -> e.getMockId().equals(mockId)).findFirst().orElse(new MockPool()));
     }
 
-    public List<MockPool> getPaths() {
-        return this.paths;
-    }
-
     public void addAllPaths(List<MockPool> paths) {
         this.paths.addAll(paths);
     }

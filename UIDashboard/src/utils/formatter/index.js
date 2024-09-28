@@ -22,12 +22,12 @@ function syntaxHighlight(json) {
                 cls = "null";
             }
             return '<span class="' + cls + '">' + match + "</span>";
-        }
+        },
     );
 }
 function coloredFormatJsonBody(string) {
     var json = syntaxHighlight(
-        JSON.stringify(JSON.parse(string), undefined, 4)
+        JSON.stringify(JSON.parse(string), undefined, 4),
     );
     var html =
         "<head><style>pre { padding: 5px; margin: 5px; } .string { color: green; } ";
@@ -134,7 +134,7 @@ function formatXmlBody(sourceXml) {
             '  <xsl:output indent="yes"/>',
             "</xsl:stylesheet>",
         ].join("\n"),
-        "application/xml"
+        "application/xml",
     );
 
     var xsltProcessor = new XSLTProcessor();

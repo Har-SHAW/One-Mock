@@ -123,7 +123,7 @@ const CreateMocksBody = (props) => {
                         if (popupOpen) {
                             popupData.responseBody = value[0].replaceAll(
                                 " ",
-                                ""
+                                "",
                             );
                             popupData.responseBody =
                                 popupData.responseBody.replaceAll("\n", "");
@@ -169,7 +169,7 @@ const CreateMocksBody = (props) => {
                                             >
                                                 {element}
                                             </option>
-                                        )
+                                        ),
                                     )}
                                 </select>
                             </div>
@@ -296,7 +296,7 @@ const CreateMocksBody = (props) => {
                                                 >
                                                     {element}
                                                 </option>
-                                            )
+                                            ),
                                         )}
                                     </select>
                                 </div>

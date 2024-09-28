@@ -7,7 +7,7 @@ export async function checkUpdates() {
     if (response.data && response.data.status) {
         if (
             confirm(
-                "Download the update One-Mock " + response.data.version + " ?"
+                "Download the update One-Mock " + response.data.version + " ?",
             )
         ) {
             window.location =

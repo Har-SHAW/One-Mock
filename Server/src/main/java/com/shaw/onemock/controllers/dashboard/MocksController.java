@@ -36,7 +36,7 @@ public class MocksController {
     }
 
     @DeleteMapping
-    public SimpleResponse deleteMock(@RequestParam(name = "id") Long mockId) throws MockRequestNotFound {
+    public SimpleResponse deleteMock(@RequestParam(name = "id") Long mockId) {
         mockService.deleteMock(mockId);
         return new SimpleResponse("success", true, 200);
     }

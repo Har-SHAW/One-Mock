@@ -1,14 +1,12 @@
 package com.shaw.onemock.controllers.onemock;
 
 import com.shaw.onemock.services.RequestService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 
 @RestController
 @RequestMapping("/onemock")
@@ -17,7 +15,7 @@ public class RequestController {
     private RequestService requestService;
 
     @RequestMapping("/")
-    private ResponseEntity<String> request(HttpServletRequest request) throws IOException {
+    private ResponseEntity<String> request(HttpServletRequest request) {
         return requestService.process(request, "/");
     }
 

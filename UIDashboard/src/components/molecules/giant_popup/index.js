@@ -7,7 +7,7 @@ const GiantPopup = (props) => {
     function onFormat() {
         const formatText = formatRequestBody(
             document.getElementById("popup_data").value,
-            document.getElementById("body_format").value
+            document.getElementById("body_format").value,
         );
         if (formatText == null) {
             document.getElementById("format_error").innerHTML =
@@ -73,7 +73,7 @@ const GiantPopup = (props) => {
                                             >
                                                 {element}
                                             </option>
-                                        )
+                                        ),
                                     )}
                                 </select>
                             </div>

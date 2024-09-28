@@ -1,6 +1,7 @@
 package com.shaw.onemock.beans;
 
 import com.shaw.onemock.constants.MockPathHolder;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -17,7 +18,7 @@ public class CustomBeans {
     public WebMvcConfigurer CORSConfig() {
         return new WebMvcConfigurer() {
             @Override
-            public void addCorsMappings(CorsRegistry registry) {
+            public void addCorsMappings(@NotNull CorsRegistry registry) {
                 registry.addMapping("/onemock").allowedOriginPatterns("*").allowedMethods("*");
                 registry.addMapping("/**").allowedOriginPatterns("http://localhost:8080", "http://localhost:3000").allowedMethods("*");
             }

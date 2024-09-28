@@ -1,8 +1,8 @@
 package com.shaw.onemock.entities.requests;
 
+import jakarta.persistence.*;
 import lombok.*;
 
-import javax.persistence.*;
 import java.util.Set;
 
 @Entity

@@ -21,7 +21,6 @@ import java.util.stream.Collectors;
 
 @SpringBootApplication
 public class OneMockApplication {
-
     public static void main(String[] args) {
         try {
             String userHomeDir = System.getProperty("user.home");
@@ -30,8 +29,6 @@ public class OneMockApplication {
         } catch (IOException e) {
             System.err.println("Failed to create directory!" + e.getMessage());
         }
-
-        CaptureState.captureOff();
 
         ConfigurableApplicationContext context = SpringApplication.run(OneMockApplication.class, args);
 
@@ -45,6 +42,8 @@ public class OneMockApplication {
 
         RequestRepository requestRepository = context.getBean(RequestRepository.class);
         requestRepository.deleteAll();
-    }
 
+        CaptureState captureState = context.getBean(CaptureState.class);
+        captureState.captureOff();
+    }
 }

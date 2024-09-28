@@ -12,13 +12,13 @@ export async function getMocksApi() {
 }
 
 export async function updateMockApi(id, body) {
-    return (await axios.put(baseApi + "/?id=" + id, body)).data;
+    return (await axios.put(baseApi + "?id=" + id, body)).data;
 }
 
 export async function deleteMockApi(id) {
-    return (await axios.delete(baseApi + "/?id=" + id)).data;
+    return (await axios.delete(baseApi + "?id=" + id)).data;
 }
 
 export async function getFullMockApi(id) {
-    return (await axios.get(baseApi + "/?id=" + id)).data;
+    return (await axios.get(baseApi + "?id=" + id)).data;
 }

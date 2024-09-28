@@ -1,11 +1,7 @@
 package com.shaw.onemock.entities.requests;
 
+import jakarta.persistence.*;
 import lombok.*;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Data
 @NoArgsConstructor
@@ -18,8 +14,10 @@ public class Header {
     private Long headerId;
 
     @NonNull
+    @Column(name = "header_key")
     private String key;
 
     @NonNull
+    @Column(name = "header_value")
     private String value;
 }

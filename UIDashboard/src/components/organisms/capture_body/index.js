@@ -69,9 +69,9 @@ const CaptureBody = (props) => {
                                                     fullRequest.headers.filter(
                                                         (e) =>
                                                             e.key.toLowerCase() ==
-                                                            "content-type"
-                                                    )[0].value
-                                                )
+                                                            "content-type",
+                                                    )[0].value,
+                                                ),
                                             );
                                         }}
                                     >
@@ -87,7 +87,7 @@ const CaptureBody = (props) => {
                                             fullRequest.headers.filter(
                                                 (e) =>
                                                     e.key.toLowerCase() ==
-                                                    "content-type"
+                                                    "content-type",
                                             )[0].value
                                         }
                                     </label>

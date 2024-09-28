@@ -12,12 +12,12 @@ import com.shaw.onemock.repositories.mock.MockRequestRepository;
 import com.shaw.onemock.repositories.request.HeaderRepository;
 import com.shaw.onemock.repositories.request.RequestRepository;
 import com.shaw.onemock.utils.Utils;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -33,6 +33,8 @@ public class RequestService {
     private MockRequestRepository mockRequestRepository;
     @Autowired
     private MockPathHolder mockPathHolder;
+    @Autowired
+    private CaptureState captureState;
 
     public Set<Header> getHeaders(HttpServletRequest request) {
         Set<Header> headers = new HashSet<>();
@@ -58,7 +60,7 @@ public class RequestService {
         Set<Header> headersList = getHeaders(request);
         headerRepository.saveAll(headersList);
         requestEntity.setHeaders(headersList);
-        CaptureState.setLastId(repository.save(requestEntity).getRequestId());
+        captureState.setLastId(repository.save(requestEntity).getRequestId());
     }
 
     public Long matchMockPathPool(String path, String method) {
@@ -77,7 +79,7 @@ public class RequestService {
         MediaType contentType = MediaType.TEXT_PLAIN;
         String body = Utils.getBody(request);
         String params = Utils.getParamString(request);
-        if (CaptureState.getCapture()) {
+        if (captureState.isCapture()) {
             saveRequest(request, path, params, body);
         }
 

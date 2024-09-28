@@ -29,8 +29,8 @@ const MocksBodyTable = (props) => {
                                             props.popupOpen(
                                                 coloredFormatRequestBody(
                                                     element.responseBody,
-                                                    element.format
-                                                )
+                                                    element.format,
+                                                ),
                                             );
                                         }}
                                     >
@@ -42,7 +42,7 @@ const MocksBodyTable = (props) => {
                                 <td>{element.format}</td>
                                 <td>{element.statusCode}</td>
                             </tr>
-                        )
+                        ),
                     )}
                 </tbody>
             </table>

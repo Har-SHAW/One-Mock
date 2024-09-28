@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MockPool {
-    Long mockId;
-    String actualPath;
-    String regexPath;
-    String method;
+    private Long mockId;
+    private String actualPath;
+    private String regexPath;
+    private String method;
 }
